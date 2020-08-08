@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\GeneralTables\Company;
+namespace App\Http\Controllers\GeneralControllers;
+use App\Http\Controllers\Controller;
+use App\GeneralModels\Company;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\GeneralModels\CompanyResource;
+use App\Http\Resources\GeneralModels\CompanyResourceCollection;
 
 class CompanyController extends Controller
 {
@@ -14,7 +17,8 @@ class CompanyController extends Controller
      */
     public function index()
     {
-        //
+        //! showing all the companies. 
+        return CompanyResourceCollection::collection(Company::all());
     }
 
     /**
@@ -35,7 +39,25 @@ class CompanyController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //! storing a single company.
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'imageLocation' => 'required',
+            'companyPointsPerson' => 'required'
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+
+        $company = new Company();
+        $company->fill($request->all())->save();
+
+        return response("Successfully Added Company",200);
     }
 
     /**
@@ -47,6 +69,7 @@ class CompanyController extends Controller
     public function show(Company $company)
     {
         //
+        return new CompanyResource($company);
     }
 
     /**
@@ -69,7 +92,8 @@ class CompanyController extends Controller
      */
     public function update(Request $request, Company $company)
     {
-        //
+        $company->update($request->all());
+        return response("Successfully Updated.", 201);
     }
 
     /**
@@ -81,5 +105,9 @@ class CompanyController extends Controller
     public function destroy(Company $company)
     {
         //
+        $company->delete();
+        return response(
+            "Successfully Deleted.", 204
+        );
     }
 }
