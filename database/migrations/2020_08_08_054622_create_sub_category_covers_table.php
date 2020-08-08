@@ -14,8 +14,17 @@ class CreateSubCategoryCoversTable extends Migration
     public function up()
     {
         Schema::create('sub_category_covers', function (Blueprint $table) {
-            $table->id();
+            $table->engine = "InnoDB";
+            $table->id();  
+            $table->text('name');
+            $table->longText('description');
+            $table->unsignedBigInteger('cover_id');
+
+            // ! adding the relationship to the covers table. 
+            $table->foreign('cover_id')->references('id')->on('covers')->onDelete('cascade')->onUpdate('cascade');
+
             $table->timestamps();
+            
         });
     }
 

@@ -14,7 +14,20 @@ class CreateInsuranceProvidersTable extends Migration
     public function up()
     {
         Schema::create('insurance_providers', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
+            $table->unsignedBigInteger('company_id');
+
+            // ! adding the relationship to the company table. 
+            $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unsignedBigInteger('cover_id');
+
+            // ! adding the relationship to the covers table. 
+            $table->foreign('cover_id')->references('id')->on('covers')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->boolean('is_active');
+
             $table->timestamps();
         });
     }

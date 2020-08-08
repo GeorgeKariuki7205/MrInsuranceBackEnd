@@ -14,8 +14,12 @@ class CreateCoversTable extends Migration
     public function up()
     {
         Schema::create('covers', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
             $table->timestamps();
+            $table->text('name');
+            $table->longText('description');
+            $table->boolean('has_sub_categories');
         });
     }
 
