@@ -1,10 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\GeneralControllers;
 
-use App\GeneralTables\Cover;
+use App\GeneralModels\Cover;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\GeneralModels\CoverResource;
+use App\Http\Resources\GeneralModels\CoverResourceCollection;
 class CoverController extends Controller
 {
     /**
@@ -14,7 +17,9 @@ class CoverController extends Controller
      */
     public function index()
     {
-        //
+        //! getting all the covers. 
+
+        return CoverResourceCollection::collection(Cover::all());
     }
 
     /**
@@ -35,7 +40,24 @@ class CoverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+         //! storing a single cover.
+         $validator = Validator::make($request->all(), [
+            'name'=> 'required',
+            'description' => 'required',
+            'has_sub_categories' => 'required|boolean',
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+
+        $cover = new Cover();
+        $cover->fill($request->all())->save();
+
     }
 
     /**
@@ -46,7 +68,9 @@ class CoverController extends Controller
      */
     public function show(Cover $cover)
     {
-        //
+        //! getting a single cover only. 
+
+        return new CoverResource($cover);
     }
 
     /**
@@ -69,7 +93,22 @@ class CoverController extends Controller
      */
     public function update(Request $request, Cover $cover)
     {
-        //
+        $validator = Validator::make($request->all(), [            
+            'has_sub_categories' => 'boolean',
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+
+        $cover->update($request->all());
+
+        return response("Cover Updated",200);
+
     }
 
     /**
@@ -81,5 +120,8 @@ class CoverController extends Controller
     public function destroy(Cover $cover)
     {
         //
+        $cover->delete();
+        return response("Cover Deleted",204);
+
     }
 }
