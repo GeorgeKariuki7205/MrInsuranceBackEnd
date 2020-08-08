@@ -16,14 +16,16 @@ class DatabaseSeeder extends Seeder
         $this->call(SubCategoryCoverSeeder::class);
         $this->call(InsuranceProviderSeeder::class);
 
-        // $this->call(HealthCoverAmountSeeder::class);
+        $this->call(HealthCoverAmountSeeder::class);
 
         $this->call(HealthPremiumSeeder::class);
         $this->call(HealthBenefitsSeeder::class);
         $this->call(HealthNotCoveredSeeder::class);
         $this->call(HealthWaitingPeriodSeeder::class);
-        $this->call(HealthAdditionalPremiumSeeder::class);
-        $this->call(HealthAdditionalBenefitsSeeder::class);
+
+        $this->call(HealthAdditionalSeeder::class);
+        $this->call(HealthAdditionlPremiumSeeder::class);
+        $this->call(HealthAdditionalBenefitSeeder::class);
         $this->call(HealthAdditionalNotCoveredSeeder::class);
         $this->call(HealthAdditionalWaitingPeriodSeeder::class);
     }

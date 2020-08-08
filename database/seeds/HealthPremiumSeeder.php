@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\HealthCoverModels\Premium;
+use App\HealthCoverModels\HealthPremium;
 class HealthPremiumSeeder extends Seeder
 {
     /**
@@ -25,7 +25,7 @@ class HealthPremiumSeeder extends Seeder
         ];
         foreach($premiums as $key => $value){
 
-            Premium::create($value);            
+            HealthPremium::create($value);            
 
         }
     }

@@ -4,7 +4,7 @@ namespace App\HealthCoverModels\Additional;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Premium extends Model
+class HealthAdditionalPremium extends Model
 {
     // ! defining fillable fields.
     protected $guarded = ['id'];

@@ -4,7 +4,7 @@ namespace App\HealthCoverModels\Additional;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdditionalWaitingPeriod extends Model
+class HealthAdditionalWaitingPeriod extends Model
 {
     // ! defining fillable fields.
     protected $guarded = ['id'];
@@ -13,6 +13,6 @@ class AdditionalWaitingPeriod extends Model
 
     public function AdditionalWaitingPeriodBelongsToAdditional()
      {
-         return $this->belongsTo('App\HealthCoverModels\Additional\AdditionalWaitingPeriod', 'additional_id', 'id');
+         return $this->belongsTo('App\HealthCoverModels\Additional\HealthAdditional', 'additional_id', 'id');
      }
 }

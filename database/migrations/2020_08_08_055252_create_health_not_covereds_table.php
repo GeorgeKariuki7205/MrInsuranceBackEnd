@@ -13,7 +13,7 @@ class CreateHealthNotCoveredsTable extends Migration
      */
     public function up()
     {
-        Schema::create('health_not_covered', function (Blueprint $table) {
+        Schema::create('health_not_covereds', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->longText('name');

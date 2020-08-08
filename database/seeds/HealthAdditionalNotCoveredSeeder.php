@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\HealthCoverModels\Additional\AdditionalNotCovered;
+use App\HealthCoverModels\Additional\HealthAdditionalNotCovered;
 class HealthAdditionalNotCoveredSeeder extends Seeder
 {
     /**
@@ -23,7 +23,7 @@ class HealthAdditionalNotCoveredSeeder extends Seeder
         ];
         foreach($notCovered as $key => $value){
 
-            AdditionalNotCovered::create($value);            
+            HealthAdditionalNotCovered::create($value);            
 
         }
     }

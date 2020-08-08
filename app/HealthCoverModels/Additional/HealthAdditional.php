@@ -4,7 +4,7 @@ namespace App\HealthCoverModels\Additional;
 
 use Illuminate\Database\Eloquent\Model;
 
-class Additional extends Model
+class HealthAdditional extends Model
 {
     // ! defining fillable fields.
     protected $guarded = ['id'];
@@ -18,22 +18,22 @@ class Additional extends Model
 
     public function AdditionalHasManyBenefits()
     {
-        return $this->hasMany('App\HealthCoverModels\Additional\AdditionalBenefit', 'additional_id', 'id');
+        return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditionalBenefit', 'additional_id', 'id');
     }
 
     public function AdditionalHasManyNotCovered()
     {
-        return $this->hasMany('App\HealthCoverModels\Additional\AdditionalNotCovered', 'additional_id', 'id');
+        return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditionalNotCovered', 'additional_id', 'id');
     }
 
     public function AdditionalHasManyWaitingPeriod()
     {
-        return $this->hasMany('App\HealthCoverModels\Additional\AdditionalWaitingPeriod', 'additional_id', 'id');
+        return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditionalWaitingPeriod', 'additional_id', 'id');
     }
 
     public function AdditionalHasManyPremium()
     {
-        return $this->hasMany('App\HealthCoverModels\Additional\Premium', 'additional_id', 'id');
+        return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditionalPremium', 'additional_id', 'id');
     }
 
 }

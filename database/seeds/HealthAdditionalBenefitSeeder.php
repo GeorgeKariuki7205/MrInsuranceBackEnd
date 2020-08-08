@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\HealthCoverModels\Additional\AdditionalBenefit;
+use App\HealthCoverModels\Additional\HealthAdditionalBenefit;
  
 class HealthAdditionalBenefitSeeder extends Seeder
 {
@@ -24,7 +24,7 @@ class HealthAdditionalBenefitSeeder extends Seeder
         ];
         foreach($benefits as $key => $value){
 
-            Benefits::create($value);            
+            HealthAdditionalBenefit::create($value);            
 
         }
     }

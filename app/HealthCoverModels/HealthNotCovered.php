@@ -4,11 +4,11 @@ namespace App\HealthCoverModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class NotCovered extends Model
+class HealthNotCovered extends Model
 {
     // ! defining fillable fields.
     protected $guarded = ['id'];
-
+    
     // ? Creating the relationships.
 
     public function NotCoveredBelongsToInsuranceCover()

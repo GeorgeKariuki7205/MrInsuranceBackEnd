@@ -4,7 +4,7 @@ namespace App\HealthCoverModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class WaitingPeriod extends Model
+class HealthWaitingPeriod extends Model
 {
          // ! defining fillable fields.
          protected $guarded = ['id'];

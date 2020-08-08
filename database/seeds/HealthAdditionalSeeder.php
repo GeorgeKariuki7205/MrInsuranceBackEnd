@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\HealthCoverModels\Additional\Additional;
+use App\HealthCoverModels\Additional\HealthAdditional;
 class HealthAdditionalSeeder extends Seeder
 {
     /**
@@ -12,7 +12,7 @@ class HealthAdditionalSeeder extends Seeder
     public function run()
     {
         $additional = [
-            [
+            
                [
                   'insurance_covers_id'=> 1,
                   'name'=> 'Optician',
@@ -23,11 +23,11 @@ class HealthAdditionalSeeder extends Seeder
                 'name'=> 'Dental',
                 'type_of_calculation'=> 1,
              ],
-            ]
+            
         ];
         foreach($additional as $key => $value){
 
-            Additional::create($value);            
+            HealthAdditional::create($value);            
 
         }
     }

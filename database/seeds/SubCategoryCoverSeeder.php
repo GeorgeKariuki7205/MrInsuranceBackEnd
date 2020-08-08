@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use App\GeneralModels\SubCategoryCover;
+use App\GeneralModels\HealthSubCategoryCover;
 class SubCategoryCoverSeeder extends Seeder
 {
     /**

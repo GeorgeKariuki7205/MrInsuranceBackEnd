@@ -4,10 +4,12 @@ namespace App\HealthCoverModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CoverAmount extends Model
+class HealthCoverAmount extends Model
 {
      // ! defining fillable fields.
      protected $guarded = ['id'];
+
+    //  public $table = "";
 
      // ? Creating the relationships. 
 

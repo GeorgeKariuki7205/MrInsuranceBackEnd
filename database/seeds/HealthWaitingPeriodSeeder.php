@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-use  App\HealthCoverModels\WaitingPeriod;
+use  App\HealthCoverModels\HealthWaitingPeriod;
 class HealthWaitingPeriodSeeder extends Seeder
 {
     /**
@@ -27,7 +27,7 @@ class HealthWaitingPeriodSeeder extends Seeder
         ];
         foreach($waitingPeriod as $key => $value){
 
-            WaitingPeriod::create($value);            
+            HealthWaitingPeriod::create($value);            
 
         }
     }

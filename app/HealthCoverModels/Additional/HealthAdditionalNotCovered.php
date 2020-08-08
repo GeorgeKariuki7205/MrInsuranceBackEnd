@@ -4,7 +4,7 @@ namespace App\HealthCoverModels\Additional;
 
 use Illuminate\Database\Eloquent\Model;
 
-class AdditionalNotCovered extends Model
+class HealthAdditionalNotCovered extends Model
 {
     // ! defining fillable fields.
     protected $guarded = ['id'];
@@ -13,6 +13,6 @@ class AdditionalNotCovered extends Model
 
     public function AdditionalNotCoveredBelongsToAdditional()
      {
-         return $this->belongsTo('App\HealthCoverModels\Additional\Additional', 'additional_id', 'id');
+         return $this->belongsTo('App\HealthCoverModels\Additional\HealthAdditional', 'additional_id', 'id');
      }
 }

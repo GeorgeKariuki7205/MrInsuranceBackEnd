@@ -38,6 +38,6 @@ class InsuranceCover extends Model
 
      public function InsuranceCoverHasManyAdditional()
      {
-         return $this->hasMany('App\HealthCoverModels\Additional\Additional', 'insurance_cover_id', 'id');
+         return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditional', 'insurance_cover_id', 'id');
      }
 }
