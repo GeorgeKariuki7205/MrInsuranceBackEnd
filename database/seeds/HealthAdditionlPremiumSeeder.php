@@ -2,7 +2,7 @@
 
 use Illuminate\Database\Seeder;
 
-class AdditionalSeeder extends Seeder
+class HealthAdditionlPremiumSeeder extends Seeder
 {
     /**
      * Run the database seeds.

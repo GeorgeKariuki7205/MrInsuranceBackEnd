@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\GeneralModels\Cover;
 class CoverSeeder extends Seeder
 {
     /**
@@ -11,6 +11,17 @@ class CoverSeeder extends Seeder
      */
     public function run()
     {
-        //
+        $covers = [
+            [
+                'name'=> 'Health Insurance',
+                'description'=> 'Health Insurance',
+                'has_sub_categories'=> 0,
+            ]
+        ];
+        foreach($covers as $key => $value){
+
+            Cover::create($value);            
+
+        }
     }
 }

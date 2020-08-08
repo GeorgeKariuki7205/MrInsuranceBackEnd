@@ -16,14 +16,16 @@ class CreateHealthPremiaTable extends Migration
         Schema::create('health_premia', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
-            $table->integer('min_age');
-            $table->integer('max_age');
             $table->unsignedBigInteger('covered_amount_id');
 
             // ! adding the relationship to the cover amounts table. 
             $table->foreign('covered_amount_id')->references('id')->on('health_cover_amounts')->onDelete('cascade')->onUpdate('cascade');
-
-            $table->integer('number_of_children');
+            $table->integer('min_age');
+            $table->integer('max_age');
+            $table->bigInteger('principal_member');
+            $table->bigInteger('spouse');
+            $table->bigInteger('child');
+                       
             $table->timestamps();
         });
     }

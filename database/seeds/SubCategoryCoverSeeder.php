@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\GeneralModels\SubCategoryCover;
 class SubCategoryCoverSeeder extends Seeder
 {
     /**
@@ -11,6 +11,7 @@ class SubCategoryCoverSeeder extends Seeder
      */
     public function run()
     {
-        //
+        
+       
     }
 }

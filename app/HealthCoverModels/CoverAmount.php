@@ -1,6 +1,6 @@
 <?php
 
-namespace App\HealthCover\Models;
+namespace App\HealthCoverModels;
 
 use Illuminate\Database\Eloquent\Model;
 

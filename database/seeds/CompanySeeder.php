@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\GeneralModels\Company;
 class CompanySeeder extends Seeder
 {
     /**
@@ -12,5 +12,18 @@ class CompanySeeder extends Seeder
     public function run()
     {
         //
+
+        $companies = [
+            [
+                'name'=> 'UAP Old Mutual',
+                'imageLocation'=> 'imageLocation',
+                'companyPointsPerson'=> 'John Doe',
+            ]
+        ];
+        foreach($companies as $key => $value){
+
+            Company::create($value);
+
+        }
     }
 }
