@@ -17,10 +17,10 @@ class CreateHealthCoverAmountsTable extends Migration
             $table->engine = "InnoDB";
             $table->id();
             $table->bigInteger('amount');
-            $table->unsignedBigInteger('insurance_provider_id');
+            $table->unsignedBigInteger('insurance_cover_id');
 
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('insurance_provider_id')->references('id')->on('insurance_providers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('insurance_cover_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

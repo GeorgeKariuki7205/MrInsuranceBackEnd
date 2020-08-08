@@ -17,10 +17,10 @@ class CreateHealthNotCoveredsTable extends Migration
             $table->engine = "InnoDB";
             $table->id();
             $table->longText('name');
-            $table->unsignedBigInteger('insurance_providers_id');
+            $table->unsignedBigInteger('insurance_covers_id');
 
             // ! creating the relationship to the insurance providers. 
-            $table->foreign('insurance_providers_id')->references('id')->on('insurance_providers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('insurance_covers_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
 
             $table->timestamps();
         });

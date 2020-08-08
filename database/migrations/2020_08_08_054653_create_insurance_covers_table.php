@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateInsuranceProvidersTable extends Migration
+class CreateInsuranceCoversTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,7 +13,7 @@ class CreateInsuranceProvidersTable extends Migration
      */
     public function up()
     {
-        Schema::create('insurance_providers', function (Blueprint $table) {
+        Schema::create('insurance_covers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('company_id');
