@@ -27,6 +27,7 @@ class CreateInsuranceCoversTable extends Migration
             $table->foreign('cover_id')->references('id')->on('covers')->onDelete('cascade')->onUpdate('cascade');
 
             $table->boolean('is_active');
+            $table->text('year');
 
             $table->timestamps();
         });

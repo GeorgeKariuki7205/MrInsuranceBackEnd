@@ -13,12 +13,12 @@ class InsuranceCover extends Model
 
      public function InsuranceProviderBelongToCompany()
      {
-         return $this->belongsTo('App\Company', 'company_id', 'id');
+         return $this->belongsTo('App\GeneralModels\Company', 'company_id', 'id');
      }
 
      public function InsuranceProviderBelongsToCover()
      {
-         return $this->belongsTo('App\Cover', 'cover_id', 'id');
+         return $this->belongsTo('App\GeneralModels\Cover', 'cover_id', 'id');
      }
 
      public function InsuranceCoverHasManyCoverAmounts()
