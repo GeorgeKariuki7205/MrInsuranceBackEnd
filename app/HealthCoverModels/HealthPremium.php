@@ -13,6 +13,6 @@ class HealthPremium extends Model
 
      public function PremiumBelongsToCoverAmount()
      {
-         return $this->belongsTo('App\HealthCoverModels\CoverAmount', 'covered_amount_id', 'id');
+         return $this->belongsTo('App\HealthCoverModels\HealthCoverAmount', 'covered_amount_id', 'id');
      }
 }
