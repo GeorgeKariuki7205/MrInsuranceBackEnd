@@ -29,4 +29,6 @@ Route::apiResource('/healthPremia','HealthCoverControllers\HealthPremiumControll
 
 // ! Health Additional 
 Route::apiResource('/healthAdditional','HealthCoverControllers\Additional\HealthAdditionalController');
+Route::apiResource('/healthAdditionalBenefit','HealthCoverControllers\Additional\HealthAdditionalBenefitController');
+
 
