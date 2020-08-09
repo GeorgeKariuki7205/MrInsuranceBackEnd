@@ -1,16 +1,14 @@
 <?php
 
-
 namespace App\Http\Controllers\HealthCoverControllers;
-use App\Http\Controllers\Controller;
-use App\HealthCoverModels\HealthBenefit;
-use Illuminate\Http\Request;
 
+use App\HealthCoverModels\HealthBenefit;
+use App\Http\Controllers\Controller;
+use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\HealthModels\BenefitsResource;
 use App\Http\Resources\HealthModels\BenefitsResourceCollection;
-
-class BenefitsController extends Controller
+class HealthBenefitController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -42,6 +40,7 @@ class BenefitsController extends Controller
     public function store(Request $request)
     {
         //
+        //
           //! storing a single company.
           $validator = Validator::make($request->all(), [
             'covered_amount_id' => 'required|exists:health_cover_amounts,id',
@@ -68,22 +67,22 @@ class BenefitsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\HealthCover\Benefits  $benefits
+     * @param  \App\HealthCoverModels\HealthBenefit  $healthBenefit
      * @return \Illuminate\Http\Response
      */
-    public function show(HealthBenefit $benefits)
+    public function show(HealthBenefit $healthBenefit)
     {
-
-        return new BenefitsResource($benefits);
+        //
+        return new BenefitsResource($healthBenefit);
     }
 
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\HealthCover\Benefits  $benefits
+     * @param  \App\HealthCoverModels\HealthBenefit  $healthBenefit
      * @return \Illuminate\Http\Response
      */
-    public function edit(HealthBenefits $benefits)
+    public function edit(HealthBenefit $healthBenefit)
     {
         //
     }
@@ -92,26 +91,26 @@ class BenefitsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\HealthCover\Benefits  $benefits
+     * @param  \App\HealthCoverModels\HealthBenefit  $healthBenefit
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, HealthBenefit $benefits)
+    public function update(Request $request, HealthBenefit $healthBenefit)
     {
-                
-        $benefits->update($request->all());
+        //
+        $healthBenefit->update($request->all());
         return response("Successfully Updated Health Benefits",200);
     }
 
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\HealthCover\Benefits  $benefits
+     * @param  \App\HealthCoverModels\HealthBenefit  $healthBenefit
      * @return \Illuminate\Http\Response
      */
-    public function destroy(HealthBenefit $benefits)
+    public function destroy(HealthBenefit $healthBenefit)
     {
         //
-        $benefits->delete();
+        $healthBenefit->delete();
         return response("Successfully Deleted Health Benefits",200);
     }
 }

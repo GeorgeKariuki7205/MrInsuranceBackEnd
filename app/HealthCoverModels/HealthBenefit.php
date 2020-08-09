@@ -4,15 +4,16 @@ namespace App\HealthCoverModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class HealthBenefits extends Model
+class HealthBenefit extends Model
 {
      // ! defining fillable fields.
      protected $guarded = ['id'];
 
+     public $table = "health_benefits";
      // ? Creating the relationships. 
 
      public function BenefitsBelongToCoverAmount()
      {
-         return $this->belongsTo('App\HealthCoverModels\CoverAmount', 'covered_amount_id', 'id');
+         return $this->belongsTo('App\HealthCoverModels\HealthCoverAmount', 'covered_amount_id', 'id');
      }
 }
