@@ -32,6 +32,8 @@ Route::apiResource('/healthAdditional','HealthCoverControllers\Additional\Health
 Route::apiResource('/healthAdditionalBenefit','HealthCoverControllers\Additional\HealthAdditionalBenefitController');
 Route::apiResource('/healthAdditionalNotCovered','HealthCoverControllers\Additional\HealthAdditionalNotCoveredController');
 Route::apiResource('/healthAdditionalWaitingPeriod','HealthCoverControllers\Additional\HealthAdditionalWaitingPeriodController');
+Route::apiResource('/healthAdditionalPremium','HealthCoverControllers\Additional\HealthAdditionalPremiumController');
+
 
 
 
