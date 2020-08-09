@@ -1,9 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
-
-use App\HealthCover\WaitingPeriod;
+namespace App\Http\Controllers\HealthCoverControllers;
+use App\Http\Controllers\Controller;
+use App\HealthCoverModels\HealthWaitingPeriod;
 use Illuminate\Http\Request;
+use App\Http\Resources\HealthModels\WaitingPeriodsResource;
+use App\Http\Resources\HealthModels\WaitingPeriodsResourceCollection;
+use Illuminate\Support\Facades\Validator;
 
 class WaitingPeriodController extends Controller
 {
@@ -15,6 +18,7 @@ class WaitingPeriodController extends Controller
     public function index()
     {
         //
+        return WaitingPeriodsResourceCollection::collection(HealthWaitingPeriod::all());
     }
 
     /**
@@ -36,6 +40,27 @@ class WaitingPeriodController extends Controller
     public function store(Request $request)
     {
         //
+        
+                 //! storing a single company.
+        $validator = Validator::make($request->all(), [
+            'situation'=>'required',
+            'period_amount'=> 'required|integer',
+            'period_time'=>'required',
+            'insurance_covers_id'=> 'required|exists:insurance_covers,id',
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+
+        $waitingPeriod = new HealthWaitingPeriod();
+        $waitingPeriod->fill($request->all())->save();
+
+        return response("Added The Health Waiting Period",200);
     }
 
     /**
@@ -44,9 +69,11 @@ class WaitingPeriodController extends Controller
      * @param  \App\HealthCover\WaitingPeriod  $waitingPeriod
      * @return \Illuminate\Http\Response
      */
-    public function show(WaitingPeriod $waitingPeriod)
+    public function show(HealthWaitingPeriod $waitingPeriod)
     {
         //
+        return new WaitingPeriodsResource($waitingPeriod);
+
     }
 
     /**
@@ -55,7 +82,7 @@ class WaitingPeriodController extends Controller
      * @param  \App\HealthCover\WaitingPeriod  $waitingPeriod
      * @return \Illuminate\Http\Response
      */
-    public function edit(WaitingPeriod $waitingPeriod)
+    public function edit(HealthWaitingPeriod $waitingPeriod)
     {
         //
     }
@@ -67,9 +94,11 @@ class WaitingPeriodController extends Controller
      * @param  \App\HealthCover\WaitingPeriod  $waitingPeriod
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, WaitingPeriod $waitingPeriod)
+    public function update(Request $request, HealthWaitingPeriod $waitingPeriod)
     {
         //
+        $waitingPeriod->update($request->all());
+        return response("Updated Successfully Waiting Period.",200);
     }
 
     /**
@@ -78,8 +107,10 @@ class WaitingPeriodController extends Controller
      * @param  \App\HealthCover\WaitingPeriod  $waitingPeriod
      * @return \Illuminate\Http\Response
      */
-    public function destroy(WaitingPeriod $waitingPeriod)
+    public function destroy(HealthWaitingPeriod $waitingPeriod)
     {
         //
+        $waitingPeriod->delete();
+        return response("Successfully Deleted A Health Waiting Period.",200);
     }
 }

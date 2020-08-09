@@ -22,3 +22,4 @@ Route::apiResource('/company','GeneralControllers\CompanyController');
 Route::apiResource('/cover','GeneralControllers\CoverController');
 Route::apiResource('/insuranceCover','GeneralControllers\InsuranceCoverController');
 Route::apiResource('/coverAmounts','HealthCoverControllers\CoverAmountController');
+Route::apiResource('/waitingPeriod','HealthCoverControllers\WaitingPeriodController');
