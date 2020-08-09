@@ -21,3 +21,4 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('/company','GeneralControllers\CompanyController');
 Route::apiResource('/cover','GeneralControllers\CoverController');
 Route::apiResource('/insuranceCover','GeneralControllers\InsuranceCoverController');
+Route::apiResource('/coverAmounts','HealthCoverControllers\CoverAmountController');
