@@ -1,8 +1,12 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\HealthCoverControllers;
 
-use App\HealthCover\NotCovered;
+use App\HealthCoverModels\HealthNotCovered;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\HealthModels\NotCoveredResource;
+use App\Http\Resources\HealthModels\NotCoveredResourceCollection;
 use Illuminate\Http\Request;
 
 class NotCoveredController extends Controller
@@ -15,6 +19,7 @@ class NotCoveredController extends Controller
     public function index()
     {
         //
+        return NotCoveredResourceCollection::collection(HealthNotCovered::all());
     }
 
     /**
@@ -36,6 +41,24 @@ class NotCoveredController extends Controller
     public function store(Request $request)
     {
         //
+          //! storing a single company.
+          $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'insurance_covers_id' => 'required|exists:insurance_covers,id',            
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+
+        $notCovered = new HealthNotCovered();
+        $notCovered->fill($request->all())->save();
+        return response("Added Not Covered",200);
+
     }
 
     /**
@@ -44,9 +67,10 @@ class NotCoveredController extends Controller
      * @param  \App\HealthCover\NotCovered  $notCovered
      * @return \Illuminate\Http\Response
      */
-    public function show(NotCovered $notCovered)
+    public function show(HealthNotCovered $notCovered)
     {
         //
+        return new NotCoveredResource($notCovered);
     }
 
     /**
@@ -55,7 +79,7 @@ class NotCoveredController extends Controller
      * @param  \App\HealthCover\NotCovered  $notCovered
      * @return \Illuminate\Http\Response
      */
-    public function edit(NotCovered $notCovered)
+    public function edit(HealthNotCovered $notCovered)
     {
         //
     }
@@ -67,9 +91,23 @@ class NotCoveredController extends Controller
      * @param  \App\HealthCover\NotCovered  $notCovered
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, NotCovered $notCovered)
+    public function update(Request $request, HealthNotCovered $notCovered)
     {
         //
+         //! storing a single company.
+         $validator = Validator::make($request->all(), [            
+            'insurance_covers_id' => 'exists:insurance_covers,id',            
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+        $notCovered->update($request->all());
+        return response("Successfully Updated Not Covered",200);
     }
 
     /**
@@ -78,8 +116,10 @@ class NotCoveredController extends Controller
      * @param  \App\HealthCover\NotCovered  $notCovered
      * @return \Illuminate\Http\Response
      */
-    public function destroy(NotCovered $notCovered)
+    public function destroy(HealthNotCovered $notCovered)
     {
         //
+        $notCovered->delete();
+        return response("Successfully Deleted Not Covered",200);
     }
 }
