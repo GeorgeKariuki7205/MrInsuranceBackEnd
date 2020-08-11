@@ -11,11 +11,11 @@ class SubCategoryCover extends Model
 
     // ? Creating the relationships. 
 
-    public function subCategoryBelongsToCover()
+    public function SubCategoryBelongsToCover()
     {
-        return $this->belongsTo('App\Cover', 'cover_id', 'id');
+        return $this->belongsTo('App\GeneralModels\Cover', 'cover_id', 'id');
     }
-    public function subCategoryHasManyInsuranceCovers()
+    public function SubCategoryHasManyInsuranceCovers()
     {
         return $this->hasMany('App\GeneralModels\InsuranceCover', 'sub_category_id', 'id');
     } 

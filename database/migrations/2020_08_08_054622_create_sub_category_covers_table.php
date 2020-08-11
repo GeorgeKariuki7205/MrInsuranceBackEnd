@@ -17,7 +17,7 @@ class CreateSubCategoryCoversTable extends Migration
             $table->engine = "InnoDB";
             $table->id();  
             $table->text('name');
-            $table->longText('description');
+            $table->longText('description')->nullable();
             $table->unsignedBigInteger('cover_id');
 
             // ! adding the relationship to the covers table. 

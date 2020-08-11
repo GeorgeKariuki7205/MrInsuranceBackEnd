@@ -2,14 +2,13 @@
 
 namespace App\Http\Controllers\GeneralControllers;
 
-use App\GeneralTables\SubCategoryCover;
+use App\GeneralModels\SubCategoryCover;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Validator;
 use App\Http\Resources\GeneralModels\SubCategoryResourceCollection;
 use App\Http\Resources\GeneralModels\SubCategoryResource;
-
-class SubCategoryCoverController extends Controller
+class SubCategoryController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +16,7 @@ class SubCategoryCoverController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index()
-    {
+    {        
         return SubCategoryResourceCollection::collection(SubCategoryCover::all());
     }
 
@@ -40,8 +39,7 @@ class SubCategoryCoverController extends Controller
     public function store(Request $request)
     {
         $validator = Validator::make($request->all(), [
-            'name' => 'required',
-            'description' => 'required',
+            'name' => 'required',            
             'cover_id' => 'required|exists:covers,id'
         ]);
 
@@ -61,7 +59,7 @@ class SubCategoryCoverController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\GeneralTables\SubCategoryCover  $subCategoryCover
+     * @param  \App\GeneralModels\SubCategoryCover  $subCategoryCover
      * @return \Illuminate\Http\Response
      */
     public function show(SubCategoryCover $subCategoryCover)
@@ -73,7 +71,7 @@ class SubCategoryCoverController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\GeneralTables\SubCategoryCover  $subCategoryCover
+     * @param  \App\GeneralModels\SubCategoryCover  $subCategoryCover
      * @return \Illuminate\Http\Response
      */
     public function edit(SubCategoryCover $subCategoryCover)
@@ -85,7 +83,7 @@ class SubCategoryCoverController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\GeneralTables\SubCategoryCover  $subCategoryCover
+     * @param  \App\GeneralModels\SubCategoryCover  $subCategoryCover
      * @return \Illuminate\Http\Response
      */
     public function update(Request $request, SubCategoryCover $subCategoryCover)
@@ -111,12 +109,13 @@ class SubCategoryCoverController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\GeneralTables\SubCategoryCover  $subCategoryCover
+     * @param  \App\GeneralModels\SubCategoryCover  $subCategoryCover
      * @return \Illuminate\Http\Response
      */
-    public function destroy(SubCategoryCover $subCategoryCover)
+    public function destroy(Request $subCategoryCover)
     {
         //
+        return $subCategoryCover;
         $subCategoryCover->delete();
         return response("Successfully Deleted.");
     }
