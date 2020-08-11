@@ -17,6 +17,8 @@ class CreateInsuranceCoversTable extends Migration
             $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('company_id');
+            $table->longText("name");
+            $table->longText("description");
 
             // ! adding the relationship to the company table. 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');
@@ -25,6 +27,11 @@ class CreateInsuranceCoversTable extends Migration
 
             // ! adding the relationship to the covers table. 
             $table->foreign('cover_id')->references('id')->on('covers')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->unsignedBigInteger("sub_category_id")->nullable();
+
+            // ! adding the relationship to the subCategory. 
+            $table->foreign('sub_category_id')->references('id')->on('sub_category_covers')->onDelete('cascade')->onUpdate('cascade');
 
             $table->boolean('is_active');
             $table->text('year');

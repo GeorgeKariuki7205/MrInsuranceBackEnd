@@ -18,9 +18,14 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
     return $request->user();
 });
 
+// ! General Models.
 Route::apiResource('/company','GeneralControllers\CompanyController');
 Route::apiResource('/cover','GeneralControllers\CoverController');
 Route::apiResource('/insuranceCover','GeneralControllers\InsuranceCoverController');
+Route::apiResource('/subCategory','GeneralControllers\SubCategoryCoverController');
+
+
+// ! Health Models.
 Route::apiResource('/coverAmounts','HealthCoverControllers\CoverAmountController');
 Route::apiResource('/waitingPeriod','HealthCoverControllers\WaitingPeriodController');
 Route::apiResource('/notCovered','HealthCoverControllers\NotCoveredController');

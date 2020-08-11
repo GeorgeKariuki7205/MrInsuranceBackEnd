@@ -14,5 +14,9 @@ class SubCategoryCover extends Model
     public function subCategoryBelongsToCover()
     {
         return $this->belongsTo('App\Cover', 'cover_id', 'id');
-    }    
+    }
+    public function subCategoryHasManyInsuranceCovers()
+    {
+        return $this->hasMany('App\GeneralModels\InsuranceCover', 'sub_category_id', 'id');
+    } 
 }

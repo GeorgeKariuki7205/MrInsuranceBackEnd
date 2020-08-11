@@ -1,9 +1,13 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\GeneralControllers;
 
 use App\GeneralTables\SubCategoryCover;
+use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Validator;
+use App\Http\Resources\GeneralModels\SubCategoryResourceCollection;
+use App\Http\Resources\GeneralModels\SubCategoryResource;
 
 class SubCategoryCoverController extends Controller
 {
@@ -14,7 +18,7 @@ class SubCategoryCoverController extends Controller
      */
     public function index()
     {
-        //
+        return SubCategoryResourceCollection::collection(SubCategoryCover::all());
     }
 
     /**
@@ -35,7 +39,23 @@ class SubCategoryCoverController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $validator = Validator::make($request->all(), [
+            'name' => 'required',
+            'description' => 'required',
+            'cover_id' => 'required|exists:covers,id'
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),250);
+
+        }
+
+        $subCategoryCover = new SubCategoryCover();
+        $subCategoryCover->fill($request->all())->save();
+        return response("Successfully Added.");
     }
 
     /**
@@ -47,6 +67,7 @@ class SubCategoryCoverController extends Controller
     public function show(SubCategoryCover $subCategoryCover)
     {
         //
+        return new SubCategoryResource($subCategoryCover);
     }
 
     /**
@@ -70,6 +91,21 @@ class SubCategoryCoverController extends Controller
     public function update(Request $request, SubCategoryCover $subCategoryCover)
     {
         //
+        $validator = Validator::make($request->all(), [            
+            'cover_id' => 'exists:covers,id'
+        ]);
+
+        if ($validator->fails()) {
+            
+            // ! return the errors that have been gotten from posting the data.
+
+            return response($validator->errors(),206);
+
+        }
+
+        $subCategoryCover->update($request->all());
+        return response("Successfully Updated.");        
+
     }
 
     /**
@@ -81,5 +117,7 @@ class SubCategoryCoverController extends Controller
     public function destroy(SubCategoryCover $subCategoryCover)
     {
         //
+        $subCategoryCover->delete();
+        return response("Successfully Deleted.");
     }
 }

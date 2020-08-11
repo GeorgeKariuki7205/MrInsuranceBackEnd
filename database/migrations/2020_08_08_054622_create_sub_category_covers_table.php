@@ -23,6 +23,8 @@ class CreateSubCategoryCoversTable extends Migration
             // ! adding the relationship to the covers table. 
             $table->foreign('cover_id')->references('id')->on('covers')->onDelete('cascade')->onUpdate('cascade');
 
+            
+
             $table->timestamps();
             
         });
