@@ -15,13 +15,13 @@ class HealthAdditionalSeeder extends Seeder
             
                [
                   'insurance_covers_id'=> 1,
-                  'name'=> 'Optician',
+                  'name'=> 'OUTPATIENT COVER',
                   'type_of_calculation'=> 1,
                ],
                [
                 'insurance_covers_id'=> 1,
-                'name'=> 'Dental',
-                'type_of_calculation'=> 1,
+                'name'=> 'MATERNITY COVER OPTION ',
+                'type_of_calculation'=> 0,
              ],
             
         ];

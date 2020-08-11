@@ -14,13 +14,21 @@ class HealthAdditionalBenefitSeeder extends Seeder
     {
         $benefits = [
            [
-               'additional_id'=> 1,
-               'name'=> 'Eye Check-Ups',
+               'additional_id'=> 2,
+               'name'=> 'Normal Delivery ',
            ],
            [
-            'additional_id'=> 1,
-            'name'=> 'Glasses',
-        ]
+            'additional_id'=> 2,
+            'name'=> 'Caesarian Section',
+           ],
+           [
+            'additional_id'=> 2,
+            'name'=> 'Maternity Related Complications',
+           ],
+           [
+            'additional_id'=> 2,
+            'name'=> 'Antenatal & Postnatal expenses',
+           ],
         ];
         foreach($benefits as $key => $value){
 

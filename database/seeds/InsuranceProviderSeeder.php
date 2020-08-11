@@ -13,10 +13,12 @@ class InsuranceProviderSeeder extends Seeder
     {
         $insuranceCovers = [
             [
+                'name'=>"Afya Imara",                
                 'company_id' => 1,
                 'cover_id'=> 1,
                 'is_active' => 1,
-                'year'=> '2020'
+                'year'=> '2020',
+                'sub_category_id'=> 1
             ]
         ];
         foreach($insuranceCovers as $key => $value){

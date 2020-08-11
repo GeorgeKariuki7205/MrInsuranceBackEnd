@@ -18,7 +18,7 @@ class CreateInsuranceCoversTable extends Migration
             $table->id();
             $table->unsignedBigInteger('company_id');
             $table->longText("name");
-            $table->longText("description");
+            $table->longText("description")->nullable();
 
             // ! adding the relationship to the company table. 
             $table->foreign('company_id')->references('id')->on('companies')->onDelete('cascade')->onUpdate('cascade');

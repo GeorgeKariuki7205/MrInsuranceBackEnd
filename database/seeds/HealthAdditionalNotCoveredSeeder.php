@@ -11,20 +11,20 @@ class HealthAdditionalNotCoveredSeeder extends Seeder
      */
     public function run()
     {
-        $notCovered = [
-            [
-                'additional_id'=> 1,
-                'name'=> 'Glasses More Than 12,000/=',
-            ],
-            [
-                'additional_id'=> 1,
-                'name'=> 'Retinal Transplant',
-            ]
-        ];
-        foreach($notCovered as $key => $value){
+        // $notCovered = [
+        //     [
+        //         'additional_id'=> 1,
+        //         'name'=> 'Glasses More Than 12,000/=',
+        //     ],
+        //     [
+        //         'additional_id'=> 1,
+        //         'name'=> 'Retinal Transplant',
+        //     ]
+        // ];
+        // foreach($notCovered as $key => $value){
 
-            HealthAdditionalNotCovered::create($value);            
+        //     HealthAdditionalNotCovered::create($value);            
 
-        }
+        // }
     }
 }

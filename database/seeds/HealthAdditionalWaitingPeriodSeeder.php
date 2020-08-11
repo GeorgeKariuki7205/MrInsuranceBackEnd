@@ -11,20 +11,20 @@ class HealthAdditionalWaitingPeriodSeeder extends Seeder
      */
     public function run()
     {
-        $waitingPeriod = [
+        // $waitingPeriod = [
             
-                [
-                    'additional_id'=> 1,
-                    'situation'=> 'Cataracts',
-                    'period_amount'=> '2',
-                    'period_time'=>'months',
-                ]
+        //         [
+        //             'additional_id'=> 1,
+        //             'situation'=> 'Cataracts',
+        //             'period_amount'=> '2',
+        //             'period_time'=>'months',
+        //         ]
             
-        ];
-        foreach($waitingPeriod as $key => $value){
+        // ];
+        // foreach($waitingPeriod as $key => $value){
 
-            HealthAdditionalWaitingPeriod::create($value);            
+        //     HealthAdditionalWaitingPeriod::create($value);            
 
-        }
+        // }
     }
 }

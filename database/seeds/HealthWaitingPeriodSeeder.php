@@ -14,16 +14,10 @@ class HealthWaitingPeriodSeeder extends Seeder
         $waitingPeriod = [
             [
                 'insurance_covers_id'=> 1,
-                'situation'=> 'Broken Limbs',
-                'period_amount'=> 2,
-                'period_time'=> 'Weeks'
-            ],
-            [
-                'insurance_covers_id'=> 1,
-                'situation'=> 'Broken Necks',
-                'period_amount'=> 2,
-                'period_time'=> 'Months'
-            ]
+                'situation'=> 'Pre-existing and chronic conditions have a waiting period of 1 year.',
+                'period_amount'=> 1,
+                'period_time'=> 'Year'
+            ],            
         ];
         foreach($waitingPeriod as $key => $value){
 

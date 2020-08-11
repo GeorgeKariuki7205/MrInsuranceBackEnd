@@ -15,7 +15,7 @@ class CoverSeeder extends Seeder
             [
                 'name'=> 'Health Insurance',
                 'description'=> 'Health Insurance',
-                'has_sub_categories'=> 0,
+                'has_sub_categories'=> 1,
             ]
         ];
         foreach($covers as $key => $value){
