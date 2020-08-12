@@ -23,6 +23,7 @@ class NavigationController extends Controller
             $coverData = array();
             // array_push($coverData,$cover->name);
             $coverData['cover'] = $cover->name;
+            $coverData['description'] = $cover->description;
             if ($cover->has_sub_categories == 1) {
                 # code...                
                 $subCategoriesForCover = $cover->coverHasManySubCategories;                
