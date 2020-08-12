@@ -22,7 +22,7 @@ Route::middleware('auth:api')->get('/user', function (Request $request) {
 Route::apiResource('/company','GeneralControllers\CompanyController');
 Route::apiResource('/cover','GeneralControllers\CoverController');
 Route::apiResource('/insuranceCover','GeneralControllers\InsuranceCoverController');
-Route::apiResource('/subCategory','GeneralControllers\SubCategoryCoverController');
+Route::apiResource('/subCategory','CoverSubCategory');
 
 
 // ! Health Models.
@@ -38,6 +38,10 @@ Route::apiResource('/healthAdditionalBenefit','HealthCoverControllers\Additional
 Route::apiResource('/healthAdditionalNotCovered','HealthCoverControllers\Additional\HealthAdditionalNotCoveredController');
 Route::apiResource('/healthAdditionalWaitingPeriod','HealthCoverControllers\Additional\HealthAdditionalWaitingPeriodController');
 Route::apiResource('/healthAdditionalPremium','HealthCoverControllers\Additional\HealthAdditionalPremiumController');
+
+// ! controller to get the navigation items. 
+
+Route::apiResource('/navigationContent','NavigationController\NavigationController');
 
 
 

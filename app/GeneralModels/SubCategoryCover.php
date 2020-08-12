@@ -10,7 +10,7 @@ class SubCategoryCover extends Model
     protected $guarded = ['id'];
 
     // ? Creating the relationships. 
-
+    
     public function SubCategoryBelongsToCover()
     {
         return $this->belongsTo('App\GeneralModels\Cover', 'cover_id', 'id');

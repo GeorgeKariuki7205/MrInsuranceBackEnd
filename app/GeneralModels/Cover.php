@@ -13,11 +13,11 @@ class Cover extends Model
 
         public function coverHasManySubCategories()
         {
-            return $this->hasMany('App\SubCategoryCover', 'cover_id', 'id');
+            return $this->hasMany('App\GeneralModels\SubCategoryCover', 'cover_id', 'id');
         }
 
         public function coverHasManyInsuranceCover()
         {
-            return $this->hasMany('App\InsuranceCover', 'cover_id', 'id');
+            return $this->hasMany('App\GeneralModels\InsuranceCover', 'cover_id', 'id');
         }
 }
