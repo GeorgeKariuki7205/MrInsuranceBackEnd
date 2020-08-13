@@ -18,27 +18,63 @@ class NavigationController extends Controller
         $covers = Cover::all();
 
         $navigation = array();
-
-        foreach ($covers as $cover) {
-            $coverData = array();
-            // array_push($coverData,$cover->name);
+        
+        foreach ($covers as $cover) {  
+            $coverData = array();                      
             $coverData['cover'] = $cover->name;
             $coverData['description'] = $cover->description;
+            
+            
             if ($cover->has_sub_categories == 1) {
-                # code...                
+                # code...                                
                 $subCategoriesForCover = $cover->coverHasManySubCategories;                
-                $subCategories = array();
+                $subCategoriesMajorArray = array();
                 foreach ($subCategoriesForCover as $subCategory) {
                     # code...
-                    array_push($subCategories,$subCategory->name);    
-                }
-                $coverData['subCategories'] = $subCategories;
+                    $subCategories = array();
+                    $subCategories['name'] = $subCategory->name;
+                    
+                    // ! getting all the questions for the subCategory. 
 
+                    $subCategoryQuestions = $subCategory->subCategoryHasManyQuestions;
+                    // return $subCategoryQuestions;
+                    $subCategoryQuestionsArray = array();
+                    foreach ($subCategoryQuestions as $question) {
+                        # code...
+                        $specificQuestionsDetail = array();
+                        $specificQuestionsDetail['question'] = $question->question;
+                        $specificQuestionsDetail['type'] = $question->type;
+
+                        array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
+                        
+                    }
+                    
+                    $subCategories['questions'] = $subCategoryQuestionsArray;                    
+                    array_push($subCategoriesMajorArray,$subCategories);
+
+                                             
+                }                
+                $coverData['subCategories'] = $subCategoriesMajorArray;                    
             }
-            array_push($navigation,$coverData);
-            
-        }
+            else{
+                $questions = $cover->CoverHasManyQuestions;
+                $coverQuestion = array();
+                foreach ($questions as $question) {
+                    # code...
+                        $specificQuestionsDetail = array();
+                        $specificQuestionsDetail['question'] = $question->question;
+                        $specificQuestionsDetail['type'] = $question->type;
 
+                        array_push($coverQuestion,$specificQuestionsDetail);
+                }   
+                
+                $coverData['coverQuestion'] = $coverQuestion;
+                
+            }      
+            
+            array_push($navigation,$coverData);                             
+        }
+        
         return response($navigation,200);
 
     }

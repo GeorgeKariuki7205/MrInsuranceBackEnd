@@ -36,6 +36,23 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Do You Have A Pre Existing Condition ? ',
                 'type'=> 'checkbox',
             ],
+            [
+                'cover_id'=> 1,
+                'sub_category_id'=> 2,
+                'question'=> 'Principal Member Age ?',
+                'type'=> 'date'
+            ],
+            [
+                'cover_id'=> 1,
+                'sub_category_id'=> 2,
+                'question'=> 'Do You Have A Pre Existing Condition ? ',
+                'type'=> 'checkbox',
+            ],
+            [
+                'cover_id'=> 2,                
+                'question'=> 'What is the price of your Car ?  ',
+                'type'=> 'number',
+            ],
         ];
         foreach($coverQuestion as $key => $value){
 
