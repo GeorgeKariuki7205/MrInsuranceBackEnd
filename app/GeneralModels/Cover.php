@@ -20,4 +20,9 @@ class Cover extends Model
         {
             return $this->hasMany('App\GeneralModels\InsuranceCover', 'cover_id', 'id');
         }
+
+        public function CoverHasManyQuestions()
+        {
+            return $this->hasMany('App\GeneralModels\CoverQuestion', 'cover_id', 'id');
+        }
 }

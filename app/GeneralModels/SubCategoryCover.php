@@ -19,4 +19,8 @@ class SubCategoryCover extends Model
     {
         return $this->hasMany('App\GeneralModels\InsuranceCover', 'sub_category_id', 'id');
     } 
+    public function subCategoryHasManyQuestions()
+    {
+        return $this->hasMany('App\GeneralModels\CoverQuestion', 'sub_category_id', 'id');
+    }
 }

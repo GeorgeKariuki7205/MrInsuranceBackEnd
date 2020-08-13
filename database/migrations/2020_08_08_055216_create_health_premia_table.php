@@ -20,12 +20,14 @@ class CreateHealthPremiaTable extends Migration
 
             // ! adding the relationship to the cover amounts table. 
             $table->foreign('covered_amount_id')->references('id')->on('health_cover_amounts')->onDelete('cascade')->onUpdate('cascade');
-            $table->integer('min_age');
-            $table->integer('max_age');
-            $table->bigInteger('principal_member');
-            $table->bigInteger('spouse');
-            $table->bigInteger('child');
-                       
+
+            $table->integer('min_age')->nullable();
+            $table->integer('max_age')->nullable();
+            $table->bigInteger('principal_member')->nullable();
+            $table->bigInteger('spouse')->nullable();
+            $table->bigInteger('child')->nullable();
+            $table->bigInteger('age')->nullable();
+            $table->boolean('pre_existing_condition')->nullable();
             $table->timestamps();
         });
     }
