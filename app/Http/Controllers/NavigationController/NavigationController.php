@@ -44,7 +44,8 @@ class NavigationController extends Controller
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
-
+                        $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
+                        $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
                         array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
                         
                     }
@@ -64,6 +65,8 @@ class NavigationController extends Controller
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
+                        $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
+                        $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
 
                         array_push($coverQuestion,$specificQuestionsDetail);
                 }   
