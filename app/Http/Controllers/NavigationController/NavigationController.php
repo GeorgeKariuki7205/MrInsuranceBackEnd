@@ -33,6 +33,7 @@ class NavigationController extends Controller
                     # code...
                     $subCategories = array();
                     $subCategories['name'] = $subCategory->name;
+                    $subCategories['description'] = $subCategory->description;
                     $subCategories['icon'] = $subCategory->icon;
                     // ! getting all the questions for the subCategory. 
 
@@ -43,8 +44,7 @@ class NavigationController extends Controller
                         # code...
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
-                        $specificQuestionsDetail['type'] = $question->type;
-                        return $question->coverQuestionBelongsToCoverRequirement;
+                        $specificQuestionsDetail['type'] = $question->type;                        
                         $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
                         $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
                         array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
