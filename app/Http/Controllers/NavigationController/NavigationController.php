@@ -44,6 +44,7 @@ class NavigationController extends Controller
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
+                        return $question->coverQuestionBelongsToCoverRequirement;
                         $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
                         $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
                         array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
