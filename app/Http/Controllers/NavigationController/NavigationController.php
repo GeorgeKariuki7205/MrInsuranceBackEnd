@@ -42,9 +42,11 @@ class NavigationController extends Controller
                     $subCategoryQuestionsArray = array();
                     foreach ($subCategoryQuestions as $question) {
                         # code...
+                        return $question;
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
-                        $specificQuestionsDetail['type'] = $question->type;                        
+                        $specificQuestionsDetail['type'] = $question->type;
+
                         $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
                         $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
                         array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
