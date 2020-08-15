@@ -4,7 +4,7 @@ namespace App\GeneralModels;
 
 use Illuminate\Database\Eloquent\Model;
 
-class CoverRequirements extends Model
+class CoverRequirement extends Model
 {
     public $table = "cover_requirements";
     protected $guarded = ["id"];
