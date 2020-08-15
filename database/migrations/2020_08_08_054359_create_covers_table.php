@@ -19,6 +19,7 @@ class CreateCoversTable extends Migration
             $table->timestamps();
             $table->text('name');
             $table->longText('description');
+            $table->text('icon');
             $table->boolean('has_sub_categories');
         });
     }

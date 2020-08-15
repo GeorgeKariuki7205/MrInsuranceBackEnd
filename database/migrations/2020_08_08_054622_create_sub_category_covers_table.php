@@ -18,6 +18,7 @@ class CreateSubCategoryCoversTable extends Migration
             $table->id();  
             $table->text('name');
             $table->longText('description')->nullable();
+            $table->text('icon');
             $table->unsignedBigInteger('cover_id');
 
             // ! adding the relationship to the covers table. 

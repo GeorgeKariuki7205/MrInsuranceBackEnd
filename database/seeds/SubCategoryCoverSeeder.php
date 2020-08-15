@@ -15,17 +15,20 @@ class SubCategoryCoverSeeder extends Seeder
             [
                 'name' => "Family Health",
                 'description'=> "This is the description of the Family Health Option.",
-                'cover_id' => 1,                
+                'cover_id' => 1, 
+                'icon'=>'family_restroom'               
             ],
             [
                 'name' => "Senior Health",
                 'description'=> "This is the description of the Senior Health Option.",
-                'cover_id' => 1,                
+                'cover_id' => 1,
+                'icon'=>'elderly'              
             ],
             [
                 'name' => "Adult Health",
                 'description'=> "This is the description of the Adult Health Option.",
-                'cover_id' => 1,                
+                'cover_id' => 1,  
+                'icon'=>'accessibility'              
             ]
         ];
         foreach($subCategories as $key => $value){

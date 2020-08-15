@@ -23,7 +23,7 @@ class NavigationController extends Controller
             $coverData = array();                      
             $coverData['cover'] = $cover->name;
             $coverData['description'] = $cover->description;
-            
+            $coverData['icon'] = $cover->icon;
             
             if ($cover->has_sub_categories == 1) {
                 # code...                                
@@ -33,7 +33,7 @@ class NavigationController extends Controller
                     # code...
                     $subCategories = array();
                     $subCategories['name'] = $subCategory->name;
-                    
+                    $subCategories['icon'] = $subCategory->icon;
                     // ! getting all the questions for the subCategory. 
 
                     $subCategoryQuestions = $subCategory->subCategoryHasManyQuestions;
