@@ -17,4 +17,8 @@ class CoverQuestion extends Model
     {
         return $this->belongsTo('App\GeneralModels\SubCategoryCover', 'sub_category_id', 'id');
     }
+    public function coverQuestionBelongsToCoverRequirement()
+    {
+        return $this->belongsTo('App\GeneralModels\CoverRequirements', 'cover_requirement_id', 'id');
+    }
 }
