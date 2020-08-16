@@ -18,6 +18,7 @@ class CreateCoversTable extends Migration
             $table->id();
             $table->timestamps();
             $table->text('name');
+            $table->text('route_name');
             $table->longText('description');
             $table->text('icon');
             $table->boolean('has_sub_categories');
