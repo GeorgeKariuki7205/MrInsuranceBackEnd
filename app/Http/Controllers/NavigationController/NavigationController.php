@@ -24,7 +24,7 @@ class NavigationController extends Controller
             $coverData['cover'] = $cover->name;
             $coverData['description'] = $cover->description;
             $coverData['icon'] = $cover->icon;
-            
+            $coverData['route_name'] = $cover->route_name;
             if ($cover->has_sub_categories == 1) {
                 # code...                                
                 $subCategoriesForCover = $cover->coverHasManySubCategories;                
