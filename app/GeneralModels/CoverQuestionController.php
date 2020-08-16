@@ -1,11 +1,11 @@
 <?php
 
-namespace App\Http\Controllers;
+namespace App\Http\Controllers\GeneralModels;
 
-use App\CoverRequirents;
+use App\GeneralModels\CoverQuestion;
 use Illuminate\Http\Request;
 
-class CoverRequirentsController extends Controller
+class CoverQuestionController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -41,10 +41,10 @@ class CoverRequirentsController extends Controller
     /**
      * Display the specified resource.
      *
-     * @param  \App\CoverRequirents  $coverRequirents
+     * @param  \App\GeneralModels\CoverQuestion  $coverQuestion
      * @return \Illuminate\Http\Response
      */
-    public function show(CoverRequirents $coverRequirents)
+    public function show(CoverQuestion $coverQuestion)
     {
         //
     }
@@ -52,10 +52,10 @@ class CoverRequirentsController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\CoverRequirents  $coverRequirents
+     * @param  \App\GeneralModels\CoverQuestion  $coverQuestion
      * @return \Illuminate\Http\Response
      */
-    public function edit(CoverRequirents $coverRequirents)
+    public function edit(CoverQuestion $coverQuestion)
     {
         //
     }
@@ -64,10 +64,10 @@ class CoverRequirentsController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\CoverRequirents  $coverRequirents
+     * @param  \App\GeneralModels\CoverQuestion  $coverQuestion
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CoverRequirents $coverRequirents)
+    public function update(Request $request, CoverQuestion $coverQuestion)
     {
         //
     }
@@ -75,10 +75,10 @@ class CoverRequirentsController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\CoverRequirents  $coverRequirents
+     * @param  \App\GeneralModels\CoverQuestion  $coverQuestion
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CoverRequirents $coverRequirents)
+    public function destroy(CoverQuestion $coverQuestion)
     {
         //
     }
