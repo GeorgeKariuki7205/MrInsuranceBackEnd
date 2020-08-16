@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Http\Controllers\GeneralModels;
+namespace App\Http\Controllers\GeneralControllers;
 
 use App\GeneralModels\CoverQuestion;
 use Illuminate\Http\Request;

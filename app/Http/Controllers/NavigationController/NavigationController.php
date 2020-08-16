@@ -41,14 +41,13 @@ class NavigationController extends Controller
                     // return $subCategoryQuestions;
                     $subCategoryQuestionsArray = array();
                     foreach ($subCategoryQuestions as $question) {
-                        # code...
-                        return $question->coverQuestionBelongsToCoverRequirement;
+                        # code...                        
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
 
-                        $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
-                        $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
+                        $specificQuestionsDetail['name'] = $question->CoverQuestionBelongsToCoverRequirement->name;
+                        $specificQuestionsDetail['required'] = $question->CoverQuestionBelongsToCoverRequirement->required;
                         array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
                         
                     }
@@ -68,8 +67,8 @@ class NavigationController extends Controller
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
-                        $specificQuestionsDetail['name'] = $question->coverQuestionBelongsToCoverRequirement->name;
-                        $specificQuestionsDetail['required'] = $question->coverQuestionBelongsToCoverRequirement->required;
+                        $specificQuestionsDetail['name'] = $question->CoverQuestionBelongsToCoverRequirement->name;
+                        $specificQuestionsDetail['required'] = $question->CoverQuestionBelongsToCoverRequirement->required;
 
                         array_push($coverQuestion,$specificQuestionsDetail);
                 }   

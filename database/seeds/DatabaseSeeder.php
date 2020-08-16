@@ -15,7 +15,7 @@ class DatabaseSeeder extends Seeder
         $this->call(CoverSeeder::class);
         $this->call(SubCategoryCoverSeeder::class);
         $this->call(InsuranceProviderSeeder::class);
-        $this->call(CoverRequirementsSeeder::class);
+        $this->call(CoverRequirementSeeder::class);
         $this->call(CoverQuestionSeeder::class);
         
                                                 
