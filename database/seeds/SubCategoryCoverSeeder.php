@@ -16,13 +16,13 @@ class SubCategoryCoverSeeder extends Seeder
                 'name' => "Family Health",
                 'description'=> "This is the description of the Family Health Option.",
                 'cover_id' => 1, 
-                'icon'=>'family_restroom'               
+                'icon'=>'group'               
             ],
             [
                 'name' => "Senior Health",
                 'description'=> "This is the description of the Senior Health Option.",
                 'cover_id' => 1,
-                'icon'=>'elderly'              
+                'icon'=>'directions_walk'              
             ],
             [
                 'name' => "Adult Health",
