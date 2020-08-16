@@ -20,8 +20,9 @@ class NavigationController extends Controller
         $navigation = array();
         
         foreach ($covers as $cover) { 
-            $coverData['id'] = $cover->id; 
-            $coverData = array();                      
+                        
+            $coverData = array(); 
+            $coverData['id'] = $cover->id;                      
             $coverData['cover'] = $cover->name;
             $coverData['description'] = $cover->description;
             $coverData['icon'] = $cover->icon;
