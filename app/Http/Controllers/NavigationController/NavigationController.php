@@ -19,12 +19,13 @@ class NavigationController extends Controller
 
         $navigation = array();
         
-        foreach ($covers as $cover) {  
+        foreach ($covers as $cover) { 
+            $coverData['id'] = $cover->id; 
             $coverData = array();                      
             $coverData['cover'] = $cover->name;
             $coverData['description'] = $cover->description;
             $coverData['icon'] = $cover->icon;
-            $coverData['route_name'] = $cover->route_name;
+            $coverData['route_name'] = $cover->route_name;            
             if ($cover->has_sub_categories == 1) {
                 # code...                                
                 $subCategoriesForCover = $cover->coverHasManySubCategories;                
@@ -32,6 +33,7 @@ class NavigationController extends Controller
                 foreach ($subCategoriesForCover as $subCategory) {
                     # code...
                     $subCategories = array();
+                    $subCategories['id'] = $subCategory->id;
                     $subCategories['name'] = $subCategory->name;
                     $subCategories['description'] = $subCategory->description;
                     $subCategories['icon'] = $subCategory->icon;
