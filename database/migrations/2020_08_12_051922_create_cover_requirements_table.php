@@ -14,6 +14,7 @@ class CreateCoverRequirementsTable extends Migration
     public function up()
     {
         Schema::create('cover_requirements', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
             $table->text("name");
             $table->boolean("required");
