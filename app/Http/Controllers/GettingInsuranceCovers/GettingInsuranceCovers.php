@@ -162,7 +162,7 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['coverBenefits'] = $coverAmount->CoveredAmountHasManyBenefits;
                                                 $coverDetails['waitingPeriod'] = $insuranceCover->InsuranceCoverHasManyWaitingPeriods;
                                                 $coverDetails['notCovered'] = $insuranceCover->InsuranceCoverHasManyNotCovered;                                                
-
+                                                return response($coverDetails,200);
                                             break;
                                             }
                                         }
@@ -174,7 +174,7 @@ class GettingInsuranceCovers extends Controller
                                 }                                
                         }
 
-                        return response($coverDetails,200);
+                        
                         
                     }
                 break;
