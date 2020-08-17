@@ -116,7 +116,7 @@ class GettingInsuranceCovers extends Controller
                                 foreach ($coverAmounts as $coverAmount) {
                                     # code...                                    
                                     $coverAmountStatus = false;                                    
-                                    if ($coverAmount->amount >= $request->insuranceCoverDetails->cover_amount) {
+                                    if ($coverAmount->amount >= $request->insuranceCoverDetails.cover_amount) {
                                     //* if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
                                         # code...                                        
                                         $coverAmountStatus = true;
