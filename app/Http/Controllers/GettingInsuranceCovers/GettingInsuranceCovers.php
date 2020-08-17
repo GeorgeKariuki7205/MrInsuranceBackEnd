@@ -39,6 +39,7 @@ class GettingInsuranceCovers extends Controller
     public function store(Request  $request)
     {
 
+        return $request;
         // ! creating the dummy array that is passed from the API endpoint.
 
             // $request = array();
@@ -116,7 +117,7 @@ class GettingInsuranceCovers extends Controller
                                 foreach ($coverAmounts as $coverAmount) {
                                     # code...                                    
                                     $coverAmountStatus = false;                                    
-                                    if ($coverAmount->amount >= $request->insuranceCoverDetails.cover_amount) {
+                                    if ($coverAmount->amount >= $request->insuranceCoverDetails->cover_amount) {
                                     //* if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
                                         # code...                                        
                                         $coverAmountStatus = true;
