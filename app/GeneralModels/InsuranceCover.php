@@ -23,17 +23,17 @@ class InsuranceCover extends Model
 
      public function InsuranceCoverHasManyCoverAmounts()
      {
-         return $this->hasMany('App\HealthCoverModels\CoverAmount', 'insurance_cover_id', 'id');
+         return $this->hasMany('App\HealthCoverModels\HealthCoverAmount', 'insurance_cover_id', 'id');
      }
 
      public function InsuranceCoverHasManyNotCovered()
      {
-         return $this->hasMany('App\HealthCoverModels\NotCovered', 'insurance_cover_id', 'id');
+         return $this->hasMany('App\HealthCoverModels\HealthNotCovered', 'insurance_covers_id', 'id');
      }
 
      public function InsuranceCoverHasManyWaitingPeriods()
      {
-         return $this->hasMany('App\HealthCoverModels\WaitingPeriod', 'insurance_cover_id', 'id');
+         return $this->hasMany('App\HealthCoverModels\HealthWaitingPeriod', 'insurance_covers_id', 'id');
      }
 
      public function InsuranceCoverHasManyAdditional()

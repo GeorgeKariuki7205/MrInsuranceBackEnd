@@ -43,6 +43,9 @@ Route::apiResource('/healthAdditionalPremium','HealthCoverControllers\Additional
 
 Route::apiResource('/navigationContent','NavigationController\NavigationController');
 
+Route::apiResource('/insuranceCovers','GettingInsuranceCovers\GettingInsuranceCovers');
+
+
 
 
 

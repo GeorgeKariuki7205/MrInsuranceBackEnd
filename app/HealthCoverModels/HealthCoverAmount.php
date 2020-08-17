@@ -18,13 +18,13 @@ class HealthCoverAmount extends Model
         return $this->belongsTo('App\GeneralModels\InsuranceCover', 'insurance_cover_id', 'id');
     }
 
-    public function CoverAmountHasOnePremium()
+    public function CoverAmountHasManyPremium()
     {
-        return $this->hasOne('App\HealthCoverModels\Premium', 'covered_amount_id', 'id');
+        return $this->hasMany('App\HealthCoverModels\HealthPremium', 'covered_amount_id', 'id');
     }
 
     public function CoveredAmountHasManyBenefits()
     {
-        return $this->hasMany('App\HealthCoverModels\Benefits', 'covered_amount_id', 'id');
+        return $this->hasMany('App\HealthCoverModels\HealthBenefit', 'covered_amount_id', 'id');
     }
 }

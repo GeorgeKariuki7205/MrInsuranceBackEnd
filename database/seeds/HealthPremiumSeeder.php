@@ -135,7 +135,7 @@ class HealthPremiumSeeder extends Seeder
              [
                 'min_age'=> 51,
                 'max_age'=> 65,
-                'covered_amount_id'=> 1,
+                'covered_amount_id'=> 4,
                 'principal_member'=> 17591,
                 'spouse'=> 14462,
                 'child'=> 5819,               
