@@ -152,7 +152,7 @@ class GettingInsuranceCovers extends Controller
                                                 //* if (isset($request['insuranceCoverDetails']['number_of_dependant'])) {
                                                 if (isset($request->insuranceCoverDetails['number_of_dependant'])) {
                                                     # code...isset($variable);
-                                                    $payableCash += $premium->child*$request->insuranceCoverDetails->number_of_dependant;
+                                                    $payableCash += $premium->child*$request->insuranceCoverDetails['number_of_dependant'];
                                                 }                                                                                            
                                                 // ! returning all the required data about the premium. 
 
