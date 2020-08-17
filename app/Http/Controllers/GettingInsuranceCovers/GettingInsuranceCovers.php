@@ -38,8 +38,7 @@ class GettingInsuranceCovers extends Controller
      */
     public function store(Request  $request)
     {
-
-        return $request;
+        
         // ! creating the dummy array that is passed from the API endpoint.
 
             // $request = array();
@@ -117,7 +116,7 @@ class GettingInsuranceCovers extends Controller
                                 foreach ($coverAmounts as $coverAmount) {
                                     # code...                                    
                                     $coverAmountStatus = false;                                    
-                                    if ($coverAmount->amount >= $request->insuranceCoverDetails->cover_amount) {
+                                    if ($coverAmount->amount >= $request->insuranceCoverDetails['cover_amount']) {
                                     //* if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
                                         # code...                                        
                                         $coverAmountStatus = true;
@@ -129,7 +128,7 @@ class GettingInsuranceCovers extends Controller
 
                                         // ! get the age of the principal member.                                       
                                         //* $dbDate = Carbon::parse($request['insuranceCoverDetails']['principal_member_age']);
-                                        $dbDate = Carbon::parse($request->insuranceCoverDetails->principal_member_age);
+                                        $dbDate = Carbon::parse($request->insuranceCoverDetails['principal_member_age']);
                                         $diffYears = Carbon::now()->diffInYears($dbDate);                                        
                                         foreach ($premiums as $premium) {
                                             # code...
@@ -143,7 +142,7 @@ class GettingInsuranceCovers extends Controller
 
                                                 // ! checking to see if the spouse is present.
                                                 //* if (isset($request['insuranceCoverDetails']['spouse_age'])) {
-                                                 if (isset($request->insuranceCoverDetails->spouse_age)) {
+                                                 if (isset($request->insuranceCoverDetails['spouse_age'])) {
                                                     # code...isset($variable);
                                                     $payableCash += $premium->spouse;
                                                 }
@@ -151,7 +150,7 @@ class GettingInsuranceCovers extends Controller
                                                 // ! checking to see if the children isset.
 
                                                 //* if (isset($request['insuranceCoverDetails']['number_of_dependant'])) {
-                                                if (isset($request->insuranceCoverDetails->number_of_dependant)) {
+                                                if (isset($request->insuranceCoverDetails['number_of_dependant'])) {
                                                     # code...isset($variable);
                                                     $payableCash += $premium->child*$request->insuranceCoverDetails->number_of_dependant;
                                                 }                                                                                            
