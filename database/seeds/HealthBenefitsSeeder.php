@@ -286,5 +286,284 @@ class HealthBenefitsSeeder extends Seeder
             HealthBenefit::create($value);            
 
         }
+
+
+        // ! Second benefits 
+
+        $benefitsTwo = [     
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Congenital defects and genetic disorders after one year of cover',
+                'type_of_benefit' => 1,
+                'amount' => 30000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Gynecological surgery (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 40000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Illness related reconstructive/plastic surgery from the third year of cover (excludes cosmetic, obstetrics and gynecology related)',
+                'type_of_benefit' => 1,
+                'amount' => 30000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'In patient non-accident related dental surgery/ treatment (after six months of cover and subject to written pre-authorization)',
+                'type_of_benefit' => 1,
+                'amount' => 10000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'In patient non-accident related eye treatments excluding surgery for refractive errors and laser treatment (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 15000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Internal and external surgical implants, appliances, joint replacements and prostheses (excluding dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 60000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Non accident related maxillofacial surgery (Excluding routine dental surgery and dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 30000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Organ transplantation after two years of cover (cost of donor or securing the organ is excluded)',
+                'type_of_benefit' => 1,
+                'amount' => 30000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Organ transplantation after two years of cover (cost of donor or securing the organ is excluded)',
+                'type_of_benefit' => 1,
+                'amount' => 50000,
+            ],
+            [
+                'covered_amount_id' => 5,
+                'name'=> 'Post-hospitalization treatment related to cause of pre-authorization (reimbursement only, limited to the ﬁrst 3 weeks after discharge)',
+                'type_of_benefit' => 1,
+                'amount' => 5000,
+            ],
+
+            // ! two 
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'Congenital defects and genetic disorders after one year of cover',
+                'type_of_benefit' => 1,
+                'amount' => 75000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'Gynecological surgery (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 100000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'Illness related reconstructive/plastic surgery from the third year of cover (excludes cosmetic, obstetrics and gynecology related)',
+                'type_of_benefit' => 1,
+                'amount' => 75000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'In patient non-accident related dental surgery/ treatment (after six months of cover and subject to written pre-authorization)',
+                'type_of_benefit' => 1,
+                'amount' => 15000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'In patient non-accident related eye treatments excluding surgery for refractive errors and laser treatment (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 35000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'Internal and external surgical implants, appliances, joint replacements and prostheses (excluding dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'Non accident related maxillofacial surgery (Excluding routine dental surgery and dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 75000,
+            ],
+            [
+                'covered_amount_id' => 6,
+                'name'=> 'Organ transplantation after two years of cover (cost of donor or securing the organ is excluded)',
+                'type_of_benefit' => 1,
+                'amount' => 125000,
+            ],           
+            [
+                'covered_amount_id' => 1,
+                'name'=> 'Post-hospitalization treatment related to cause of pre-authorization (reimbursement only, limited to the ﬁrst 3 weeks after discharge)',
+                'type_of_benefit' => 1,
+                'amount' => 5000,
+            ],
+
+            // ! three
+            
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Congenital defects and genetic disorders after one year of cover',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Gynecological surgery (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 200000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Illness related reconstructive/plastic surgery from the third year of cover (excludes cosmetic, obstetrics and gynecology related)',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'In patient non-accident related dental surgery/ treatment (after six months of cover and subject to written pre-authorization)',
+                'type_of_benefit' => 1,
+                'amount' => 20000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'In patient non-accident related eye treatments excluding surgery for refractive errors and laser treatment (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 75000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Internal and external surgical implants, appliances, joint replacements and prostheses (excluding dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 300000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Non accident related maxillofacial surgery (Excluding routine dental surgery and dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Organ transplantation after two years of cover (cost of donor or securing the organ is excluded)',
+                'type_of_benefit' => 1,
+                'amount' => 250000,
+            ],           
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Post-hospitalization treatment related to cause of pre-authorization (reimbursement only, limited to the ﬁrst 3 weeks after discharge)',
+                'type_of_benefit' => 1,
+                'amount' => 15000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Newly diagnosed chronic conditions',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Pre-existing conditions and chronic conditions on full disclosure at the time of joining(one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 7,
+                'name'=> 'Cancer treatment after one year of cover',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+
+            // ! four 
+
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Congenital defects and genetic disorders after one year of cover',
+                'type_of_benefit' => 1,
+                'amount' => 200000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Gynecological surgery (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 300000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Illness related reconstructive/plastic surgery from the third year of cover (excludes cosmetic, obstetrics and gynecology related)',
+                'type_of_benefit' => 1,
+                'amount' => 150000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'In patient non-accident related dental surgery/ treatment (after six months of cover and subject to written pre-authorization)',
+                'type_of_benefit' => 1,
+                'amount' => 30000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'In patient non-accident related eye treatments excluding surgery for refractive errors and laser treatment (one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 75000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Internal and external surgical implants, appliances, joint replacements and prostheses (excluding dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 300000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Non accident related maxillofacial surgery (Excluding routine dental surgery and dental ﬁxtures)',
+                'type_of_benefit' => 1,
+                'amount' => 200000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Organ transplantation after two years of cover (cost of donor or securing the organ is excluded)',
+                'type_of_benefit' => 1,
+                'amount' => 300000,
+            ],           
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Post-hospitalization treatment related to cause of pre-authorization (reimbursement only, limited to the ﬁrst 3 weeks after discharge)',
+                'type_of_benefit' => 1,
+                'amount' => 20000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Newly diagnosed chronic conditions',
+                'type_of_benefit' => 1,
+                'amount' => 250000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Pre-existing conditions and chronic conditions on full disclosure at the time of joining(one year waiting period)',
+                'type_of_benefit' => 1,
+                'amount' => 250000,
+            ],
+            [
+                'covered_amount_id' => 8,
+                'name'=> 'Cancer treatment after one year of cover',
+                'type_of_benefit' => 1,
+                'amount' => 250000,
+            ],
+            
+        ];
+        foreach($benefitsTwo as $key => $value){
+
+            HealthBenefit::create($value);            
+
+        }
+
     }
 }

@@ -43,6 +43,6 @@ class InsuranceCover extends Model
 
      public function InsuranceCoverBelongsToSubCategory()
      {
-         return $this->belongsTo('App\GeneralModels\SubCategory', 'sub_category_id', 'id');
+         return $this->belongsTo('App\GeneralModels\SubCategoryCover', 'sub_category_id', 'id');
      }
 }

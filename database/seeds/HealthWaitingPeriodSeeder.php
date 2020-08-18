@@ -17,6 +17,12 @@ class HealthWaitingPeriodSeeder extends Seeder
                 'situation'=> 'Pre-existing and chronic conditions have a waiting period of 1 year.',
                 'period_amount'=> 1,
                 'period_time'=> 'Year'
+            ], 
+            [
+                'insurance_covers_id'=> 2,
+                'situation'=> 'Pre-existing and chronic conditions have a waiting period of 1 year.',
+                'period_amount'=> 1,
+                'period_time'=> 'Year'
             ],            
         ];
         foreach($waitingPeriod as $key => $value){

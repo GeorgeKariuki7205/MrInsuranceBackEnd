@@ -19,6 +19,14 @@ class InsuranceProviderSeeder extends Seeder
                 'is_active' => 1,
                 'year'=> '2020',
                 'sub_category_id'=> 1
+            ],
+            [
+                'name'=>"Afya Kwa Jamii",                
+                'company_id' => 2,
+                'cover_id'=> 1,
+                'is_active' => 1,
+                'year'=> '2020',
+                'sub_category_id'=> 1
             ]
         ];
         foreach($insuranceCovers as $key => $value){

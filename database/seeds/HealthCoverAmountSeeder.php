@@ -27,7 +27,24 @@ class HealthCoverAmountSeeder extends Seeder
             [
                 'insurance_cover_id' => 1,
                 'amount' => 1000000,
-             ]
+            ],
+            
+            [
+                'insurance_cover_id' => 2,
+                'amount' => 100000,
+             ],
+             [
+                 'insurance_cover_id' => 2,
+                 'amount' => 250000,
+             ],
+             [
+                 'insurance_cover_id' => 2,
+                 'amount' => 500000,
+             ],
+             [
+                 'insurance_cover_id' => 2,
+                 'amount' => 1000000,
+              ]
         ];
         foreach($coverAmounts as $key => $value){
 
