@@ -38,7 +38,7 @@ class InsuranceCover extends Model
 
      public function InsuranceCoverHasManyAdditional()
      {
-         return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditional', 'insurance_cover_id', 'id');
+         return $this->hasMany('App\HealthCoverModels\Additional\HealthAdditional', 'insurance_covers_id', 'id');
      }
 
      public function InsuranceCoverBelongsToSubCategory()

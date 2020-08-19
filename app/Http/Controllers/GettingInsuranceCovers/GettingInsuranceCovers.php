@@ -63,8 +63,8 @@ class GettingInsuranceCovers extends Controller
             
         //! this method is used to get all the insurance covers after posting from the API endpoint in the frontEnd.
 
-        // *$coverId = $request['coverId'];
-        $coverId = $request->coverId;
+        $coverId = $request['coverId'];
+        // *$coverId = $request->coverId;
 
         $gettingTheCovers = Cover::where('id',$coverId)->get();
         $cover = null;
@@ -83,8 +83,8 @@ class GettingInsuranceCovers extends Controller
 
         if ($hasSubCategories == 1) {
             # code...
-            // * $subCategoryId = $request['subCategoryId'];
-            $subCategoryId = $request->subCategoryId;
+            $subCategoryId = $request['subCategoryId'];
+            // *$subCategoryId = $request->subCategoryId;
         }   
         
         // ! creating the array that will hold the response. 
@@ -142,37 +142,81 @@ class GettingInsuranceCovers extends Controller
                                                 // ! after getting the correct premium, we now do the calculations to get the amounts that are 
                                                 // ! payable.
                                                 
+                                                // ! creating the array that will hold the payable amounts. 
+
+                                                $payableBreakdown = array();
                                                 $payableCash = 0;
                                                 $payableCash += $premium->principal_member;
-
+                                                $payableBreakdown['principal_member'] = $premium->principal_member;
                                                 // ! checking to see if the spouse is present.
                                                 // *if (isset($request['insuranceCoverDetails']['spouse_age'])) {
-                                                if (isset($request->insuranceCoverDetails['spouse_age'])) {
-                                                    # code...isset($variable);
+                                                if (isset($request->insuranceCoverDetails['spouse_age'])) {                                                    
                                                     $payableCash += $premium->spouse;
+                                                    $payableBreakdown['spouse'] = $premium->spouse;
                                                 }
 
                                                 // ! checking to see if the children isset.
 
-                                                // * if (isset($request['insuranceCoverDetails']['number_of_dependant'])) {
-                                                if (isset($request->insuranceCoverDetails['number_of_dependant'])) {
-                                                    # code...isset($variable);
+                                                // *if (isset($request['insuranceCoverDetails']['number_of_dependant'])) {
+                                                if (isset($request->insuranceCoverDetails['number_of_dependant'])) {                                                    
                                                     $payableCash += $premium->child*$request->insuranceCoverDetails['number_of_dependant'];
                                                     // *$payableCash += $premium->child*$request['insuranceCoverDetails']['number_of_dependant'];
-                                                }                                                                                            
+                                                    $dependents = array();
+                                                    $dependents['dependant'] = $premium->child;
+                                                    $dependents['number_of_dependents'] = $request->insuranceCoverDetails['number_of_dependant'];
+                                                    // *$dependents['number_of_dependents'] = $request['insuranceCoverDetails']['number_of_dependant'];
+                                                    $payableBreakdown['dependents'] = $dependents;
+
+                                                }   
+                                                
+                                                // ! getting the additional Covers that are linked to the insurance cover.
+
+                                                $additionalCovers = array();
+
+                                                $additional = $insuranceCover->InsuranceCoverHasManyAdditional;
+
+                                                $numberAdditional = count($additional);
+
+                                                //! getting the exact additional.
+                                                $additionalArray = array();
+                                                foreach ($additional as $addition) {
+                                                    # code...
+                                                    $additionDetails = array();
+                                                    $additionDetails['name'] = $addition->name;
+                                                    $additionDetails['id'] = $addition->id;
+                                                    $additionDetails['type_of_calculation'] = $addition->type_of_calculation;
+                                                                                                        
+                                                    // ! additional premiums involved. 
+                                                    $additionDetails['additional_premia'] = $addition->AdditionalHasManyPremium;
+
+                                                    // ! adding the benefits related to the additional.                                                                                                        
+                                                    $additionDetails['additional_benefits'] = $addition->AdditionalHasManyBenefits;
+                                                    
+                                                    // ! adding the not covered related to the additional. 
+                                                    $additionDetails['additional_not_covered'] = $addition->AdditionalHasManyNotCovered;
+
+                                                    // ! additional Waiting periods. 
+                                                    $additionDetails['additional_waiting_periods'] = $addition->AdditionalHasManyWaitingPeriod;
+                                                                                                        
+                                                    array_push($additionalArray,$additionDetails);
+                                                }
+
                                                 // ! returning all the required data about the premium. 
 
                                                 $coverDetails = array();
                                                 $coverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
                                                 $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
-                                                $coverDetails['insuranceCover'] = $insuranceCover->name;
                                                 $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
-                                                $coverDetails['payableCash'] = $payableCash;
-                                                $coverDetails['coveredAmount'] = $coverAmount->amount;
+                                                $coverDetails['insuranceCover'] = $insuranceCover->name;  
+                                                $coverDetails['coveredAmount'] = $coverAmount->amount;                                              
+                                                $coverDetails['payableCash'] = $payableCash; 
+                                                $coverDetails['financialBreakDown'] = $payableBreakdown;                                               
                                                 $coverDetails['coverBenefits'] = $coverAmount->CoveredAmountHasManyBenefits;
                                                 $coverDetails['waitingPeriod'] = $insuranceCover->InsuranceCoverHasManyWaitingPeriods;
-                                                $coverDetails['notCovered'] = $insuranceCover->InsuranceCoverHasManyNotCovered;                                                
-                                                // return response($coverDetails,200);
+                                                $coverDetails['notCovered'] = $insuranceCover->InsuranceCoverHasManyNotCovered;                                                 
+                                                $coverDetails['additionalCovers'] = $additionalArray;
+                                                
+
                                                 array_push($response,$coverDetails);
                                             break;
                                             }
