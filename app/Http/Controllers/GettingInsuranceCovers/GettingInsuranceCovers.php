@@ -42,30 +42,30 @@ class GettingInsuranceCovers extends Controller
         
         // ! creating the dummy array that is passed from the API endpoint.
 
-            $request = array();
-            $request['coverId'] = 1;
-            $request['subCategoryId'] = 1;
+            // $request = array();
+            // $request['coverId'] = 1;
+            // $request['subCategoryId'] = 1;
 
-            $insuranceCoverDetails = array();
-            $insuranceCoverDetails['cover_amount'] = 501000;
-            $insuranceCoverDetails['number_of_dependant'] = 1;
-            $insuranceCoverDetails['pre_existing_condition'] = false;
-            $insuranceCoverDetails['principal_member_age'] = "1965-08-05";
-            $insuranceCoverDetails['spouse_age'] = "1965-08-05";
+            // $insuranceCoverDetails = array();
+            // $insuranceCoverDetails['cover_amount'] = 501000;
+            // $insuranceCoverDetails['number_of_dependant'] = 1;
+            // $insuranceCoverDetails['pre_existing_condition'] = false;
+            // $insuranceCoverDetails['principal_member_age'] = "1965-08-05";
+            // $insuranceCoverDetails['spouse_age'] = "1965-08-05";
 
-            $request['insuranceCoverDetails'] = $insuranceCoverDetails;
+            // $request['insuranceCoverDetails'] = $insuranceCoverDetails;
 
-            $personalDetails = array();
-            $personalDetails['email_address'] = "mail@mail.com";
-            $personalDetails['name'] = "George";
-            $personalDetails['phoneNumber'] = "0789898928";
+            // $personalDetails = array();
+            // $personalDetails['email_address'] = "mail@mail.com";
+            // $personalDetails['name'] = "George";
+            // $personalDetails['phoneNumber'] = "0789898928";
 
-            $request['personalDetails'] = $personalDetails;
+            // $request['personalDetails'] = $personalDetails;
             
         //! this method is used to get all the insurance covers after posting from the API endpoint in the frontEnd.
 
-        $coverId = $request['coverId'];
-        //* $coverId = $request->coverId;
+        // *$coverId = $request['coverId'];
+        $coverId = $request->coverId;
 
         $gettingTheCovers = Cover::where('id',$coverId)->get();
         $cover = null;
@@ -84,8 +84,8 @@ class GettingInsuranceCovers extends Controller
 
         if ($hasSubCategories == 1) {
             # code...
-            $subCategoryId = $request['subCategoryId'];
-            // $subCategoryId = $request->subCategoryId;
+            // *$subCategoryId = $request['subCategoryId'];
+            $subCategoryId = $request->subCategoryId;
         }   
         
         // ! creating the array that will hold the response. 
@@ -122,8 +122,8 @@ class GettingInsuranceCovers extends Controller
                                 foreach ($coverAmounts as $coverAmount) {
                                     # code...                                    
                                     $coverAmountStatus = false;                                    
-                                    // *if ($coverAmount->amount >= $request->insuranceCoverDetails['cover_amount']) {
-                                    if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
+                                    if ($coverAmount->amount >= $request->insuranceCoverDetails['cover_amount']) {
+                                    // *if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
                                         # code...                                        
                                         $coverAmountStatus = true;
                                         // ! after getting the cover amount, get the premiums that have the specific cover . 
@@ -133,8 +133,8 @@ class GettingInsuranceCovers extends Controller
                                         // ! loop through the premiums to get one that is in the specified range of age.
 
                                         // ! get the age of the principal member.                                       
-                                        $dbDate = Carbon::parse($request['insuranceCoverDetails']['principal_member_age']);
-                                        //* $dbDate = Carbon::parse($request->insuranceCoverDetails['principal_member_age']);
+                                        // *$dbDate = Carbon::parse($request['insuranceCoverDetails']['principal_member_age']);
+                                        $dbDate = Carbon::parse($request->insuranceCoverDetails['principal_member_age']);
                                         $diffYears = Carbon::now()->diffInYears($dbDate);                                        
                                         foreach ($premiums as $premium) {
                                             # code...
@@ -150,8 +150,8 @@ class GettingInsuranceCovers extends Controller
                                                 $payableCash += $premium->principal_member;
                                                 $payableBreakdown['principal_member'] = $premium->principal_member;
                                                 // ! checking to see if the spouse is present.
-                                                if (isset($request['insuranceCoverDetails']['spouse_age'])) {
-                                                // *if (isset($request->insuranceCoverDetails['spouse_age'])) {                                                    
+                                                // *if (isset($request['insuranceCoverDetails']['spouse_age'])) {
+                                                if (isset($request->insuranceCoverDetails['spouse_age'])) {                                                    
                                                     $payableCash += $premium->spouse;
                                                     $payableBreakdown['spouse'] = $premium->spouse;
                                                 }
@@ -160,13 +160,13 @@ class GettingInsuranceCovers extends Controller
 
                                                 // *if (isset($request['insuranceCoverDetails']['number_of_dependant'])) {
                                                 if (isset($request->insuranceCoverDetails['number_of_dependant'])) {                                                    
-                                                    // *$payableCash += $premium->child*$request->insuranceCoverDetails['number_of_dependant'];
-                                                    $payableCash += $premium->child*$request['insuranceCoverDetails']['number_of_dependant'];
+                                                    $payableCash += $premium->child*$request->insuranceCoverDetails['number_of_dependant'];
+                                                    // *$payableCash += $premium->child*$request['insuranceCoverDetails']['number_of_dependant'];
                                                     $dependents = array();
                                                     $dependents['dependant'] = $premium->child;
                                                     $dependents['number_of_dependents'] = $request->insuranceCoverDetails['number_of_dependant'];
                                                     $dependents['number_of_dependents'] = $request['insuranceCoverDetails']['number_of_dependant'];
-                                                    //* $payableBreakdown['dependents'] = $dependents;
+                                                    $payableBreakdown['dependents'] = $dependents;
 
                                                 }   
                                                 
