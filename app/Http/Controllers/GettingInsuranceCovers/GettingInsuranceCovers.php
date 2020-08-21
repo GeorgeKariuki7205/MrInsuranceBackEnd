@@ -204,6 +204,7 @@ class GettingInsuranceCovers extends Controller
                                                 // ! returning all the required data about the premium. 
 
                                                 $coverDetails = array();
+                                                $coverDetails['uniqueIdentifier'] = $insuranceCover->InsuranceProviderBelongToCompany->id.$insuranceCover->InsuranceProviderBelongsToCover->id.$insuranceCover->InsuranceCoverBelongsToSubCategory->id;
                                                 $coverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
                                                 $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
                                                 $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
