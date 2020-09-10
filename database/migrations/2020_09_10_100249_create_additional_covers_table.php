@@ -13,8 +13,19 @@ class CreateAdditionalCoversTable extends Migration
      */
     public function up()
     {
-        Schema::create('additional_covers', function (Blueprint $table) {
+        Schema::create('motor_additional_covers', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
+            $table->unsignedBigInteger('insurance_cover_id');
+
+            // ! adding the relationship to the insurance cover table. 
+            $table->foreign('insurance_cover_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->longText('name');
+            $table->longText('description')->nullable();
+            $table->bigInteger('min_amount')->nullable();
+            $table->bigInteger('rate')->nullable();
+            $table->bigInteger('value')->nullable();
             $table->timestamps();
         });
     }

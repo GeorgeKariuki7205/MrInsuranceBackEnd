@@ -14,7 +14,10 @@ class CreateCommercialTypeOfThirdPartyCostsTable extends Migration
     public function up()
     {
         Schema::create('commercial_type_of_third_party_costs', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
+            $table->longText('name');
+            $table->longText('description');
             $table->timestamps();
         });
     }

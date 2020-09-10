@@ -14,7 +14,21 @@ class CreateCommercialClassesTable extends Migration
     public function up()
     {
         Schema::create('commercial_classes', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
+            $table->unsignedBigInteger('insurance_cover_id');
+
+            // ! adding the relationship to the insurance cover table. 
+            $table->foreign('insurance_cover_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
+
+            $table->longText('name');
+            $table->longText('description');
+            $table->boolean('hasThirdParty');
+            $table->bigInteger('min_sum_insured');            
+            $table->bigInteger('minimum_premium_amount')->nullable();
+            $table->bigInteger('min_age')->nullable();
+            $table->bigInteger('max_age')->nullable();
+                         
             $table->timestamps();
         });
     }
