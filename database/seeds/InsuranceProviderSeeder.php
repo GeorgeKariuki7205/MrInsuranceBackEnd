@@ -27,6 +27,22 @@ class InsuranceProviderSeeder extends Seeder
                 'is_active' => 1,
                 'year'=> '2020',
                 'sub_category_id'=> 1
+            ],
+            [
+                'name'=>"Gari Njema.",                
+                'company_id' => 3,
+                'cover_id'=> 2,
+                'is_active' => 1,
+                'year'=> '2020',
+                'sub_category_id'=> 3
+            ],
+            [
+                'name'=>"Gari Njema.",                
+                'company_id' => 3,
+                'cover_id'=> 2,
+                'is_active' => 1,
+                'year'=> '2020',
+                'sub_category_id'=> 4
             ]
         ];
         foreach($insuranceCovers as $key => $value){

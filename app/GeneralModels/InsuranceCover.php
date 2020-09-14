@@ -45,4 +45,31 @@ class InsuranceCover extends Model
      {
          return $this->belongsTo('App\GeneralModels\SubCategoryCover', 'sub_category_id', 'id');
      }
+
+    //  ! creating te relationships that relate with the Motor Insurance Tables.
+
+    public function InsuranceCoverHasManyMotorInsuranceRelatedBenefits()
+    {
+        return $this->hasMany('App\MotorInsuranceModels\Benefit', 'insurance_cover_id', 'id');
+    }
+
+    public function InsuranceCoverHasManyAdditionalCovers()
+    {
+        return $this->hasMany('App\MotorInsuranceModels\AdditionalCover', 'insurance_cover_id', 'id');
+    }
+
+    public function InsuranceCoverHasManyCommercialClass()
+    {
+        return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialClass', 'insurance_cover_id', 'id');
+    }
+
+    public function InsuranceCoverHasManyPrivateComprehansiveCovers()
+    {
+        return $this->hasMany('App\MotorInsuranceModels\PrivateVehicles\PrivateComprehensiveCover', 'insurance_cover_id', 'id');
+    }
+
+    public function InsuranceCoverHasManyPrivatePartyCovers()
+    {
+        return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialThirdPartyCost', 'insurance_cover_id', 'id');
+    }
 }

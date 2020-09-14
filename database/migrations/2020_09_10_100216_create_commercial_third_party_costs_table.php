@@ -16,6 +16,11 @@ class CreateCommercialThirdPartyCostsTable extends Migration
         Schema::create('commercial_third_party_costs', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
+            $table->unsignedBigInteger('commercial_class_id');
+
+            // ! adding the relationship to the insurance cover table. 
+            $table->foreign('commercial_class_id')->references('id')->on('commercial_classes')->onDelete('cascade')->onUpdate('cascade');
+            
             $table->unsignedBigInteger('type_of_third_party_id');
 
             // ! adding the relationship to the insurance cover table. 

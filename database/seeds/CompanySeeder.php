@@ -23,7 +23,12 @@ class CompanySeeder extends Seeder
                 'name'=> 'Jubilee Insurance ',
                 'imageLocation'=> 'imageLocation',
                 'companyPointsPerson'=> 'John Doe',
-            ]
+            ],
+            [
+                'name'=> 'APA Insurance ',
+                'imageLocation'=> 'imageLocation',
+                'companyPointsPerson'=> 'John Doe',
+            ],
         ];
         foreach($companies as $key => $value){
 

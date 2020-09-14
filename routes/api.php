@@ -46,6 +46,10 @@ Route::apiResource('/navigationContent','NavigationController\NavigationControll
 Route::apiResource('/insuranceCovers','GettingInsuranceCovers\GettingInsuranceCovers');
 
 
+// ! Motor Related Models. 
+Route::apiResource('/motorPrivateComprehensive','PrivateComprehensiveCover\PrivateComprehensiveCoverController');
+
+
 
 
 

@@ -29,6 +29,18 @@ class SubCategoryCoverSeeder extends Seeder
                 'description'=> "This is the description of the Adult Health Option.",
                 'cover_id' => 1,  
                 'icon'=>'accessibility'              
+            ],
+            [
+                'name' => "Private Motor Insurance.",
+                'description'=> "This is the description of the Private Motor Insurance Option.",
+                'cover_id' => 2,  
+                'icon'=>'accessibility'              
+            ],
+            [
+                'name' => "Commercial Motor Insurance.",
+                'description'=> "This is the description of the Commercial Motor Insurance Option.",
+                'cover_id' => 2,  
+                'icon'=>'accessibility'              
             ]
         ];
         foreach($subCategories as $key => $value){
