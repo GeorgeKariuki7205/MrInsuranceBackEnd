@@ -6,6 +6,8 @@ use Illuminate\Database\Eloquent\Model;
 
 class PrivateComprehensiveCover extends Model
 {
+    
+    protected $table = 'motor_private_comprehensive_covers';
     private $guarded = ['id'];
 
     // ! creating the relationship to the insurance Covers. 

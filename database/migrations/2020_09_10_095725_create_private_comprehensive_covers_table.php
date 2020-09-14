@@ -13,7 +13,7 @@ class CreatePrivateComprehensiveCoversTable extends Migration
      */
     public function up()
     {
-        Schema::create('private_comprehensive_covers', function (Blueprint $table) {
+        Schema::create('motor_private_comprehensive_covers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('insurance_cover_id');

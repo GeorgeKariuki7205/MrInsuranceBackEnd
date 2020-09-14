@@ -13,7 +13,7 @@ class CreateCommercialComprehensiveCostsTable extends Migration
      */
     public function up()
     {
-        Schema::create('commercial_comprehensive_costs', function (Blueprint $table) {
+        Schema::create('motor_commercial_comprehensive_costs', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->bigInteger('sum_insured_from_value');
@@ -22,7 +22,7 @@ class CreateCommercialComprehensiveCostsTable extends Migration
             $table->unsignedBigInteger('commercial_class_id');
 
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('commercial_class_id')->references('id')->on('commercial_classes')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('commercial_class_id')->references('id')->on('motor_commercial_classes')->onDelete('cascade')->onUpdate('cascade');
 
             $table->bigInteger('rate');
             

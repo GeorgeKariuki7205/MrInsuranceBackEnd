@@ -13,7 +13,7 @@ class CreateCommercialClassesTable extends Migration
      */
     public function up()
     {
-        Schema::create('commercial_classes', function (Blueprint $table) {
+        Schema::create('motor_commercial_classes', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('insurance_cover_id');

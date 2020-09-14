@@ -13,7 +13,7 @@ class CreatePrivateThirdPartyCoversTable extends Migration
      */
     public function up()
     {
-        Schema::create('private_third_party_covers', function (Blueprint $table) {
+        Schema::create('motor_private_third_party_covers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('insurance_cover_id');
