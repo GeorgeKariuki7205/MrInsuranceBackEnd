@@ -14,6 +14,7 @@ class CreatePrivateCostDetailsTable extends Migration
     public function up()
     {
         Schema::create('private_cost_details', function (Blueprint $table) {
+            $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('insurance_cover_id');
 
