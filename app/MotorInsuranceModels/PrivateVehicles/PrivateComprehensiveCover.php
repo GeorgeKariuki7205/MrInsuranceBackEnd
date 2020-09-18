@@ -12,8 +12,9 @@ class PrivateComprehensiveCover extends Model
 
     // ! creating the relationship to the insurance Covers. 
 
-    public function PrivateComprehensiveCoverBelongsToInsuranceCover()
+    public function PrivateComprehensiveCoverBelongsToPrivateCoverDetails()
     {
-        return $this->belongsTo('App\GeneralModels\InsuranceCover', 'insurance_cover_id', 'id');
+        return $this->belongsTo('App\MotorInsuranceModels\PrivateVehicles\PrivateCostDetail', 'private_cost_id', 'id');
     }
+    
 }

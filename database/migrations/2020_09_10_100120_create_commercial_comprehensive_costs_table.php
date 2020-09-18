@@ -24,7 +24,7 @@ class CreateCommercialComprehensiveCostsTable extends Migration
             // ! adding the relationship to the insurance cover table. 
             $table->foreign('commercial_class_id')->references('id')->on('motor_commercial_classes')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->bigInteger('rate');
+            $table->float('rate');
             
             
             $table->timestamps();

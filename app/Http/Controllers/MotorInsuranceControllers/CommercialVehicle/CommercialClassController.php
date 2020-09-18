@@ -5,7 +5,8 @@ namespace App\Http\Controllers\MotorInsuranceControllers\CommercialVehicle;
 use App\MotorInsuranceModels\CommercialVehicles\CommercialClass;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
-// use App\MotorInsuranceModels\CommercialVihicles\CommercialClass;
+use App\Http\Resources\MotorModels\CommercialVehicles\CommercialClassesResource;
+
 class CommercialClassController extends Controller
 {
     /**
@@ -15,7 +16,7 @@ class CommercialClassController extends Controller
      */
     public function index()
     {
-        //
+        return response(CommercialClassesResource::collection(CommercialClass::all()),200);
     }
 
     /**
@@ -36,7 +37,9 @@ class CommercialClassController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $commercialClassVariable = new CommercialClass();
+        $commercialClassVariable->fill($request->all())->save();
+        return response("Added the new Commercial Class",200);
     }
 
     /**
@@ -45,9 +48,16 @@ class CommercialClassController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialClass  $commercialClass
      * @return \Illuminate\Http\Response
      */
-    public function show(CommercialClass $commercialClass)
+    public function show($commercialClass)
     {
         //
+        $class = null;
+        $commercialClasses = CommercialClass::where('id',$commercialClass)->get();
+        foreach ($commercialClasses as $commercialClass) {
+            # code...
+            $class = $commercialClass;
+        }
+        return  response(new CommercialClassesResource($class),200);
     }
 
     /**
@@ -68,9 +78,17 @@ class CommercialClassController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialClass  $commercialClass
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommercialClass $commercialClass)
+    public function update(Request $request,  $commercialClass)
     {
         //
+        $class = null;
+        $commercialClasses = CommercialClass::where('id',$commercialClass)->get();
+        foreach ($commercialClasses as $commercialClass) {
+            # code...
+            $class = $commercialClass;
+        }
+        $class->update($request->all());
+        return response("Successfully Updated",200);
     }
 
     /**
@@ -79,8 +97,17 @@ class CommercialClassController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialClass  $commercialClass
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommercialClass $commercialClass)
+    public function destroy($commercialClass)
     {
         //
+        $class = null;
+        $commercialClasses = CommercialClass::where('id',$commercialClass)->get();
+        foreach ($commercialClasses as $commercialClass) {
+            # code...
+            $class = $commercialClass;
+        }
+
+        $class->delete();
+        return response("Successfully Deleted",200);
     }
 }

@@ -1,10 +1,10 @@
 <?php
+namespace App\Http\Controllers\MotorInsuranceControllers\PrivateVehicle;
+use App\Http\Controllers\Controller;
 
-namespace App\Http\Controllers;
-
-use App\MotorInsuranceModels\PrivateVihicles\PrivateComprehensiveCover;
+use App\MotorInsuranceModels\PrivateVehicles\PrivateComprehensiveCover;
 use Illuminate\Http\Request;
-
+use App\Http\Resources\MotorModels\PrivateVehicle\PrivateComprehensiveResource;
 class PrivateComprehensiveCoverController extends Controller
 {
     /**
@@ -14,7 +14,8 @@ class PrivateComprehensiveCoverController extends Controller
      */
     public function index()
     {
-        //
+        return response(PrivateComprehensiveResource::collection(PrivateComprehensiveCover::all()),200);
+
     }
 
     /**
@@ -36,6 +37,10 @@ class PrivateComprehensiveCoverController extends Controller
     public function store(Request $request)
     {
         //
+        $newPrivateComprehensiveCover = new PrivateComprehensiveCover();
+        ($newPrivateComprehensiveCover->fill($request->all))->save();
+
+        return response('Succefully Added A Single Private Coprehensive Cover.',200);
     }
 
     /**
@@ -47,6 +52,7 @@ class PrivateComprehensiveCoverController extends Controller
     public function show(PrivateComprehensiveCover $privateComprehensiveCover)
     {
         //
+        return response(new PrivateComprehensiveResource($privateComprehensiveCover),200);
     }
 
     /**
@@ -70,6 +76,8 @@ class PrivateComprehensiveCoverController extends Controller
     public function update(Request $request, PrivateComprehensiveCover $privateComprehensiveCover)
     {
         //
+        $privateComprehensiveCover->update($request->all());
+        return response('Updated A Single PrivateComprehensiveCover',200);
     }
 
     /**
@@ -81,5 +89,7 @@ class PrivateComprehensiveCoverController extends Controller
     public function destroy(PrivateComprehensiveCover $privateComprehensiveCover)
     {
         //
+        $privateComprehensiveCover->delete();
+        return response('Deleted Successfully',200);
     }
 }

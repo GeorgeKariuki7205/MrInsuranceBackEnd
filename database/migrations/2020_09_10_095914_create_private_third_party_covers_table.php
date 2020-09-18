@@ -16,10 +16,10 @@ class CreatePrivateThirdPartyCoversTable extends Migration
         Schema::create('motor_private_third_party_covers', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
-            $table->unsignedBigInteger('insurance_cover_id');
-
+            
+            $table->unsignedBigInteger('private_cost_id');
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('insurance_cover_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('private_cost_id')->references('id')->on('private_cost_details')->onDelete('cascade')->onUpdate('cascade');
                                     
             $table->bigInteger('min_age')->nullable();
             $table->bigInteger('max_age')->nullable();

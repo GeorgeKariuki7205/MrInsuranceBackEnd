@@ -47,7 +47,13 @@ Route::apiResource('/insuranceCovers','GettingInsuranceCovers\GettingInsuranceCo
 
 
 // ! Motor Related Models. 
-Route::apiResource('/motorPrivateComprehensive','PrivateComprehensiveCover\PrivateComprehensiveCoverController');
+Route::apiResource('/motorPrivateComprehensive','MotorInsuranceControllers\PrivateVehicle\PrivateComprehensiveCoverController');
+Route::apiResource('/commercialVehiclesClasses','MotorInsuranceControllers\CommercialVehicle\CommercialClassController');
+Route::apiResource('/commercialComprehensiveCost','MotorInsuranceControllers\CommercialVehicle\CommercialComprehensiveCostController');
+Route::apiResource('/commercialThirdPartyTypeOfCost','MotorInsuranceControllers\CommercialVehicle\CommercialTypeOfThirdPartyCostController');
+Route::apiResource('/commercialThirdPartyCost','MotorInsuranceControllers\CommercialVehicle\CommercialThirdPartyCostController');
+Route::apiResource('/motorAdditionalCovers','MotorInsuranceControllers\AdditionalCoverController');
+
 
 
 

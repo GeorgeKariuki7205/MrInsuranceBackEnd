@@ -8,9 +8,9 @@ class PrivateThirdPartyCover extends Model
 {
     protected $guarded = ['id'];
     protected $table = 'motor_private_third_party_covers';
-    public function privateThirdPartyCoverBelongsToCover()
+    public function PrivateThirdPartyCoverBelongsToPrivateCoverDetails()
     {
-        return $this->belongsTo('App\GeneralModels\InsuranceCover', 'insurance_cover_id', 'id');
+        return $this->belongsTo('App\MotorInsuranceModels\PrivateVehicles\PrivateCostDetail', 'private_cost_id', 'id');
     }
     
 }

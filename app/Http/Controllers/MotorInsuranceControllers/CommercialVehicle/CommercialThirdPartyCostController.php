@@ -4,6 +4,7 @@ namespace App\Http\Controllers\MotorInsuranceControllers\CommercialVehicle;
 use App\Http\Controllers\Controller;
 use App\MotorInsuranceModels\CommercialVehicles\CommercialThirdPartyCost;
 use Illuminate\Http\Request;
+use App\Http\Resources\MotorModels\CommercialVehicles\CommercialThirdPartyCostResource;
 
 class CommercialThirdPartyCostController extends Controller
 {
@@ -15,6 +16,7 @@ class CommercialThirdPartyCostController extends Controller
     public function index()
     {
         //
+        return response(CommercialThirdPartyCostResource::collection(CommercialThirdPartyCost::all()),200);
     }
 
     /**
@@ -36,6 +38,9 @@ class CommercialThirdPartyCostController extends Controller
     public function store(Request $request)
     {
         //
+        $newRecord = new CommercialThirdPartyCost();
+        $newRecord->fill($request->all())->save();
+        return response("Successfully Added",200);
     }
 
     /**
@@ -44,9 +49,19 @@ class CommercialThirdPartyCostController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialThirdPartyCost  $commercialThirdPartyCost
      * @return \Illuminate\Http\Response
      */
-    public function show(CommercialThirdPartyCost $commercialThirdPartyCost)
+    public function show($commercialThirdPartyCost)
     {
         //
+        $newRecord = null;
+        $allRecords = CommercialThirdPartyCost::where('id',$commercialThirdPartyCost)->get();
+
+        foreach ($allRecords as $allRecord) {
+            # code...
+            $newRecord = $allRecord;
+        }
+
+        return response(new CommercialThirdPartyCostResource($newRecord),200);
+
     }
 
     /**
@@ -67,9 +82,19 @@ class CommercialThirdPartyCostController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialThirdPartyCost  $commercialThirdPartyCost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommercialThirdPartyCost $commercialThirdPartyCost)
+    public function update(Request $request, $commercialThirdPartyCost)
     {
         //
+        $newRecord = null;
+        $allRecords = CommercialThirdPartyCost::where('id',$commercialThirdPartyCost)->get();
+
+        foreach ($allRecords as $allRecord) {
+            # code...
+            $newRecord = $allRecord;
+        }
+        $newRecord->update($request->all());
+        return response("Successfully Updated",200);
+
     }
 
     /**
@@ -78,8 +103,16 @@ class CommercialThirdPartyCostController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialThirdPartyCost  $commercialThirdPartyCost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommercialThirdPartyCost $commercialThirdPartyCost)
+    public function destroy($commercialThirdPartyCost)
     {
-        //
+        $newRecord = null;
+        $allRecords = CommercialThirdPartyCost::where('id',$commercialThirdPartyCost)->get();
+
+        foreach ($allRecords as $allRecord) {
+            # code...
+            $newRecord = $allRecord;
+        }
+        $newRecord->delete();
+        return response("Successfully Deleted",200);
     }
 }

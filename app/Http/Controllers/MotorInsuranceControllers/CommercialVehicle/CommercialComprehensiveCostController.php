@@ -4,6 +4,8 @@ namespace App\Http\Controllers\MotorInsuranceControllers\CommercialVehicle;
 use App\MotorInsuranceModels\CommercialVehicles\CommercialComprehensiveCost;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
+use  App\Http\Resources\MotorModels\CommercialVehicles\CommercialComprehensiveCostResource;
+
 class CommercialComprehensiveCostController extends Controller
 {
     /**
@@ -14,6 +16,8 @@ class CommercialComprehensiveCostController extends Controller
     public function index()
     {
         //
+        return response(CommercialComprehensiveCostResource::collection(CommercialComprehensiveCost::all()));
+
     }
 
     /**
@@ -35,6 +39,9 @@ class CommercialComprehensiveCostController extends Controller
     public function store(Request $request)
     {
         //
+        $commercialCost = new CommercialComprehensiveCost();
+        ($commercialCost->fill($request->all()))->save();
+        return response("Added CommercialComprehensiveCost Successfully",200);
     }
 
     /**
@@ -43,9 +50,17 @@ class CommercialComprehensiveCostController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialComprehensiveCost  $commercialComprehensiveCost
      * @return \Illuminate\Http\Response
      */
-    public function show(CommercialComprehensiveCost $commercialComprehensiveCost)
+    public function show($commercialComprehensiveCost)
     {
         //
+        $commercialComprehensiveCostEntry = null;
+        $commercialComprehensiveCosts = CommercialComprehensiveCost::where('id',$commercialComprehensiveCost)->get();
+        foreach ($commercialComprehensiveCosts as $commercialComprehensiveCost) {
+            # code...
+            $commercialComprehensiveCostEntry = $commercialComprehensiveCost;
+        }
+
+        return response(new CommercialComprehensiveCostResource($commercialComprehensiveCostEntry),200);
     }
 
     /**
@@ -66,9 +81,20 @@ class CommercialComprehensiveCostController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialComprehensiveCost  $commercialComprehensiveCost
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, CommercialComprehensiveCost $commercialComprehensiveCost)
+    public function update(Request $request, $commercialComprehensiveCost)
     {
         //
+        $commercialComprehensiveCostEntry = null;
+        $commercialComprehensiveCosts = CommercialComprehensiveCost::where('id',$commercialComprehensiveCost)->get();
+        foreach ($commercialComprehensiveCosts as $commercialComprehensiveCost) {
+            # code...
+            $commercialComprehensiveCostEntry = $commercialComprehensiveCost;
+        }
+
+        // return count($commercialComprehensiveCosts);
+        $commercialComprehensiveCostEntry->update($request->all());
+        return response("Updated Successfully",200);
+
     }
 
     /**
@@ -77,8 +103,16 @@ class CommercialComprehensiveCostController extends Controller
      * @param  \App\MotorInsuranceModels\CommercialVihicles\CommercialComprehensiveCost  $commercialComprehensiveCost
      * @return \Illuminate\Http\Response
      */
-    public function destroy(CommercialComprehensiveCost $commercialComprehensiveCost)
+    public function destroy($commercialComprehensiveCost)
     {
-        //
+        $commercialComprehensiveCostEntry = null;
+        $commercialComprehensiveCosts = CommercialComprehensiveCost::where('id',$commercialComprehensiveCost)->get();
+        foreach ($commercialComprehensiveCosts as $commercialComprehensiveCost) {
+            # code...
+            $commercialComprehensiveCostEntry = $commercialComprehensiveCost;
+        }
+
+        $commercialComprehensiveCostEntry->delete();
+        return response("Successfully Deleted.",200);
     }
 }

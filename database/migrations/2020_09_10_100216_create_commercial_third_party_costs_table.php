@@ -24,7 +24,7 @@ class CreateCommercialThirdPartyCostsTable extends Migration
             $table->unsignedBigInteger('type_third_party_id');
 
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('type_third_party_id')->references('id')->on('commercial_type_of_third_party_costs')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('type_third_party_id')->references('id')->on('motor_commercial_type_of_third_party_costs')->onDelete('cascade')->onUpdate('cascade');
 
             $table->bigInteger('min_value')->nullable();
             $table->bigInteger('max_value')->nullable();
