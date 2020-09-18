@@ -56,6 +56,12 @@ Route::apiResource('/motorAdditionalCovers','MotorInsuranceControllers\Additiona
 
 
 
+// ! Payments APIs. 
+Route::post('/stkPush', 'Payments\CustomerToOrganisationController@customerMpesaSTKPush');
+Route::post('/stkPushCallBack', 'Payments\CustomerToOrganisationController@callBackForTheSTKPush');
+
+
+
 
 
 
