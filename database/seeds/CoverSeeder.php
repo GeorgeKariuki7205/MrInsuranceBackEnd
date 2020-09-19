@@ -22,7 +22,7 @@ class CoverSeeder extends Seeder
             [
                 'name'=> 'Motor Insurance',
                 'description'=> 'Motor Insurance',
-                'has_sub_categories'=> 0,
+                'has_sub_categories'=> 1,
                 'icon'=>'directions_car',
                 'route_name'=>'Motor'
             ]
