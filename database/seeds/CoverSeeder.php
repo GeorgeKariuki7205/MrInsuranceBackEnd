@@ -16,14 +16,14 @@ class CoverSeeder extends Seeder
                 'name'=> 'Health Insurance',
                 'description'=> 'Health Insurance',
                 'has_sub_categories'=> 1,                
-                'icon'=>'local_hospital',
+                'icon'=>'fa-hospital',
                 'route_name'=>'Health'
             ],
             [
                 'name'=> 'Motor Insurance',
                 'description'=> 'Motor Insurance',
                 'has_sub_categories'=> 1,
-                'icon'=>'directions_car',
+                'icon'=>'fa-car',
                 'route_name'=>'Motor'
             ]
         ];
