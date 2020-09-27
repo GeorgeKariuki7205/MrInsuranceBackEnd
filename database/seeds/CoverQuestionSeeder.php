@@ -55,11 +55,49 @@ class CoverQuestionSeeder extends Seeder
                 'cover_requirement_id' => 3
             ],
             [
-                'cover_id'=> 2,                
+                'cover_id'=> 2, 
+                'sub_category_id'=> 4,               
                 'question'=> 'What is the price of your Car ?  ',
                 'type'=> 'number',
                 'cover_requirement_id' => 4
             ],
+            [
+                'cover_id'=> 2, 
+                'sub_category_id'=> 4,               
+                'question'=> 'Year Of Manufucture Of Your Vehicle ?  ',
+                'type'=> 'number',
+                'cover_requirement_id' => 4
+            ],
+            [
+                'cover_id'=> 2, 
+                'sub_category_id'=> 4,               
+                'question'=> 'Comprehensive Or Third Party Insurance Cover',
+                'type'=> 'select',
+                'cover_requirement_id' => 4
+            ],
+
+            [
+                'cover_id'=> 2, 
+                'sub_category_id'=> 5,               
+                'question'=> 'What is the price of your Car ?  ',
+                'type'=> 'number',
+                'cover_requirement_id' => 4
+            ],
+            [
+                'cover_id'=> 2, 
+                'sub_category_id'=> 5,               
+                'question'=> 'Year Of Manufucture Of Your Vehicle ?  ',
+                'type'=> 'number',
+                'cover_requirement_id' => 4
+            ],
+            [
+                'cover_id'=> 2, 
+                'sub_category_id'=> 5,               
+                'question'=> 'Comprehensive Or Third Party Insurance Cover',
+                'type'=> 'select',
+                'cover_requirement_id' => 4
+            ],
+
         ];
         foreach($coverQuestion as $key => $value){
 
