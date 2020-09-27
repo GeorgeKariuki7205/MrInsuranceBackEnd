@@ -7,6 +7,8 @@ use Illuminate\Database\Eloquent\Model;
 class PrivateCostDetail extends Model
 {
     protected $guarded = ['id'];
+    
+    protected $table = 'motor_private_cost_details';
 
     public function PrivateCostDetailsHasOneCommercialCost()
     {

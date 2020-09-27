@@ -29,7 +29,7 @@ class InsuranceProviderSeeder extends Seeder
                 'sub_category_id'=> 1
             ],
             [
-                'name'=>"Gari Njema.",                
+                'name'=>"Gari Njema Private Motor Insurance",                
                 'company_id' => 3,
                 'cover_id'=> 2,
                 'is_active' => 1,
@@ -37,7 +37,7 @@ class InsuranceProviderSeeder extends Seeder
                 'sub_category_id'=> 4
             ],
             [
-                'name'=>"Gari Njema.",                
+                'name'=>"Gari Njema Commercial Motor Insurance",                
                 'company_id' => 3,
                 'cover_id'=> 2,
                 'is_active' => 1,

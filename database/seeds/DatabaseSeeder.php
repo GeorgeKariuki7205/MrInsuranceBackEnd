@@ -30,5 +30,12 @@ class DatabaseSeeder extends Seeder
         $this->call(HealthAdditionalBenefitSeeder::class);
         $this->call(HealthAdditionalNotCoveredSeeder::class);
         $this->call(HealthAdditionalWaitingPeriodSeeder::class);
+
+
+        // ! Motor Insurance Seeders. 
+        $this->call(PrivateCostDetailSeeder::class);
+        $this->call(PrivateComprehensiveCoverSeeder::class);
+        $this->call(PrivateThirdPartyCoverSeeder::class);
+
     }
 }

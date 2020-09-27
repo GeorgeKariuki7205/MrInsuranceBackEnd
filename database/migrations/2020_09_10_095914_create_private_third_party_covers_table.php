@@ -19,8 +19,9 @@ class CreatePrivateThirdPartyCoversTable extends Migration
             
             $table->unsignedBigInteger('private_cost_id');
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('private_cost_id')->references('id')->on('private_cost_details')->onDelete('cascade')->onUpdate('cascade');
-                                    
+            $table->foreign('private_cost_id')->references('id')->on('motor_private_cost_details')->onDelete('cascade')->onUpdate('cascade');
+            
+            $table->bigInteger('cost');
             $table->bigInteger('min_age')->nullable();
             $table->bigInteger('max_age')->nullable();
             $table->timestamps();

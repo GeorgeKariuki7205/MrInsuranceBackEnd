@@ -18,7 +18,7 @@ class CreatePrivateComprehensiveCoversTable extends Migration
             $table->id();
             $table->unsignedBigInteger('private_cost_id');
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('private_cost_id')->references('id')->on('private_cost_details')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('private_cost_id')->references('id')->on('motor_private_cost_details')->onDelete('cascade')->onUpdate('cascade');
 
             $table->bigInteger('min_sum_insured');
             $table->bigInteger('sum_insured_from_value');
