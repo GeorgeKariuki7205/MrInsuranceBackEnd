@@ -36,6 +36,11 @@ class DatabaseSeeder extends Seeder
         $this->call(PrivateCostDetailSeeder::class);
         $this->call(PrivateComprehensiveCoverSeeder::class);
         $this->call(PrivateThirdPartyCoverSeeder::class);
+        $this->call(CommercialClassSeeder::class);
+        $this->call(CommercialComprehensiveCostSeeder::class);        
+        $this->call(CommercialTypeOfThirdPartyCostSeeder::class);
+        
+        
 
     }
 }

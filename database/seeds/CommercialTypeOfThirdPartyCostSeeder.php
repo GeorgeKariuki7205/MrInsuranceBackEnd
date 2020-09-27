@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\MotorInsuranceModels\CommercialVehicles\CommercialTypeOfThirdPartyCost;
 class CommercialTypeOfThirdPartyCostSeeder extends Seeder
 {
     /**
@@ -12,5 +12,22 @@ class CommercialTypeOfThirdPartyCostSeeder extends Seeder
     public function run()
     {
         //
+
+        $typeOfThirdPartyCosts = [
+            [
+                'name'=> 'tons',
+                'description'=> 'Tonnes',
+            ],
+            [
+                'name'=> 'passengers',
+                'description'=> 'Passengers',
+            ],
+        ];
+
+        foreach($typeOfThirdPartyCosts as $key => $value){
+
+            CommercialTypeOfThirdPartyCost::create($value);
+
+        }
     }
 }
