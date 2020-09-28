@@ -40,7 +40,7 @@ class GettingInsuranceCovers extends Controller
     public function store(Request  $request)
     {
         
-        // ! creating the dummy array that is passed from the API endpoint.
+        // ! creating the dummy array that is passed from the API endpoint for Health Insurance.
 
             // $request = array();
             // $request['coverId'] = 1;
@@ -62,10 +62,34 @@ class GettingInsuranceCovers extends Controller
 
             // $request['personalDetails'] = $personalDetails;
             
+            // ! creating the dummy array that is passed from the API endpoint for Motor Insurance.
+
+            $request = array();
+            $request['coverId'] = 2;
+            $request['subCategoryId'] = 5;
+
+            $insuranceCoverDetails = array();
+
+            $insuranceCoverDetails['vehicleCost'] = 2000000;
+            $insuranceCoverDetails['yearOfManufucture'] = 2019;
+            $insuranceCoverDetails['isComprehensive'] = true;
+            $insuranceCoverDetails['classIfCommercial'] = 1;            
+            $insuranceCoverDetails['valueForCommercial'] = 20;
+
+            $personalDetails = array();
+            $personalDetails['email_address'] = "mail@mail.com";
+            $personalDetails['name'] = "George";
+            $personalDetails['phoneNumber'] = "0789898928";
+
+            $request['personalDetails'] = $personalDetails;
+
+
+
+
         //! this method is used to get all the insurance covers after posting from the API endpoint in the frontEnd.
 
-        // *$coverId = $request['coverId'];
-        $coverId = $request->coverId;
+        $coverId = $request['coverId'];
+        //* $coverId = $request->coverId;
 
         $gettingTheCovers = Cover::where('id',$coverId)->get();
         $cover = null;
@@ -84,8 +108,8 @@ class GettingInsuranceCovers extends Controller
 
         if ($hasSubCategories == 1) {
             # code...
-            // *$subCategoryId = $request['subCategoryId'];
-            $subCategoryId = $request->subCategoryId;
+            $subCategoryId = $request['subCategoryId'];
+            // *$subCategoryId = $request->subCategoryId;
         }   
         
         // ! creating the array that will hold the response. 
@@ -122,8 +146,8 @@ class GettingInsuranceCovers extends Controller
                                 foreach ($coverAmounts as $coverAmount) {
                                     # code...                                    
                                     $coverAmountStatus = false;                                    
-                                    if ($coverAmount->amount >= $request->insuranceCoverDetails['cover_amount']) {
-                                    // *if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
+                                     if ($coverAmount->amount >= $request->insuranceCoverDetails['cover_amount']) {
+                                    //* if ($coverAmount->amount >= $request['insuranceCoverDetails']['cover_amount']) {
                                         # code...                                        
                                         $coverAmountStatus = true;
                                         // ! after getting the cover amount, get the premiums that have the specific cover . 
@@ -161,10 +185,11 @@ class GettingInsuranceCovers extends Controller
                                                 // *if (isset($request['insuranceCoverDetails']['number_of_dependant'])) {
                                                 if (isset($request->insuranceCoverDetails['number_of_dependant'])) {                                                    
                                                     $payableCash += $premium->child*$request->insuranceCoverDetails['number_of_dependant'];
-                                                    // *$payableCash += $premium->child*$request['insuranceCoverDetails']['number_of_dependant'];
+                                                    //* $payableCash += $premium->child*$request['insuranceCoverDetails']['number_of_dependant'];
                                                     $dependents = array();
                                                     $dependents['dependant'] = $premium->child;
                                                     $dependents['number_of_dependents'] = $request->insuranceCoverDetails['number_of_dependant'];
+                                                    //* $dependents['number_of_dependents'] = $request['insuranceCoverDetails']['number_of_dependant'];
                                                     $dependents['number_of_dependents'] = $request['insuranceCoverDetails']['number_of_dependant'];
                                                     $payableBreakdown['dependents'] = $dependents;
 
@@ -235,10 +260,210 @@ class GettingInsuranceCovers extends Controller
                         
                     }
                 break;
-            
-            default:
-                # code...
+                case 'Motor':
+                    # code...
+                    
+                    // ! Motor Insurance Covers.
+                    
+                    
+                    // ! checking if the subCategories is not null. 
+                    if ($subCategoryId != null){
+
+                        // ! getting all the insurance covers to be used later in the application . 
+
+                        $subCategoriesModel = SubCategoryCover::where('id',$subCategoryId)->get();
+                        $subCategoryModel = null;
+                        foreach ($subCategoriesModel as $subCategory) {
+                            # code...
+                            $subCategoryModel = $subCategory;
+                        }
+
+                        
+                        $insuranceCovers = $subCategoryModel->SubCategoryHasManyInsuranceCovers;
+
+                        // ! getting the subCategory value 
+                        if ($subCategoryId == 4) {
+                            # code...
+                            // ! THIS IS THE CATEGORY USED TO IMPLEMENT THE PRIVATE MOTOR INURANCE.
+
+                            // ! checking to see the type of cover (comprehensive or 3rd party.)
+                            // if ($insuranceCoverDetails['isComprehensive']) {
+                            if ($insuranceCoverDetails->isComprehensive) {
+                                # code...
+                                // ! functionlaity to be implemented for a comprehensive Cover. 
+                                                              
+                                $privateVehiclesCovers = null;
+                                foreach ($insuranceCovers as $insuranceCover) {
+                                
+                                    // ! getting the private vehicles cost details. 
+
+                                    $privateVehiclesCovers =    $insuranceCover->InsuranceCoverHasManyPrivateVehicles;
+
+                                    foreach ($privateVehiclesCovers as $privateVehiclesCover) {
+                                        # code...
+                                        $returnable = null; 
+                                        $privateVehiclesCovers = $privateVehiclesCover->PrivateCostDetailsHasManyComprehensiveCost;
+                                        
+                                        // ! checking the vehicle that satisfies the cost that has been set. 
+                                        foreach ($privateVehiclesCovers as $privateVehiclesCover) {
+                                            # code...
+                                            // return $insuranceCoverDetails['vehicleCost'];
+                                            //* if (($insuranceCoverDetails['vehicleCost'] <= $privateVehiclesCover->sum_insured_to_value && $insuranceCoverDetails['vehicleCost'] >= $privateVehiclesCover->sum_insured_from_value) || 
+                                            // *    ($privateVehiclesCover->sum_insured_to_value == 0 && $insuranceCoverDetails['vehicleCost'] >= $privateVehiclesCover->sum_insured_from_value)) {
+                                            
+                                            if (($insuranceCoverDetails->vehicleCost <= $privateVehiclesCover->sum_insured_to_value && $insuranceCoverDetails->vehicleCost >= $privateVehiclesCover->sum_insured_from_value) || 
+                                            ($privateVehiclesCover->sum_insured_to_value == 0 && $insuranceCoverDetails->vehicleCost >= $privateVehiclesCover->sum_insured_from_value)) {
+                                                # code...
+                                                $returnable = "found.";
+
+                                                // ! amount payable calculation. 
+
+                                                // *$amountPayable = ($privateVehiclesCover->rate * $insuranceCoverDetails['vehicleCost'])/100;
+                                                $amountPayable = ($privateVehiclesCover->rate * $insuranceCoverDetails->vehicleCost)/100;
+                                                if ($amountPayable < $privateVehiclesCover->minimum_premium_amount) {
+                                                    # code...
+                                                    $amountPayable = $privateVehiclesCover->minimum_premium_amount;
+                                                }
+
+                                                // ! adding the details for the specific implmentation of the inurance cover.
+                                                $coverDetails = array();
+                                                $coverDetails['uuid'] = Uuid::generate(4)->string;
+                                                $coverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
+                                                $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
+                                                $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
+                                                $coverDetails['insuranceCover'] = $insuranceCover->name;
+                                                $coverDetails['amountPayable'] = $amountPayable;
+                                                array_push($response,$coverDetails); 
+                                                // array_push($response,$privateVehiclesCover);                                                 
+                                                break;
+                                            }                                                
+                                        }    
+                                                                                
+                                    }
+
+                                }
+                                
+                                if ($returnable == null) {
+                                            # code...
+                                array_push($response,"No Appropriate Cover Was Found For Your Private Vehicle."); 
+                                }
+
+                            } else {
+                                # code...
+                                // ! THIS SECTION IS USED TO IMPLEMENT THE THIRD PARY INURANCE OF THE PRIVATE MOTOR INSURANCE. 
+                                foreach ($insuranceCovers as $insuranceCover) {  
+
+                                    $privateVehiclesCovers =    $insuranceCover->InsuranceCoverHasManyPrivateVehicles;
+
+                                    // ! checking the vehicle that satisfies the cost that has been set. 
+                                    foreach ($privateVehiclesCovers as $privateVehiclesCover) {
+
+                                        $returnable = null; 
+                                        $privateVehiclesCovers = $privateVehiclesCover->PrivateCostDetailsHasManyThirdPartyCost;
+
+                                        foreach ($privateVehiclesCovers as $privateVehiclesCover) {
+                                            # code...
+                                            $coverDetails = array();
+                                            $coverDetails['uuid'] = Uuid::generate(4)->string;
+                                            $coverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
+                                            $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
+                                            $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
+                                            $coverDetails['insuranceCover'] = $insuranceCover->name;
+                                            $coverDetails['amountPayable'] = $privateVehiclesCover->cost;
+                                            array_push($response,$coverDetails);
+                                        }                                        
+                                    }
+                                }                                
+                            }
+                            
+                        } else if($subCategoryId == 5){
+
+                            // ! getting the class of the commercial vehicle.
+                            # code...
+                            //* $commercialClassID = $insuranceCoverDetails['classIfCommercial'];
+                             $commercialClassID = $insuranceCoverDetails->classIfCommercial;
+                            // ! THIS IS THE CATEGORY USED TO IMPLEMENT THE COMMERCIAL MOTOR INURANCE.
+
+                            if ($insuranceCoverDetails['isComprehensive']) {
+                                # code...
+                                // ! THIS SECTION OFTHE CODE I SUSED TO IMPLEMENT COMPREHENSIVE COMMERCIAL MOTOR INSURANCE.
+                                $returnable = null;
+                                foreach ($insuranceCovers as $insuranceCover) {
+
+                                    $commercialClasses =  $insuranceCover->InsuranceCoverHasManyCommercialClasses;
+                                    
+                                    foreach ($commercialClasses as $commercialClass) {
+                                        // ! checking to see if the amount given corresponds to the minimum.  
+
+                                        // if ($insuranceCoverDetails['vehicleCost'] < $commercialClass->min_sum_insured) {
+                                            # code...
+                                            
+                                            if ($commercialClass->id == $commercialClassID) {
+                                                # code...
+                                                // ! getting the compreheive insurance details that correspond to the 
+                                                // ! commercial class. 
+                                                
+                                                // array_push($response, $commercialClass);
+                                                $commercialCompreheiveCosts = $commercialClass->CommercialClassHasManyCommerialComprehesiveCosts;
+    
+                                                foreach ($commercialCompreheiveCosts as $commercialCompreheiveCost) {
+                                                    # code...
+                                                    // commercialCompreheiveCovers
+                                                    // array_push($response, $commercialCompreheiveCost);
+                                                    // ! checking to get the cover that corresponds to the amount given. 
+                                                    //* if ((($insuranceCoverDetails['vehicleCost'] <= $commercialCompreheiveCost->sum_insured_to_value && $insuranceCoverDetails['vehicleCost'] >= $commercialCompreheiveCost->sum_insured_from_value) || 
+                                                    // *    ($commercialCompreheiveCost->sum_insured_to_value == 0 && $insuranceCoverDetails['vehicleCost'] >= $commercialCompreheiveCost->sum_insured_from_value)) &&
+                                                    //  *   ($insuranceCoverDetails['vehicleCost'] >= $commercialClass->min_sum_insured)
+                                                    //   *  ) {
+                                                        if ((($insuranceCoverDetails->vehicleCost <= $commercialCompreheiveCost->sum_insured_to_value && $insuranceCoverDetails->vehicleCost >= $commercialCompreheiveCost->sum_insured_from_value) || 
+                                                        ($commercialCompreheiveCost->sum_insured_to_value == 0 && $insuranceCoverDetails['vehicleCost'] >= $commercialCompreheiveCost->sum_insured_from_value)) &&
+                                                        ($insuranceCoverDetails->vehicleCost >= $commercialClass->min_sum_insured)
+                                                        ) {
+
+                                                            $returnable =$returnable = 'found';
+
+                                                            $coverDetails = array();
+                                                            $coverDetails['uuid'] = Uuid::generate(4)->string;
+                                                            $coverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
+                                                            $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
+                                                            $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
+                                                            $coverDetails['insuranceCover'] = $insuranceCover->name;
+                                                            $coverDetails['amountPayable'] = ($insuranceCoverDetails['vehicleCost']*$commercialCompreheiveCost->rate)/100 ;
+                                                            array_push($response,$coverDetails); 
+
+                                                        break;
+                                                }
+
+                                                     
+    
+                                                }
+    
+                                            }                                                                               
+                                    }
+
+                                }
+                                if ($returnable == null) {
+                                    # code...
+                                    array_push($response,"No appropriate Premiums were found."); 
+                                }
+
+                            } else {
+                                # code...
+                                // ! THIS SECTION OFTHE CODE I SUSED TO IMPLEMENT THIRD PARTY COMMERCIAL MOTOR INSURANCE.
+
+
+                            }
+                            
+                        }
+                        
+
+                    }
+
                 break;
+            
+                default:
+                # code...
+                            
         }
 
         return response($response);        
@@ -260,7 +485,7 @@ class GettingInsuranceCovers extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  int  $id
+     * @param  int  $idr
      * @return \Illuminate\Http\Response
      */
     public function edit($id)

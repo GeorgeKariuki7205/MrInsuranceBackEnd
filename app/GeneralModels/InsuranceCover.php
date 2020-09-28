@@ -58,18 +58,18 @@ class InsuranceCover extends Model
         return $this->hasMany('App\MotorInsuranceModels\AdditionalCover', 'insurance_cover_id', 'id');
     }
 
-    public function InsuranceCoverHasManyCommercialClass()
+    public function InsuranceCoverHasManyCommercialClasses()
     {
         return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialClass', 'insurance_cover_id', 'id');
     }
 
-    public function InsuranceCoverHasManyPrivateComprehansiveCovers()
+    public function InsuranceCoverHasManyPrivateVehicles()
     {
-        return $this->hasMany('App\MotorInsuranceModels\PrivateVehicles\PrivateComprehensiveCover', 'insurance_cover_id', 'id');
+        return $this->hasMany('App\MotorInsuranceModels\PrivateVehicles\PrivateCostDetail', 'insurance_cover_id', 'id');
     }
 
-    public function InsuranceCoverHasManyPrivatePartyCovers()
-    {
-        return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialThirdPartyCost', 'insurance_cover_id', 'id');
-    }
+    // public function InsuranceCoverHasManyPrivatePartyCovers()
+    // {
+    //     return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialThirdPartyCost', 'insurance_cover_id', 'id');
+    // }
 }

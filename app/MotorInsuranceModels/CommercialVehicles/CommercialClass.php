@@ -15,4 +15,8 @@ class CommercialClass extends Model
     {
         return $this->belongsTo('App\GeneralModels\InsuranceCover', 'insurance_cover_id', 'id');
     }
+    public function CommercialClassHasManyCommerialComprehesiveCosts()
+    {
+        return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialComprehensiveCost', 'commercial_class_id', 'id');
+    }
 }

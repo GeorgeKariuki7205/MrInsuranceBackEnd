@@ -10,17 +10,17 @@ class PrivateCostDetail extends Model
     
     protected $table = 'motor_private_cost_details';
 
-    public function PrivateCostDetailsHasOneCommercialCost()
+    public function PrivateCostDetailsHasManyComprehensiveCost()
     {
-        return $this->hasOne('App\MotorInsuranceModels\PrivateVehicles\PrivateComprehensiveCover', 'private_cost_id', 'id');
+        return $this->hasMany('App\MotorInsuranceModels\PrivateVehicles\PrivateComprehensiveCover', 'private_cost_id', 'id');
     }
 
-    public function PrivateCostDetailsHasOneThirdPartyCost()
+    public function PrivateCostDetailsHasManyThirdPartyCost()
     {
-        return $this->hasOne('App\MotorInsuranceModels\PrivateVehicles\PrivateThirdPartyCover', 'private_cost_id', 'id');
+        return $this->hasMany('App\MotorInsuranceModels\PrivateVehicles\PrivateThirdPartyCover', 'private_cost_id', 'id');
     }
 
-    public function privateThirdPartyCoverBelongsToCover()
+    public function privateThirdPartyCoverBelongsToInsuranceCover()
     {
         return $this->belongsTo('App\MotorInsuranceModels\PrivateVehicles\PrivateCostDetail', 'insurance_cover_id', 'id');
     }
