@@ -18,6 +18,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Principal Member Age ?',
                 'type'=> 'date',                
                 'required'=> 1,
+                'name'=>'principal_member_age'
             ],
             [
                 'cover_id'=> 1,
@@ -25,6 +26,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Spouse Age ?',
                 'type'=> 'date',                
                 'required'=> 0,
+                'name'=>'spouse_age'
             ],
             [
                 'cover_id'=> 1,
@@ -32,6 +34,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Number Of Children: ',
                 'type'=> 'number',                
                 'required'=> 1,
+                'name'=>'number_of_dependant'
             ],
             [
                 'cover_id'=> 1,
@@ -39,6 +42,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Do You Have A Pre Existing Condition ? ',
                 'type'=> 'checkbox',                
                 'required'=> 1,
+                'name'=>'pre_existing_condition'
             ],
             [
                 'cover_id'=> 1,
@@ -46,6 +50,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Principal Member Age ?',
                 'type'=> 'date',                
                 'required'=> 1,
+                'name'=>'principal_member_age'
             ],
             [
                 'cover_id'=> 1,
@@ -53,6 +58,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Do You Have A Pre Existing Condition ? ',
                 'type'=> 'checkbox',                
                 'required'=> 0,
+                'name'=>'pre_existing_condition'
             ],
             [
                 'cover_id'=> 2, 
@@ -60,6 +66,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'What is the price of your Car ?  ',
                 'type'=> 'number',                
                 'required'=> 1,
+                'name'=>'vehicleCost'
             ],
             [
                 'cover_id'=> 2, 
@@ -67,6 +74,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Year Of Manufucture Of Your Vehicle ?  ',
                 'type'=> 'number',                
                 'required'=> 1,
+                'name'=>'yearOfManufucture'
             ],
             [
                 'cover_id'=> 2, 
@@ -74,6 +82,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Comprehensive Or Third Party Insurance Cover',
                 'type'=> 'select',                
                 'required'=> 1,
+                'name'=>'isComprehensive'
             ],
 
             [
@@ -82,6 +91,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'What is the price of your Car ?  ',
                 'type'=> 'number',                
                 'required'=> 1,
+                'name'=>'vehicleCost'
             ],
             [
                 'cover_id'=> 2, 
@@ -89,6 +99,7 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Year Of Manufucture Of Your Vehicle ?  ',
                 'type'=> 'number',                
                 'required'=> 1,
+                'name'=>'yearOfManufucture'
             ],
             [
                 'cover_id'=> 2, 
@@ -96,13 +107,15 @@ class CoverQuestionSeeder extends Seeder
                 'question'=> 'Comprehensive Or Third Party Insurance Cover',
                 'type'=> 'select',                
                 'required'=> 1,
+                'name'=>'isComprehensive'
             ],
             [
                 'cover_id'=> 2, 
                 'sub_category_id'=> 5,               
-                'question'=> 'Type Of Comprehensive Vehicle',
+                'question'=> 'Type Of Commercial Vehicle Vehicle',
                 'type'=> 'select',                
                 'required'=> 1,
+                'name'=>'typeOfCommercialVehicle'
             ]
 
         ];

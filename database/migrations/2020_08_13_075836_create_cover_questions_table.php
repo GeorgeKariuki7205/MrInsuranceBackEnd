@@ -28,7 +28,7 @@ class CreateCoverQuestionsTable extends Migration
 
             $table->text("question");
             $table->boolean("required");
-
+            $table->text('name');
             $table->text("type");
             $table->timestamps();
         });

@@ -49,7 +49,7 @@ class NavigationController extends Controller
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
-                        // $specificQuestionsDetail['name'] = $question->CoverQuestionBelongsToCoverRequirement->name;
+                        $specificQuestionsDetail['name'] = $question->name;
                         $specificQuestionsDetail['required'] = $question->required;
 
                         // ! this section is used to check if the section is required for options value. 
