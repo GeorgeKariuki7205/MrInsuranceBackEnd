@@ -75,7 +75,7 @@ class NavigationController extends Controller
                                 }
                                 if ($specificQuestionsDetail['question'] == 'Comprehensive Or Third Party Insurance Cover'){
 
-                                    $specificQuestionsDetail['selectName'] = ['Comprehensive Insurance Cover','Third Party Inurance Cover'];                                        
+                                    $specificQuestionsDetail['selectValues'] = ['Comprehensive Insurance Cover','Third Party Inurance Cover'];                                        
 
                                 }
                                 
