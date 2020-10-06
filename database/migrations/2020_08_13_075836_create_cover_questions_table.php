@@ -26,11 +26,9 @@ class CreateCoverQuestionsTable extends Migration
             // ! adding the relationship to the subCategory. 
             $table->foreign('sub_category_id')->references('id')->on('sub_category_covers')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger("cover_requirement_id");
-
-            $table->foreign('cover_requirement_id')->references('id')->on('cover_requirements')->onDelete('cascade')->onUpdate('cascade');
-
             $table->text("question");
+            $table->boolean("required");
+
             $table->text("type");
             $table->timestamps();
         });

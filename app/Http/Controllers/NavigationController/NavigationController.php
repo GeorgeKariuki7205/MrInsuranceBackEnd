@@ -5,6 +5,7 @@ namespace App\Http\Controllers\NavigationController;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\GeneralModels\Cover;
+use App\MotorInsuranceModels\CommercialVehicles\CommercialClass;
 class NavigationController extends Controller
 {
     /**
@@ -48,16 +49,48 @@ class NavigationController extends Controller
                         $specificQuestionsDetail = array();
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
-                        $specificQuestionsDetail['name'] = $question->CoverQuestionBelongsToCoverRequirement->name;
-                        $specificQuestionsDetail['required'] = $question->CoverQuestionBelongsToCoverRequirement->required;
+                        // $specificQuestionsDetail['name'] = $question->CoverQuestionBelongsToCoverRequirement->name;
+                        $specificQuestionsDetail['required'] = $question->required;
+
+                        // ! this section is used to check if the section is required for options value. 
+
+                        if ($specificQuestionsDetail['type'] == 'select') {
+                            # code...
+                            // ! getting the options that are related to the commercial motor insurances. 
+
+                            if($subCategory->id == 5 || $subCategory->id == 4){
+
+                                if ($subCategory->id == 5 && $specificQuestionsDetail['question'] !== 'Comprehensive Or Third Party Insurance Cover') {
+                                    # code...
+                                    $motorInsuranceCommercialtypes = CommercialClass::all();
+                                    $motorInsuranceCommercialTypesNames = array();
+                                    $motorInsuranceCommercialTypesDescription = array();
+
+                                    foreach ($motorInsuranceCommercialtypes as $motorInsuranceCommercialtype) {
+                                        # code...
+                                         array_push($motorInsuranceCommercialTypesNames , $motorInsuranceCommercialtype->name);
+                                         array_push($motorInsuranceCommercialTypesDescription , $motorInsuranceCommercialtype->description);
+                                        
+                                    }
+                                    $specificQuestionsDetail['selectName'] = $motorInsuranceCommercialTypesNames;
+                                    $specificQuestionsDetail['selectDescription'] = $motorInsuranceCommercialTypesDescription;
+                                }
+                                if ($specificQuestionsDetail['question'] == 'Comprehensive Or Third Party Insurance Cover'){
+
+                                    $specificQuestionsDetail['selectName'] = ['Comprehensive Insurance Cover','Third Party Inurance Cover'];                                        
+
+                                }
+                                
+                                // ! 
+                            }
+                        }
+
                         array_push($subCategoryQuestionsArray,$specificQuestionsDetail);
                         
                     }
                     
                     $subCategories['questions'] = $subCategoryQuestionsArray;                    
-                    array_push($subCategoriesMajorArray,$subCategories);
-
-                                             
+                    array_push($subCategoriesMajorArray,$subCategories);                                             
                 }                
                 $coverData['subCategories'] = $subCategoriesMajorArray;                    
             }
@@ -70,7 +103,7 @@ class NavigationController extends Controller
                         $specificQuestionsDetail['question'] = $question->question;
                         $specificQuestionsDetail['type'] = $question->type;
                         $specificQuestionsDetail['name'] = $question->CoverQuestionBelongsToCoverRequirement->name;
-                        $specificQuestionsDetail['required'] = $question->CoverQuestionBelongsToCoverRequirement->required;
+                        $specificQuestionsDetail['required'] = $question->required;
 
                         array_push($coverQuestion,$specificQuestionsDetail);
                 }   
@@ -85,70 +118,5 @@ class NavigationController extends Controller
         return response($navigation,200);
 
     }
-
-    /**
-     * Show the form for creating a new resource.
-     *
-     * @return \Illuminate\Http\Response
-     */
-    public function create()
-    {
-        //
-    }
-
-    /**
-     * Store a newly created resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @return \Illuminate\Http\Response
-     */
-    public function store(Request $request)
-    {
-        //
-    }
-
-    /**
-     * Display the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function show($id)
-    {
-        //
-    }
-
-    /**
-     * Show the form for editing the specified resource.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function edit($id)
-    {
-        //
-    }
-
-    /**
-     * Update the specified resource in storage.
-     *
-     * @param  \Illuminate\Http\Request  $request
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function update(Request $request, $id)
-    {
-        //
-    }
-
-    /**
-     * Remove the specified resource from storage.
-     *
-     * @param  int  $id
-     * @return \Illuminate\Http\Response
-     */
-    public function destroy($id)
-    {
-        //
-    }
+   
 }
