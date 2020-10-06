@@ -68,12 +68,10 @@ class NavigationController extends Controller
 
                                     foreach ($motorInsuranceCommercialtypes as $motorInsuranceCommercialtype) {
                                         # code...
-                                         array_push($motorInsuranceCommercialTypesNames , $motorInsuranceCommercialtype->name);
-                                         array_push($motorInsuranceCommercialTypesDescription , $motorInsuranceCommercialtype->description);
+                                         array_push($motorInsuranceCommercialTypesNames , $motorInsuranceCommercialtype);                                         
                                         
                                     }
-                                    $specificQuestionsDetail['selectName'] = $motorInsuranceCommercialTypesNames;
-                                    $specificQuestionsDetail['selectDescription'] = $motorInsuranceCommercialTypesDescription;
+                                    $specificQuestionsDetail['selectValues'] = $motorInsuranceCommercialTypesNames;                                    
                                 }
                                 if ($specificQuestionsDetail['question'] == 'Comprehensive Or Third Party Insurance Cover'){
 
