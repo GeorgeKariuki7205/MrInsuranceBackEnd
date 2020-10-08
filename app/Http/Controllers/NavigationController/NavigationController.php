@@ -77,8 +77,8 @@ class NavigationController extends Controller
 
 
                                     $specificQuestionsDetail['selectValues'] = [
-                                                                                    array('id'=> true,  'name'=>'Comprehensive Insurance Cover'),
-                                                                                    array('id'=> false,  'name'=>'Third Party Inurance Cover')
+                                                                                    array('id'=> 1,  'name'=>'Comprehensive Insurance Cover'),
+                                                                                    array('id'=> 0,  'name'=>'Third Party Inurance Cover')
                                                                                 ];                                        
 
                                 }
