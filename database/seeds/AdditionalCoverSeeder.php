@@ -1,7 +1,7 @@
 <?php
 
 use Illuminate\Database\Seeder;
-
+use App\MotorInsuranceModels\AdditionalCover;
 class AdditionalCoverSeeder extends Seeder
 {
     /**
@@ -69,7 +69,7 @@ class AdditionalCoverSeeder extends Seeder
 
         foreach($additioalCovers as $key => $value){
 
-            Benefit::create($value);            
+            AdditionalCover::create($value);            
 
         }
     }
