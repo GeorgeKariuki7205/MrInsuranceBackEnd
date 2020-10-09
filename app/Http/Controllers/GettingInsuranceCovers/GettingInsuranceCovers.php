@@ -64,32 +64,32 @@ class GettingInsuranceCovers extends Controller
             
             // ! creating the dummy array that is passed from the API endpoint for Motor Insurance.
 
-            $request = array();
-            $request['coverId'] = 2;
-            $request['subCategoryId'] = 5;
+            // $request = array();
+            // $request['coverId'] = 2;
+            // $request['subCategoryId'] = 5;
 
-            $insuranceCoverDetails = array();
+            // $insuranceCoverDetails = array();
 
-            $insuranceCoverDetails['vehicleCost'] = 2000000;
-            $insuranceCoverDetails['yearOfManufucture'] = 2019;
-            $insuranceCoverDetails['isComprehensive'] = true;
-            $insuranceCoverDetails['classIfCommercial'] = 1;            
-            $insuranceCoverDetails['valueForCommercial'] = 20;
+            // $insuranceCoverDetails['vehicleCost'] = 2000000;
+            // $insuranceCoverDetails['yearOfManufucture'] = 2019;
+            // $insuranceCoverDetails['isComprehensive'] = true;
+            // $insuranceCoverDetails['classIfCommercial'] = 1;            
+            // $insuranceCoverDetails['valueForCommercial'] = 20;
 
-            $personalDetails = array();
-            $personalDetails['email_address'] = "mail@mail.com";
-            $personalDetails['name'] = "George";
-            $personalDetails['phoneNumber'] = "0789898928";
+            // $personalDetails = array();
+            // $personalDetails['email_address'] = "mail@mail.com";
+            // $personalDetails['name'] = "George";
+            // $personalDetails['phoneNumber'] = "0789898928";
 
-            $request['personalDetails'] = $personalDetails;
+            // $request['personalDetails'] = $personalDetails;
 
 
 
 
         //! this method is used to get all the insurance covers after posting from the API endpoint in the frontEnd.
 
-        $coverId = $request['coverId'];
-        //* $coverId = $request->coverId;
+        //* $coverId = $request['coverId'];
+         $coverId = $request->coverId;
 
         $gettingTheCovers = Cover::where('id',$coverId)->get();
         $cover = null;
@@ -108,8 +108,8 @@ class GettingInsuranceCovers extends Controller
 
         if ($hasSubCategories == 1) {
             # code...
-            $subCategoryId = $request['subCategoryId'];
-            // *$subCategoryId = $request->subCategoryId;
+            // *$subCategoryId = $request['subCategoryId'];
+            $subCategoryId = $request->subCategoryId;
         }   
         
         // ! creating the array that will hold the response. 
