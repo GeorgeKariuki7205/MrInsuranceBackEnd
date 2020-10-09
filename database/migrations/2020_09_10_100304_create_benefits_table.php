@@ -23,7 +23,7 @@ class CreateBenefitsTable extends Migration
 
             $table->longText('name');
             $table->longText('description')->nullable();
-            $table->bigInteger('amount');
+            $table->bigInteger('amount')->nullable();
             $table->timestamps();
         });
     }
