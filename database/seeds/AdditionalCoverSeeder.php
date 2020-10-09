@@ -49,7 +49,7 @@ class AdditionalCoverSeeder extends Seeder
                 'value'=> 0,
             ],
             [
-                'insurance_cover_id'=> 3,
+                'insurance_cover_id'=> 4,
                 'name'=> 'Excess Protector (Own Damage)',
                 'description'=> 'Excess Protector (Own Damage)',
                 'min_amount'=> 0,
@@ -57,7 +57,7 @@ class AdditionalCoverSeeder extends Seeder
                 'value'=> 0,
             ],
             [
-                'insurance_cover_id'=> 3,
+                'insurance_cover_id'=> 4,
                 'name'=> 'Excess Protector (Own Damage)',
                 'description'=> 'Excess Protector (Own Damage)',
                 'min_amount'=> 0,
