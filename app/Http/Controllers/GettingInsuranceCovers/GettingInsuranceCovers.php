@@ -333,6 +333,8 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
                                                 $coverDetails['insuranceCover'] = $insuranceCover->name;
                                                 $coverDetails['amountPayable'] = $amountPayable;
+                                                $coverDetails['benefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
+                                                $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
                                                 array_push($response,$coverDetails); 
                                                 // array_push($response,$privateVehiclesCover);                                                 
                                                 break;
@@ -431,6 +433,8 @@ class GettingInsuranceCovers extends Controller
                                                             $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
                                                             $coverDetails['insuranceCover'] = $insuranceCover->name;
                                                             $coverDetails['amountPayable'] = ($insuranceCoverDetails['vehicleCost']*$commercialCompreheiveCost->rate)/100 ;
+                                                            $coverDetails['benefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
+                                                            $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
                                                             array_push($response,$coverDetails); 
 
                                                         break;
