@@ -288,7 +288,7 @@ class GettingInsuranceCovers extends Controller
 
                             // ! checking to see the type of cover (comprehensive or 3rd party.)
                             // if ($insuranceCoverDetails['isComprehensive']) {
-                            if ($insuranceCoverDetails->isComprehensive == 1) {
+                            if ($request['insuranceCoverDetails']->isComprehensive == 1) {
                                 # code...
                                 // ! functionlaity to be implemented for a comprehensive Cover. 
                                                               
