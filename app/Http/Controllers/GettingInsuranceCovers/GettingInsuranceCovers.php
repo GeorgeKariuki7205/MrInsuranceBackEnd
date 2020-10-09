@@ -410,10 +410,7 @@ class GettingInsuranceCovers extends Controller
                                                 // array_push($response, $commercialClass);
                                                 $commercialCompreheiveCosts = $commercialClass->CommercialClassHasManyCommerialComprehesiveCosts;
     
-                                                foreach ($commercialCompreheiveCosts as $commercialCompreheiveCost) {
-                                                    # code...
-                                                    // commercialCompreheiveCovers
-                                                    // array_push($response, $commercialCompreheiveCost);
+                                                foreach ($commercialCompreheiveCosts as $commercialCompreheiveCost) {                                                   
                                                     // ! checking to get the cover that corresponds to the amount given. 
                                                     //* if ((($insuranceCoverDetails['vehicleCost'] <= $commercialCompreheiveCost->sum_insured_to_value && $insuranceCoverDetails['vehicleCost'] >= $commercialCompreheiveCost->sum_insured_from_value) || 
                                                     // *    ($commercialCompreheiveCost->sum_insured_to_value == 0 && $insuranceCoverDetails['vehicleCost'] >= $commercialCompreheiveCost->sum_insured_from_value)) &&

@@ -39,6 +39,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CommercialClassSeeder::class);
         $this->call(CommercialComprehensiveCostSeeder::class);        
         $this->call(CommercialTypeOfThirdPartyCostSeeder::class);
+        $this->call(AdditionalCoverSeeder::class);
+        $this->call(BenefitSeeder::class);
+        
         
         
 
