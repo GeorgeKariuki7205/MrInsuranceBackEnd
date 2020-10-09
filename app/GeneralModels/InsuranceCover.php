@@ -53,7 +53,7 @@ class InsuranceCover extends Model
         return $this->hasMany('App\MotorInsuranceModels\Benefit', 'insurance_cover_id', 'id');
     }
 
-    public function InsuranceCoverHasManyAdditionalCovers()
+    public function InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers()
     {
         return $this->hasMany('App\MotorInsuranceModels\AdditionalCover', 'insurance_cover_id', 'id');
     }
