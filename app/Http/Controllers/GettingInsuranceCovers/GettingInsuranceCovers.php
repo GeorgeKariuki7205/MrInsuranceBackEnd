@@ -311,15 +311,15 @@ class GettingInsuranceCovers extends Controller
                                             //* if (($insuranceCoverDetails['vehicleCost'] <= $privateVehiclesCover->sum_insured_to_value && $insuranceCoverDetails['vehicleCost'] >= $privateVehiclesCover->sum_insured_from_value) || 
                                             // *    ($privateVehiclesCover->sum_insured_to_value == 0 && $insuranceCoverDetails['vehicleCost'] >= $privateVehiclesCover->sum_insured_from_value)) {
                                             
-                                            if (($request['insuranceCoverDetails']->vehicleCost <= $privateVehiclesCover->sum_insured_to_value && $request['insuranceCoverDetails']->vehicleCost >= $privateVehiclesCover->sum_insured_from_value) || 
-                                            ($privateVehiclesCover->sum_insured_to_value == 0 && $request['insuranceCoverDetails']->vehicleCost >= $privateVehiclesCover->sum_insured_from_value)) {
+                                            if (($request['insuranceCoverDetails']['vehicleCost'] <= $privateVehiclesCover->sum_insured_to_value && $request['insuranceCoverDetails']['vehicleCost'] >= $privateVehiclesCover->sum_insured_from_value) || 
+                                            ($privateVehiclesCover->sum_insured_to_value == 0 && $request['insuranceCoverDetails']['vehicleCost'] >= $privateVehiclesCover->sum_insured_from_value)) {
                                                 # code...
                                                 $returnable = "found.";
 
                                                 // ! amount payable calculation. 
 
                                                 // *$amountPayable = ($privateVehiclesCover->rate * $insuranceCoverDetails['vehicleCost'])/100;
-                                                $amountPayable = ($privateVehiclesCover->rate * $request['insuranceCoverDetails']->vehicleCost)/100;
+                                                $amountPayable = ($privateVehiclesCover->rate * $request['insuranceCoverDetails']['vehicleCost'])/100;
                                                 if ($amountPayable < $privateVehiclesCover->minimum_premium_amount) {
                                                     # code...
                                                     $amountPayable = $privateVehiclesCover->minimum_premium_amount;
@@ -381,7 +381,7 @@ class GettingInsuranceCovers extends Controller
                             // ! getting the class of the commercial vehicle.
                             # code...
                             //* $commercialClassID = $insuranceCoverDetails['classIfCommercial'];
-                             $commercialClassID = $request['insuranceCoverDetails']->classIfCommercial;
+                             $commercialClassID = $request['insuranceCoverDetails']['classIfCommercial'];
                             // ! THIS IS THE CATEGORY USED TO IMPLEMENT THE COMMERCIAL MOTOR INURANCE.
 
                             if ($request['insuranceCoverDetails']['isComprehensive']) {
