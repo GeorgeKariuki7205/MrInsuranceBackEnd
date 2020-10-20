@@ -23,9 +23,9 @@ class CreateAdditionalCoversTable extends Migration
 
             $table->longText('name');
             $table->longText('description')->nullable();
-            $table->bigInteger('min_amount')->nullable();
-            $table->bigInteger('rate')->nullable();
-            $table->bigInteger('value')->nullable();
+            $table->float('min_amount')->nullable();
+            $table->float('rate')->nullable();
+            $table->float('value')->nullable();
             $table->timestamps();
         });
     }
