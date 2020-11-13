@@ -335,7 +335,7 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['amountPayable'] = $amountPayable;
                                                 $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                                 $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
-
+                                                $coverDetails['vehicleCost']= $request['insuranceCoverDetails']['vehicleCost'];
                                                 // $financialBreakDown = array();
                                                 // $cost = array();
                                                 // $array_push($cost);
@@ -380,6 +380,7 @@ class GettingInsuranceCovers extends Controller
                                             $coverDetails['amountPayable'] = $privateVehiclesCover->cost;
                                             $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                             $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
+                                            $coverDetails['vehicleCost']= $request['insuranceCoverDetails']['vehicleCost'];
                                             array_push($response,$coverDetails);
                                         }                                        
                                     }
@@ -438,6 +439,7 @@ class GettingInsuranceCovers extends Controller
                                                             $coverDetails['amountPayable'] = ($insuranceCoverDetails['vehicleCost']*$commercialCompreheiveCost->rate)/100 ;
                                                             $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                                             $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
+                                                            $coverDetails['vehicleCost']= $request['insuranceCoverDetails']['vehicleCost'];
                                                             array_push($response,$coverDetails); 
 
                                                         break;
