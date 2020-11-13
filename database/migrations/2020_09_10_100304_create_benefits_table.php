@@ -24,6 +24,7 @@ class CreateBenefitsTable extends Migration
             $table->longText('name');
             $table->longText('description')->nullable();
             $table->bigInteger('amount')->nullable();
+            $table->integer('type_of_benefit')->nullable();
             $table->timestamps();
         });
     }
