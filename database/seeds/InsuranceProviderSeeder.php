@@ -38,11 +38,11 @@ class InsuranceProviderSeeder extends Seeder
             ],
             [
                 'name'=>"Gari Njema Commercial Motor Insurance",                
-                'company_id' => 3,
+                'company_id' => 2,
                 'cover_id'=> 2,
                 'is_active' => 1,
                 'year'=> '2020',
-                'sub_category_id'=> 5
+                'sub_category_id'=> 4
             ]
         ];
         foreach($insuranceCovers as $key => $value){
