@@ -57,8 +57,19 @@ Route::apiResource('/motorAdditionalCovers','MotorInsuranceControllers\Additiona
 
 
 // ! Payments APIs. 
+
+// ? old
 Route::post('/stkPush', 'Payments\CustomerToOrganisationController@customerMpesaSTKPush');
 Route::post('/stkPushCallBack', 'Payments\CustomerToOrganisationController@callBackForTheSTKPush');
+
+// ? new
+Route::post('/accessToken','Mpesa\LipaNaMpesa@generateAccessTokens');
+Route::post('/validationURL','Mpesa\LipaNaMpesa@validationMethod');
+Route::post('/confirmationURL','Mpesa\LipaNaMpesa@confirmationMethod');
+Route::post('/registerURLS','Mpesa\LipaNaMpesa@registerURLS');
+Route::post('/simulateTransaction','Mpesa\LipaNaMpesa@simulateTransaction');
+Route::post('/stkPush', 'Mpesa\LipaNaMpesa@customerMpesaSTKPush');
+Route::post('/stkPushCallBack', 'Mpesa\LipaNaMpesa@callBackForTheSTKPush');
 
 
 
