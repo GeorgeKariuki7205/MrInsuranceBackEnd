@@ -56,20 +56,20 @@ Route::apiResource('/motorAdditionalCovers','MotorInsuranceControllers\Additiona
 
 
 
-// ! Payments APIs. 
+// ! Payments APIs.
 
 // ? old
 Route::post('/stkPush', 'Payments\CustomerToOrganisationController@customerMpesaSTKPush');
 Route::post('/stkPushCallBack', 'Payments\CustomerToOrganisationController@callBackForTheSTKPush');
 
 // ? new
-Route::post('/accessToken','Mpesa\LipaNaMpesa@generateAccessTokens');
-Route::post('/validationURL','Mpesa\LipaNaMpesa@validationMethod');
-Route::post('/confirmationURL','Mpesa\LipaNaMpesa@confirmationMethod');
-Route::post('/registerURLS','Mpesa\LipaNaMpesa@registerURLS');
-Route::post('/simulateTransaction','Mpesa\LipaNaMpesa@simulateTransaction');
-Route::post('/stkPush', 'Mpesa\LipaNaMpesa@customerMpesaSTKPush');
-Route::post('/stkPushCallBack', 'Mpesa\LipaNaMpesa@callBackForTheSTKPush');
+Route::post('/accessToken','Mpesa\LipaNaMpesaController@generateAccessTokens');
+Route::post('/validationURL','Mpesa\LipaNaMpesaController@validationMethod');
+Route::post('/confirmationURL','Mpesa\LipaNaMpesaController@confirmationMethod');
+Route::post('/registerURLS','Mpesa\LipaNaMpesaController@registerURLS');
+Route::post('/simulateTransaction','Mpesa\LipaNaMpesaController@simulateTransaction');
+Route::post('/stkPush', 'Mpesa\LipaNaMpesaController@customerMpesaSTKPush');
+Route::post('/stkPushCallBack', 'Mpesa\LipaNaMpesaController@callBackForTheSTKPush');
 
 
 
