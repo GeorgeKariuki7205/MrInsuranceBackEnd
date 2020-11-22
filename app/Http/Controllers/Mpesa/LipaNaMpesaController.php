@@ -69,7 +69,7 @@ class LipaNaMpesaController extends Controller
        
         Storage::put('attempt3.txt',"Test1.");
         // ! fire the broadcast events. 
-        event(new PaymentEvent($content));
+        // event(new PaymentEvent($content));
 
         $response = new Response();
         $response->headers->set("Content-Type", "text/xml; charset=utf-8");
@@ -106,7 +106,7 @@ class LipaNaMpesaController extends Controller
 
         $content = json_decode($request->getContent());
         $contentData = $request->getContent();
-        $mpesa_transaction = new PaymentsC2B();
+        $mpesa_transaction = new Payment();
         $mpesa_transaction->TransactionType = $content->TransactionType;
         $mpesa_transaction->TransID = $content->TransID;
         $mpesa_transaction->TransTime = $content->TransTime;
