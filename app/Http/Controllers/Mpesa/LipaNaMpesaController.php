@@ -8,6 +8,7 @@ use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Mpesa\Payment;
+use Illuminate\Http\Response;
 class LipaNaMpesaController extends Controller
 {
     public function lipaNaMpesaPassword()
