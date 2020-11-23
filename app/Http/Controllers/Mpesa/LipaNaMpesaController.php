@@ -170,8 +170,8 @@ class LipaNaMpesaController extends Controller
         $curl_post_data = array(
             'ShortCode' => '600754',
             'ResponseType' => 'Confirmed',
-            'ConfirmationURL' => 'https://safaricommobilemoneyintegration.georgekprojects.tk/api/confirmationURL',
-            'ValidationURL' => 'https://safaricommobilemoneyintegration.georgekprojects.tk/api/validationURL',
+            'ConfirmationURL' => 'https://mrinsuranceapi.georgekprojects.tk/api/confirmationURL',
+            'ValidationURL' => 'https://mrinsuranceapi.georgekprojects.tk/api/validationURL',
         );
 
         $data_string = json_encode($curl_post_data);
