@@ -130,10 +130,10 @@ class LipaNaMpesaController extends Controller
         // // ! fire the broadcast events. 
         // event(new PaymentEvent($content));
 
-        // //! Responding to the confirmation request
-        // $response = new Response();
-        // $response->headers->set("Content-Type", "text/xml; charset=utf-8");
-        // $response->setContent(json_encode(["C2BPaymentConfirmationResult" => "Success"]));
+        //! Responding to the confirmation request
+        $response = new Response();
+        $response->headers->set("Content-Type", "text/xml; charset=utf-8");
+        $response->setContent(json_encode(["C2BPaymentConfirmationResult" => "Success"]));
 
         return $response;
     }
