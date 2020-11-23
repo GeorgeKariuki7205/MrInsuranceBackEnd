@@ -38,8 +38,8 @@ class LipaNaMpesaController extends Controller
             'PartyA' => 254115335486, // replace this with your phone number
             'PartyB' => 174379,
             'PhoneNumber' => 254115335486, // replace this with your phone number
-            // 254115335486
-            'CallBackURL' => 'https://safaricommobilemoneyintegration.georgekprojects.tk/api/stkPushCallBack',
+            // 254115335486 https://mrinsuranceapi.georgekprojects.tk/
+            'CallBackURL' => 'https://mrinsuranceapi.georgekprojects.tk/api/stkPushCallBack',
             'AccountReference' => "Sample",
             'TransactionDesc' => "Testing stk push on sandbox"
         ];
@@ -65,11 +65,11 @@ class LipaNaMpesaController extends Controller
             $mpesa_transaction->TransactionDate = $content->Body->stkCallback->CallbackMetadata->Item[3]->Value;
             $mpesa_transaction->PhoneNumber = $content->Body->stkCallback->CallbackMetadata->Item[4]->Value;
 
-        $mpesa_transaction->save();
+            $mpesa_transaction->save();
        
-        Storage::put('attempt3.txt',"Test1.");
-        // ! fire the broadcast events. 
-        // event(new PaymentEvent($content));
+        // Storage::put('attempt3.txt',"Test1.");
+        // // ! fire the broadcast events. 
+        // // event(new PaymentEvent($content));
 
         $response = new Response();
         $response->headers->set("Content-Type", "text/xml; charset=utf-8");
@@ -123,16 +123,16 @@ class LipaNaMpesaController extends Controller
         // $mpesa_transaction->TransactionType = 'Lipa Na MPESA.';
         $mpesa_transaction->save();
 
-        Storage::put('attempt3.txt', $contentData);
+        // Storage::put('attempt3.txt', $contentData);
 
-        // Storage::put('attempt3.txt', $contentMpesa);
-        // ! fire the broadcast events. 
-        event(new PaymentEvent($content));
+        // // Storage::put('attempt3.txt', $contentMpesa);
+        // // ! fire the broadcast events. 
+        // event(new PaymentEvent($content));
 
-        //! Responding to the confirmation request
-        $response = new Response();
-        $response->headers->set("Content-Type", "text/xml; charset=utf-8");
-        $response->setContent(json_encode(["C2BPaymentConfirmationResult" => "Success"]));
+        // //! Responding to the confirmation request
+        // $response = new Response();
+        // $response->headers->set("Content-Type", "text/xml; charset=utf-8");
+        // $response->setContent(json_encode(["C2BPaymentConfirmationResult" => "Success"]));
 
         return $response;
     }
