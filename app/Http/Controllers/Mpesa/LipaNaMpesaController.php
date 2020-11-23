@@ -197,7 +197,7 @@ class LipaNaMpesaController extends Controller
         $curl_post_data = array(
             'ShortCode' => '600754',
             'CommandID' => 'CustomerPayBillOnline',
-            'Amount' => 100,
+            'Amount' => 1000,
             'Msisdn' => '254708374149',
             'BillRefNumber' => '00000'
         );
