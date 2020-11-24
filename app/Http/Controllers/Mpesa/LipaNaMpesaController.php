@@ -23,7 +23,7 @@ class LipaNaMpesaController extends Controller
     /**
      * Lipa na M-PESA STK Push method
      * */
-    public function customerMpesaSTKPush()
+    public function customerMpesaSTKPush(Request $request)
     {
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
