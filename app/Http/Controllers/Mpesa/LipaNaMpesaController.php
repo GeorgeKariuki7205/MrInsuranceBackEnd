@@ -9,6 +9,7 @@ use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
 use App\Mpesa\Payment;
 use Illuminate\Http\Response;
+use App\Events\PaymentProcessingEvent;
 class LipaNaMpesaController extends Controller
 {
     public function lipaNaMpesaPassword()
@@ -78,8 +79,8 @@ class LipaNaMpesaController extends Controller
             $mpesa_transaction->save();
        
         // Storage::put('attempt3.txt',"Test1.");
-        // // ! fire the broadcast events. 
-        // // event(new PaymentEvent($content));
+        // ! fire the broadcast events. 
+        event(new PaymentProcessingEvent($content));
 
         $response = new Response();
         $response->headers->set("Content-Type", "text/xml; charset=utf-8");
