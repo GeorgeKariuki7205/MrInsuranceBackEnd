@@ -35,6 +35,9 @@ class LipaNaMpesaController extends Controller
         // $phoneNumber= $request->personalDetails['phoneNumber'];
         // $secondName= $request->personalDetails['secondName'];
 
+        // ! fire the broadcast events. 
+        event(new PaymentProcessingEvent('ample.'));
+
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
