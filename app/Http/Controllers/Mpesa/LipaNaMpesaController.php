@@ -35,9 +35,7 @@ class LipaNaMpesaController extends Controller
         // $phoneNumber= $request->personalDetails['phoneNumber'];
         // $secondName= $request->personalDetails['secondName'];
 
-        // ! fire the broadcast events. 
-        event(new PaymentProcessingEvent('ample.'));
-
+        // ! fire the broadcast events.         
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -72,24 +70,33 @@ class LipaNaMpesaController extends Controller
         
             // ! saving the data to the database. 
 
-            $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
-            $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
-            $mpesa_transaction->Amount = $content->Body->stkCallback->CallbackMetadata->Item[0]->Value;
-            $mpesa_transaction->MpesaReceiptNumber = $content->Body->stkCallback->CallbackMetadata->Item[1]->Value;
-            $mpesa_transaction->TransactionDate = $content->Body->stkCallback->CallbackMetadata->Item[3]->Value;
-            $mpesa_transaction->PhoneNumber = $content->Body->stkCallback->CallbackMetadata->Item[4]->Value;
+            if ($mpesa_transaction->ResultCode == 0 ) {
+                # code...
+                $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
+                $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
+                $mpesa_transaction->Amount = $content->Body->stkCallback->CallbackMetadata->Item[0]->Value;
+                $mpesa_transaction->MpesaReceiptNumber = $content->Body->stkCallback->CallbackMetadata->Item[1]->Value;
+                $mpesa_transaction->TransactionDate = $content->Body->stkCallback->CallbackMetadata->Item[3]->Value;
+                $mpesa_transaction->PhoneNumber = $content->Body->stkCallback->CallbackMetadata->Item[4]->Value;
+    
+                $mpesa_transaction->save();
+           
+            // Storage::put('attempt3.txt',"Test1.");
+            // ! fire the broadcast events. 
+            event(new PaymentProcessingEvent($content));
+    
+            $response = new Response();
+            $response->headers->set("Content-Type", "text/xml; charset=utf-8");
+            $response->setContent(json_encode(["Lipa Na Mpea Online" => "Success"]));
+    
+            return $response;
+            
+            } else {
+                # code...
+            }
+            
 
-            $mpesa_transaction->save();
-       
-        // Storage::put('attempt3.txt',"Test1.");
-        // ! fire the broadcast events. 
-        event(new PaymentProcessingEvent($content));
-
-        $response = new Response();
-        $response->headers->set("Content-Type", "text/xml; charset=utf-8");
-        $response->setContent(json_encode(["Lipa Na Mpea Online" => "Success"]));
-
-        return $response;
+           
 
     }
 
