@@ -25,6 +25,13 @@ class LipaNaMpesaController extends Controller
      * */
     public function customerMpesaSTKPush(Request $request)
     {
+
+        $cost = $request->cost;
+        $email_address= $request->personalDetails['email_address'];
+        $firstName= $request->personalDetails['firstName'];
+        $phoneNumber= $request->personalDetails['phoneNumber'];
+        $secondName= $request->personalDetails['secondName'];
+        
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -36,9 +43,9 @@ class LipaNaMpesaController extends Controller
             'Timestamp' => Carbon::rawParse('now')->format('YmdHms'),
             'TransactionType' => 'CustomerPayBillOnline',
             'Amount' => 1,
-            'PartyA' => 254115335486, // replace this with your phone number
+            'PartyA' => $phoneNumber, // replace this with your phone number
             'PartyB' => 174379,
-            'PhoneNumber' => 254115335486, // replace this with your phone number
+            'PhoneNumber' => $phoneNumber, // replace this with your phone number
             // 254115335486 https://mrinsuranceapi.georgekprojects.tk/
             'CallBackURL' => 'https://mrinsuranceapi.georgekprojects.tk/api/stkPushCallBack',
             'AccountReference' => "Sample",
