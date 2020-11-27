@@ -10,6 +10,7 @@ use Illuminate\Support\Facades\Storage;
 use App\Mpesa\Payment;
 use Illuminate\Http\Response;
 use App\Events\PaymentProcessingEvent;
+use App\Jobs\Notifications\AfterPayment;
 class LipaNaMpesaController extends Controller
 {
     public function lipaNaMpesaPassword()
@@ -84,6 +85,11 @@ class LipaNaMpesaController extends Controller
             // Storage::put('attempt3.txt',"Test1.");
             // ! fire the broadcast events. 
             event(new PaymentProcessingEvent($content));
+
+            // ! firing the job.
+            $afterPaymentNotification = new AfterPayment($content);
+            dispatch($afterPaymentNotification);
+
     
             $response = new Response();
             $response->headers->set("Content-Type", "text/xml; charset=utf-8");
