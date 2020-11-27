@@ -72,16 +72,16 @@ class AfterPayment implements ShouldQueue
         // ? SENDING THE EMAIL.
 
 
-        // $email = new PaymentMail();
-        // Mail::to('ngugigeorge697@gmail.com')->send($email);
+        $email = new PaymentMail();
+        Mail::to('ngugigeorge697@gmail.com')->from('ngugigeorge697@gmail.com','Virat Gandhi')->send($email);
 
         $data = array('name'=>"Virat Gandhi");
    
-      Mail::send(['text'=>'mail'], $data, function($message) {
-         $message->to('ngugigeorge697@gmail.com', 'Tutorials Point')->subject
-            ('Laravel Basic Testing Mail');
-         $message->from('ngugigeorge697@gmail.com','Virat Gandhi');
-      });
+    //   Mail::send(['text'=>'mail'], $data, function($message) {
+    //      $message->to('ngugigeorge697@gmail.com', 'Tutorials Point')->subject
+    //         ('Laravel Basic Testing Mail');
+    //      $message->from('ngugigeorge697@gmail.com','Virat Gandhi');
+    //   });
 
     }
 }
