@@ -9,6 +9,9 @@ use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use AfricasTalking\SDK\AfricasTalking;
 
+use Mail;
+use App\Mail\Notification\PaymentMail;
+
 class AfterPayment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -33,39 +36,44 @@ class AfterPayment implements ShouldQueue
      */
     public function handle()
     {
-        //
+        //? SENDING THE SMS.
 
-        // Set your app credentials
-        // return "Send Message Method";
+        //! Set your app credentials
+        //! return "Send Message Method";
         $username   = "SampleAppForMe";
         $apiKey     = "79ef469520d71bf5334224f6f7c23e4441e635f2728067289dcb2172e908be3d";
 
-        // Initialize the SDK
+        //! Initialize the SDK
         $AT         = new AfricasTalking($username, $apiKey);
 
-        // Get the SMS service
+        //! Get the SMS service
         $sms        = $AT->sms();
 
-        // Set the numbers you want to send to in international format
+        //! Set the numbers you want to send to in international format
         $recipients = "+254115335486";
 
-        // Set your message
+        //! Set your message
         $message    = "This is the message From George Kariuki. Link To end Another SMS https://comviva.georgekprojects.tk/sendSMS";
 
-        // Set your shortCode or senderId
-        // $from       = "MrInsurance";            
+        //! Set your shortCode or senderId
+        //! $from       = "MrInsurance";            
 
         try {
-            //code...
+            //!code...
             $result = $sms->send([
                 'to'      => $recipients,
                 'message' => $message,
-                // 'from'    => $from
+                //! 'from'    => $from
             ]);
         } catch (Exception $e) {
             echo "Error: ".$e->getMessage();
         }
 
+        // ? SENDING THE EMAIL.
+
+
+        $email = new PaymentMail();
+        Mail::to('ngugigeorge697@gmail.com')->send($email);
 
     }
 }
