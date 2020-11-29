@@ -41,8 +41,9 @@ class AfterPayment implements ShouldQueue
     public function handle()
     {
         //? SENDING THE SMS.
-
+        Storage::put('attempt3.txt',$this->content);
         return $this->content;
+        
 
         //! Set your app credentials
         //! return "Send Message Method";
