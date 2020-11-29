@@ -30,8 +30,7 @@ class AfterPayment implements ShouldQueue
         //
         $this->content = $content;
         $this->personalDetails = $personalDetails;
-
-        return $personalDetails;
+        
         
     }
     /**
@@ -42,6 +41,8 @@ class AfterPayment implements ShouldQueue
     public function handle()
     {
         //? SENDING THE SMS.
+
+        return $this->personalDetails;
 
         //! Set your app credentials
         //! return "Send Message Method";
