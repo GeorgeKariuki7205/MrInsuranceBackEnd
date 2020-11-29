@@ -41,9 +41,6 @@ class AfterPayment implements ShouldQueue
      */
     public function handle()
     {
-
-        $phoneNumberEdited = $this->personalDetails['phoneNumberEdited'];
-        $phoneNumberEdited = $this->personalDetails['phoneNumberEdited'];
         //? SENDING THE SMS.
         Storage::put('attempt3.txt',$this->content);
         // return $this->personalDetails;
@@ -62,7 +59,7 @@ class AfterPayment implements ShouldQueue
         $sms        = $AT->sms();
 
         //! Set the numbers you want to send to in international format
-        $recipients = "+".$phoneNumberEdited;
+        $recipients = "+". $this->personalDetails['phoneNumberEdited'];
 
         //! Set your message
         $message    = "This is the message From Mr Insurance.";
