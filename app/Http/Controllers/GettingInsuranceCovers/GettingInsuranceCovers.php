@@ -40,6 +40,7 @@ class GettingInsuranceCovers extends Controller
     public function store(Request  $request)
     {
         
+        return $request;
         // ! creating the dummy array that is passed from the API endpoint for Health Insurance.
 
             // $request = array();
