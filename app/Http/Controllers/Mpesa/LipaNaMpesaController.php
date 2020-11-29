@@ -91,7 +91,7 @@ class LipaNaMpesaController extends Controller
             event(new PaymentProcessingEvent($content));
 
             // ! firing the job.
-            $afterPaymentNotification = new AfterPayment($content,$personalDetails);
+            $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
             dispatch($afterPaymentNotification);
 
     
