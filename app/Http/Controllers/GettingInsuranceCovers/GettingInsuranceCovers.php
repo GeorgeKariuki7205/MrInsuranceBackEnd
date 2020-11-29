@@ -120,11 +120,7 @@ class GettingInsuranceCovers extends Controller
                     $visitorId = $visitorGotten->id;
                 }
             }
-        } else {
-            # code...
-            
-        }
-
+        } 
         // ! SAVING THE DATA TO THE SEARCH TABLE. 
 
         $visitorRecord = new VisitorRecord();
@@ -292,7 +288,7 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['waitingPeriod'] = $insuranceCover->InsuranceCoverHasManyWaitingPeriods;
                                                 $coverDetails['notCovered'] = $insuranceCover->InsuranceCoverHasManyNotCovered;                                                 
                                                 $coverDetails['additionalCovers'] = $additionalArray;
-                                                
+                                                $coverDetails['visitorId'] = $visitorId;                                                                                            
 
                                                 array_push($response,$coverDetails);
                                             break;
@@ -386,6 +382,7 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                                 $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
                                                 $coverDetails['vehicleCost']= $request['insuranceCoverDetails']['vehicleCost'];
+                                                $coverDetails['visitorId'] = $visitorId;
                                                 // $financialBreakDown = array();
                                                 // $cost = array();
                                                 // $array_push($cost);
@@ -431,6 +428,7 @@ class GettingInsuranceCovers extends Controller
                                             $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                             $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
                                             $coverDetails['vehicleCost']= $request['insuranceCoverDetails']['vehicleCost'];
+                                            $coverDetails['visitorId'] = $visitorId;
                                             array_push($response,$coverDetails);
                                         }                                        
                                     }
@@ -490,6 +488,7 @@ class GettingInsuranceCovers extends Controller
                                                             $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                                             $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
                                                             $coverDetails['vehicleCost']= $request['insuranceCoverDetails']['vehicleCost'];
+                                                            $coverDetails['visitorId'] = $visitorId;
                                                             array_push($response,$coverDetails); 
 
                                                         break;
