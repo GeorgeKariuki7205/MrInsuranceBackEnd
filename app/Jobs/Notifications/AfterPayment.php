@@ -43,7 +43,7 @@ class AfterPayment implements ShouldQueue
     {
 
 
-        $cost = $this->personalDetails['cost'];
+        // $cost = $this->personalDetails['cost'];
         $phoneNumberEdited = $this->personalDetails['phoneNumberEdited'];
         $email_address= $this->personalDetails['personalDetails']['email_address'];
         $firstName= $this->personalDetails['personalDetails']['firstName'];
