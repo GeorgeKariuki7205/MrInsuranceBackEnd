@@ -59,7 +59,8 @@ class AfterPayment implements ShouldQueue
         $sms        = $AT->sms();
 
         //! Set the numbers you want to send to in international format
-        $recipients = "+". $this->personalDetails->phoneNumberEdited;
+        // $recipients = "+". $this->personalDetails->phoneNumberEdited;
+        $recipients = "+". $this->personalDetails['phoneNumberEdited'];
 
         //! Set your message
         $message    = "This is the message From Mr Insurance.";
