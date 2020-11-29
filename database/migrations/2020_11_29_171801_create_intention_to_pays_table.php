@@ -4,7 +4,7 @@ use Illuminate\Database\Migrations\Migration;
 use Illuminate\Database\Schema\Blueprint;
 use Illuminate\Support\Facades\Schema;
 
-class CreateLipaNaMpesasTable extends Migration
+class CreateIntentionToPaysTable extends Migration
 {
     /**
      * Run the migrations.
@@ -13,15 +13,17 @@ class CreateLipaNaMpesasTable extends Migration
      */
     public function up()
     {
-        Schema::create('lipa_na_mpesas', function (Blueprint $table) {
+        Schema::create('intention_to_pays', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
+            $table->longText('uuid')->nullable();
             $table->longText('MerchantRequestID')->nullable();
             $table->longText('CheckoutRequestID')->nullable();
-            $table->float('Amount')->nullable();
-            $table->longText('MpesaReceiptNumber')->nullable();
-            $table->longText('TransactionDate')->nullable();
-            $table->longText('PhoneNumber')->nullable();
+            $table->boolean('confirmed')->nullable()->default(false);
+            $table->bigInteger('amountPayable')->nullable();
+            $table->unsignedBigInteger('visitorId');
+
+            $table->foreign('visitorId')->references('id')->on('visitors')->onDelete('cascade')->onUpdate('cascade');
             $table->timestamps();
         });
     }
@@ -33,7 +35,6 @@ class CreateLipaNaMpesasTable extends Migration
      */
     public function down()
     {
-        Schema::dropIfExists('lipa_na_mpesas');
+        Schema::dropIfExists('intention_to_pays');
     }
 }
-
