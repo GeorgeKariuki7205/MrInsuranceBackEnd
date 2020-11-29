@@ -43,7 +43,7 @@ class LipaNaMpesaController extends Controller
 
         // return $this->personalDetails;
 
-        
+        $content = 'data';
             // ! firing the job.
             $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
             dispatch($afterPaymentNotification);
