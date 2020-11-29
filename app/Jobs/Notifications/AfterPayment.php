@@ -8,6 +8,7 @@ use Illuminate\Foundation\Bus\Dispatchable;
 use Illuminate\Queue\InteractsWithQueue;
 use Illuminate\Queue\SerializesModels;
 use AfricasTalking\SDK\AfricasTalking;
+use Illuminate\Support\Facades\Storage;
 
 use Mail;
 use App\Mail\Notification\PaymentMail;
