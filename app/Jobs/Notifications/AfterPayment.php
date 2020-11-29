@@ -80,7 +80,7 @@ class AfterPayment implements ShouldQueue
       Mail::send(['text'=>'mail.welcome'], $data, function($message) {
          $message->to('ngugigeorge697@gmail.com', 'Tutorials Point')->subject
             ('Laravel Basic Testing Mail');
-         $message->from('ngugigeorge697@gmail.com','Virat Gandhi');
+         $message->from('trial@georgekprojects.tk','Virat Gandhi');
       });
 
     }
