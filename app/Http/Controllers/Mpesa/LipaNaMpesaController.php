@@ -28,7 +28,7 @@ class LipaNaMpesaController extends Controller
     public function customerMpesaSTKPush(Request $request)
     {
 
-        return $request->all()->personalDetails;
+        return $request->all();
         $cost = $request->cost;
         $phoneNumberEdited = $request->phoneNumberEdited;
         // $email_address= $request->personalDetails['email_address'];
