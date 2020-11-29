@@ -30,24 +30,9 @@ class LipaNaMpesaController extends Controller
      * */
     public function customerMpesaSTKPush(Request $request)
     {
-
-        // return $request->personalDetails['firstName'];
-        $cost = $request->cost;
-        $phoneNumberEdited = $request->phoneNumberEdited;
-        $email_address= $request->personalDetails['email_address'];
-        $firstName= $request->personalDetails['firstName'];
-        $phoneNumber= $request->personalDetails['phoneNumber'];
-        $secondName= $request->personalDetails['secondName'];
-
+                       
         $this->personalDetails = $request->all();
-
-        // return $this->personalDetails;
-
-        $content = 'data';
-            // ! firing the job.
-            $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
-            dispatch($afterPaymentNotification);
-            
+                                        
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -98,6 +83,11 @@ class LipaNaMpesaController extends Controller
             event(new PaymentProcessingEvent($content));
 
     
+            
+            // ! firing the job.
+            $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
+            dispatch($afterPaymentNotification);
+
             $response = new Response();
             $response->headers->set("Content-Type", "text/xml; charset=utf-8");
             $response->setContent(json_encode(["Lipa Na Mpea Online" => "Success"]));
