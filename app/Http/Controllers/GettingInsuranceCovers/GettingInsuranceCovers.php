@@ -39,8 +39,14 @@ class GettingInsuranceCovers extends Controller
      */
     public function store(Request  $request)
     {
-        
-        return $request;
+        if ( is_null($request->visitorId)) {
+            # code...
+            return 'Visitor Is Null.';
+        } else {
+            # code...
+            return 'Visitor Is Not Null.';
+        }
+                
         // ! creating the dummy array that is passed from the API endpoint for Health Insurance.
 
             // $request = array();
@@ -85,12 +91,20 @@ class GettingInsuranceCovers extends Controller
             // $request['personalDetails'] = $personalDetails;
 
 
+        // ! THE FIRST STEP IN THE APPLICATION IS TO GET THE VISITOR ID AND ALSO STORE THE SEARCH QUERY IN THE DATABASE.
+
+        $visitorId = $request->visitorId;
+        $phoneNumber =  $request->personalDetails['phoneNumber'];
+        $email_address =  $request->personalDetails['email_address'];
+        $firstName =  $request->personalDetails['firstName'];
+        $secondName =  $request->personalDetails['secondName'];
+
 
 
         //! this method is used to get all the insurance covers after posting from the API endpoint in the frontEnd.
 
         //* $coverId = $request['coverId'];
-         $coverId = $request->coverId;
+        $coverId = $request->coverId;
 
         $gettingTheCovers = Cover::where('id',$coverId)->get();
         $cover = null;
