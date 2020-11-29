@@ -43,8 +43,8 @@ class AfterPayment implements ShouldQueue
     {
         //? SENDING THE SMS.
         Storage::put('attempt3.txt',$this->content);
-        return $this->personalDetails;
-        die();
+        // return $this->personalDetails;
+        // die();
         
 
         //! Set your app credentials
@@ -59,7 +59,7 @@ class AfterPayment implements ShouldQueue
         $sms        = $AT->sms();
 
         //! Set the numbers you want to send to in international format
-        $recipients = "+"+$personalDetails->phoneNumberEdited;
+        $recipients = "+". $this->personalDetails->phoneNumberEdited;
 
         //! Set your message
         $message    = "This is the message From George Kariuki. Link To end Another SMS https://comviva.georgekprojects.tk/sendSMS";
