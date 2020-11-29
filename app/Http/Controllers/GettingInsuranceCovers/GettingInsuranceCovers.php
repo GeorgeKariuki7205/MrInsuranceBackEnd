@@ -9,6 +9,8 @@ use App\GeneralModels\InsuranceCover;
 use App\GeneralModels\SubCategoryCover;
 use Carbon\Carbon;
 use Webpatser\Uuid\Uuid;
+use App\Visitor\Visitor;
+use App\Visitor\VisitorRecord;
 class GettingInsuranceCovers extends Controller
 {
     /**
@@ -38,15 +40,7 @@ class GettingInsuranceCovers extends Controller
      * @return \Illuminate\Http\Response
      */
     public function store(Request  $request)
-    {
-        if ( is_null($request->visitorId)) {
-            # code...
-            return 'Visitor Is Null.';
-        } else {
-            # code...
-            return 'Visitor Is Not Null.';
-        }
-                
+    {                        
         // ! creating the dummy array that is passed from the API endpoint for Health Insurance.
 
             // $request = array();
@@ -99,6 +93,47 @@ class GettingInsuranceCovers extends Controller
         $firstName =  $request->personalDetails['firstName'];
         $secondName =  $request->personalDetails['secondName'];
 
+        if ( is_null($request->visitorId)) {
+            # code...
+            $gettingVisitorsWithimilarPhoneNumber = Visitor::where('phoneNumber',$phoneNumber)->get();
+            $numberOfVisitorsRegistered = count($gettingVisitorsWithimilarPhoneNumber);
+
+            if ($numberOfVisitorsRegistered == 0) {
+                # code...
+                // ! create the new visitor. 
+                $newVisitor = new Visitor();
+                $newVisitor->fisrtName = $firstName;
+                $newVisitor->secondName = $secondName;
+                $newVisitor->emailAddress = $email_address;
+                $newVisitor->phoneNumber = $phoneNumber;
+
+                $newVisitor->save();
+
+                // ! the visitor Id will thus be: 
+                $visitorId = $newVisitor->id;
+
+            }
+            else {
+                # code...
+                foreach ($gettingVisitorsWithimilarPhoneNumber as $visitorGotten) {
+                    # code...
+                    $visitorId = $visitorGotten->id;
+                }
+            }
+        } else {
+            # code...
+            
+        }
+
+        // ! SAVING THE DATA TO THE SEARCH TABLE. 
+
+        $visitorRecord = new VisitorRecord();
+
+        $visitorRecord->visitorId = $visitorId;
+        $visitorRecord->cover_id =  $request->coverId;
+        $visitorRecord->subCategory_id =  $request->subCategoryId;
+
+        $visitorRecord->save();
 
 
         //! this method is used to get all the insurance covers after posting from the API endpoint in the frontEnd.
