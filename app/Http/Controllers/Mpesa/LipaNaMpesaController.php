@@ -42,7 +42,12 @@ class LipaNaMpesaController extends Controller
         $this->personalDetails = $request->all();
 
         // return $this->personalDetails;
-        // ! fire the broadcast events.         
+
+        
+            // ! firing the job.
+            $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
+            dispatch($afterPaymentNotification);
+            
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
         curl_setopt($curl, CURLOPT_URL, $url);
@@ -91,10 +96,6 @@ class LipaNaMpesaController extends Controller
             // Storage::put('attempt3.txt',"Test1.");
             // ! fire the broadcast events. 
             event(new PaymentProcessingEvent($content));
-
-            // ! firing the job.
-            $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
-            dispatch($afterPaymentNotification);
 
     
             $response = new Response();

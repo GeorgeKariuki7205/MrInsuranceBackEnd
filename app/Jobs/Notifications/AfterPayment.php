@@ -30,6 +30,8 @@ class AfterPayment implements ShouldQueue
         //
         $this->content = $content;
         $this->personalDetails = $personalDetails;
+
+        return $personalDetails;
         
     }
     /**
