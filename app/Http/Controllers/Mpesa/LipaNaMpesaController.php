@@ -40,7 +40,7 @@ class LipaNaMpesaController extends Controller
         $secondName= $request->personalDetails['secondName'];
 
         $this->personalDetails = $request;
-        return $this->personalDetails;
+        // return $this->personalDetails;
                                         
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
