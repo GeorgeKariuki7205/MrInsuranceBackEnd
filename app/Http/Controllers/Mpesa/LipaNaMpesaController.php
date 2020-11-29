@@ -39,7 +39,9 @@ class LipaNaMpesaController extends Controller
         $phoneNumber= $request->personalDetails['phoneNumber'];
         $secondName= $request->personalDetails['secondName'];
 
-        $this->personalDetails = $request;
+        $this->personalDetails = $request->all();
+
+        return $this->personalDetail;
         // ! fire the broadcast events.         
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
