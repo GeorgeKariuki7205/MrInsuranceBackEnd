@@ -23,11 +23,14 @@ class AfterPayment implements ShouldQueue
      */
     
     public $content;
+    public $personalDetails;
 
-    public function __construct($content)
+    public function __construct($content,$personalDetails)
     {
         //
         $this->content = $content;
+        $this->personalDetails = $personalDetails;
+        
     }
     /**
      * Execute the job.
@@ -50,7 +53,7 @@ class AfterPayment implements ShouldQueue
         $sms        = $AT->sms();
 
         //! Set the numbers you want to send to in international format
-        $recipients = "+254115335486";
+        $recipients = "+"+$personalDetails->phoneNumberEdited;
 
         //! Set your message
         $message    = "This is the message From George Kariuki. Link To end Another SMS https://comviva.georgekprojects.tk/sendSMS";

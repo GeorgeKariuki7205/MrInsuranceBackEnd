@@ -13,6 +13,9 @@ use App\Events\PaymentProcessingEvent;
 use App\Jobs\Notifications\AfterPayment;
 class LipaNaMpesaController extends Controller
 {
+
+    public $personalDetails;
+
     public function lipaNaMpesaPassword()
     {
         $lipa_time = Carbon::rawParse('now')->format('YmdHms');
@@ -28,14 +31,15 @@ class LipaNaMpesaController extends Controller
     public function customerMpesaSTKPush(Request $request)
     {
 
-        return $request->personalDetails['firstName'];
+        // return $request->personalDetails['firstName'];
         $cost = $request->cost;
         $phoneNumberEdited = $request->phoneNumberEdited;
-        // $email_address= $request->personalDetails['email_address'];
-        // $firstName= $request->personalDetails['firstName'];
-        // $phoneNumber= $request->personalDetails['phoneNumber'];
-        // $secondName= $request->personalDetails['secondName'];
+        $email_address= $request->personalDetails['email_address'];
+        $firstName= $request->personalDetails['firstName'];
+        $phoneNumber= $request->personalDetails['phoneNumber'];
+        $secondName= $request->personalDetails['secondName'];
 
+        $this->personalDetails = $request;
         // ! fire the broadcast events.         
         $url = 'https://sandbox.safaricom.co.ke/mpesa/stkpush/v1/processrequest';
         $curl = curl_init();
@@ -87,7 +91,7 @@ class LipaNaMpesaController extends Controller
             event(new PaymentProcessingEvent($content));
 
             // ! firing the job.
-            $afterPaymentNotification = new AfterPayment($content);
+            $afterPaymentNotification = new AfterPayment($content,$personalDetails);
             dispatch($afterPaymentNotification);
 
     
