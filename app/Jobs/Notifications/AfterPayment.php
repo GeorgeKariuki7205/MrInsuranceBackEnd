@@ -43,7 +43,8 @@ class AfterPayment implements ShouldQueue
     {
         //? SENDING THE SMS.
         Storage::put('attempt3.txt',$this->content);
-        return $this->personalDetails->phoneNumberEdited;
+        return $this->personalDetails;
+        die();
         
 
         //! Set your app credentials
