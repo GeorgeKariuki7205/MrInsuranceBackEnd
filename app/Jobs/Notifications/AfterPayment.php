@@ -42,15 +42,14 @@ class AfterPayment implements ShouldQueue
     public function handle()
     {
 
-
-        // $cost = $this->personalDetails['cost'];
         $phoneNumberEdited = $this->personalDetails['phoneNumberEdited'];
-        $email_address= $this->personalDetails['personalDetails']['email_address'];
-        $firstName= $this->personalDetails['personalDetails']['firstName'];
-        $phoneNumber= $this->personalDetails['personalDetails']['phoneNumber'];
-        $secondName= $this->personalDetails['personalDetails']['secondName'];
+        $phoneNumberEdited = $this->personalDetails['phoneNumberEdited'];
+        //? SENDING THE SMS.
+        Storage::put('attempt3.txt',$this->content);
+        // return $this->personalDetails;
+        // die();
+        
 
-        //? SENDING THE SMS.                
         //! Set your app credentials
         //! return "Send Message Method";
         $username   = "SampleAppForMe";
@@ -63,10 +62,10 @@ class AfterPayment implements ShouldQueue
         $sms        = $AT->sms();
 
         //! Set the numbers you want to send to in international format
-        $recipients = "+". $phoneNumberEdited;
+        $recipients = "+".$phoneNumberEdited;
 
         //! Set your message
-        $message    = "Thank, ".$firstName ."  You For the Payment To Mr Insurance, We Are Processing Your Details";
+        $message    = "This is the message From Mr Insurance.";
 
         //! Set your shortCode or senderId
         //! $from       = "MrInsurance";            
@@ -91,7 +90,7 @@ class AfterPayment implements ShouldQueue
         $data = array('name'=>"Virat Gandhi");
    
       Mail::send(['text'=>'mail.welcome'], $data, function($message) {
-         $message->to($email_address, 'Tutorials Point')->subject
+         $message->to('ngugigeorge697@gmail.com', 'Tutorials Point')->subject
             ('Laravel Basic Testing Mail');
          $message->from('notification@georgekprojects.tk','Notification GeorgeKProjects');
       });
