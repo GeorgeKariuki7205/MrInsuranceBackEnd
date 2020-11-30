@@ -23,14 +23,13 @@ class AfterPayment implements ShouldQueue
      * @return void
      */
     
-    public $content;
-    public $personalDetails;
+    public $visitorId;
+    
 
-    public function __construct($content,$personalDetails)
+    public function __construct($visitorId)
     {
         //
-        $this->content = $content;
-        $this->personalDetails = $personalDetails;
+        $this->visitorId = $visitorId;        
         
         
     }

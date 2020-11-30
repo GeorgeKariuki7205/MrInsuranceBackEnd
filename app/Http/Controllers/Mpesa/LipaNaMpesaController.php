@@ -11,6 +11,7 @@ use App\Mpesa\Payment;
 use Illuminate\Http\Response;
 use App\Events\PaymentProcessingEvent;
 use App\Jobs\Notifications\AfterPayment;
+use App\Mpesa\IntentionToPay;
 class LipaNaMpesaController extends Controller
 {
 
@@ -78,14 +79,35 @@ class LipaNaMpesaController extends Controller
 
             if ($mpesa_transaction->ResultCode == 0 ) {
                 # code...
-                $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
-                $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
-                $mpesa_transaction->Amount = $content->Body->stkCallback->CallbackMetadata->Item[0]->Value;
-                $mpesa_transaction->MpesaReceiptNumber = $content->Body->stkCallback->CallbackMetadata->Item[1]->Value;
-                $mpesa_transaction->TransactionDate = $content->Body->stkCallback->CallbackMetadata->Item[3]->Value;
-                $mpesa_transaction->PhoneNumber = $content->Body->stkCallback->CallbackMetadata->Item[4]->Value;
-    
-                $mpesa_transaction->save();
+                // ! getting all records in the intention to pay. 
+
+                $intentionToPay = IntentionToPay::where('MerchantRequestID',$content->Body->stkCallback->MerchantRequestID)
+                                                ->where('CheckoutRequestID',$content->Body->stkCallback->CheckoutRequestID)
+                                                ->get();
+                $countIntentionToPay = count($intentionToPay);
+
+                if ($countIntentionToPay == 1) {
+
+                    # code...
+                    $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
+                    $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
+                    $mpesa_transaction->Amount = $content->Body->stkCallback->CallbackMetadata->Item[0]->Value;
+                    $mpesa_transaction->MpesaReceiptNumber = $content->Body->stkCallback->CallbackMetadata->Item[1]->Value;
+                    $mpesa_transaction->TransactionDate = $content->Body->stkCallback->CallbackMetadata->Item[3]->Value;
+                    $mpesa_transaction->PhoneNumber = $content->Body->stkCallback->CallbackMetadata->Item[4]->Value;
+        
+                    $mpesa_transaction->save();
+
+                    foreach ($intentionToPay as $intention) {
+                        # code...
+                        $intention->confirmed = true;
+                        $intention->save();
+                    }
+
+                    
+
+                }
+                
            
             // Storage::put('attempt3.txt',"Test1.");
             // ! fire the broadcast events. 
