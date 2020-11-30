@@ -13,6 +13,7 @@ use Illuminate\Support\Facades\Storage;
 use Mail;
 use App\Mail\Notification\PaymentMail;
 
+use App\Visitor\Visitor;
 class AfterPayment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -40,12 +41,23 @@ class AfterPayment implements ShouldQueue
      */
     public function handle()
     {
-        //? SENDING THE SMS.
-        Storage::put('attempt3.txt',$this->content);
-        // return $this->personalDetails;
-        // die();
-        
 
+        $names = null;
+        $phoneNumber= null;
+        $email= null;
+        // ! visitor Details. 
+        $visitors = Visitor::where('id',$this->visitorId)->get();
+
+        foreach ($visitors as $visitor) {
+
+            $names = $visitor->fisrtName .' '. $visitor->secondName;
+            $phoneNumber= $visitor->phoneNumber;
+            $email= $visitor->emailAddress;       
+            # code...
+        }
+
+        $editedPhoneNumber = '+254'.substr($phoneNumber,1,9);
+        //? SENDING THE SMS.               
         //! Set your app credentials
         //! return "Send Message Method";
         $username   = "SampleAppForMe";
@@ -59,7 +71,7 @@ class AfterPayment implements ShouldQueue
 
         //! Set the numbers you want to send to in international format
         // $recipients = "+". $this->personalDetails->phoneNumberEdited;
-        $recipients = "+". $this->personalDetails['phoneNumberEdited'];
+        $recipients = $editedPhoneNumber;
 
         //! Set your message
         $message    = "This is the message From Mr Insurance.";
