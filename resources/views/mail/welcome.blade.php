@@ -1,2 +1,12 @@
-&lt;h1&gt;Welcome To Our App&lt;/h1&gt;
-&lt;p&gt;You are welcome to our platform.&lt;/p&gt;
+@component('mail::message')
+# Order Shipped
+
+Your order has been shipped!
+
+@component('mail::button', ['url' => $url])
+View Order
+@endcomponent
+
+Thanks,<br>
+{{ config('app.name') }}
+@endcomponent
