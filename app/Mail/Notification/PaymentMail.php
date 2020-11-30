@@ -28,6 +28,6 @@ class PaymentMail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.welcome');
+        return $this->view('mail.welcome');
     }
 }
