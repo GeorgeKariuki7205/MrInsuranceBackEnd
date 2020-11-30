@@ -87,7 +87,8 @@ class LipaNaMpesaController extends Controller
                 $countIntentionToPay = count($intentionToPay);
 
                 if ($countIntentionToPay == 1) {
-
+                    
+                    $visitorId = null;
                     # code...
                     $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
                     $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
@@ -102,28 +103,25 @@ class LipaNaMpesaController extends Controller
                         # code...
                         $intention->confirmed = true;
                         $intention->save();
+                        $visitorId = $intention->visitorId;
                     }
-
                     
+                    // Storage::put('attempt3.txt',"Test1.");
+                        // ! fire the broadcast events. 
+                        event(new PaymentProcessingEvent($content));
 
-                }
                 
-           
-            // Storage::put('attempt3.txt',"Test1.");
-            // ! fire the broadcast events. 
-            event(new PaymentProcessingEvent($content));
-
-    
-            
-            // ! firing the job.
-            $afterPaymentNotification = new AfterPayment($content,$this->personalDetails);
-            dispatch($afterPaymentNotification);
-            
-            $response = new Response();
-            $response->headers->set("Content-Type", "text/xml; charset=utf-8");
-            $response->setContent(json_encode(["Lipa Na Mpea Online" => "Success"]));
-    
-            return $response;
+                        
+                        // ! firing the job.
+                        $afterPaymentNotification = new AfterPayment($visitorId);
+                        dispatch($afterPaymentNotification);
+                        
+                        $response = new Response();
+                        $response->headers->set("Content-Type", "text/xml; charset=utf-8");
+                        $response->setContent(json_encode(["Lipa Na Mpea Online" => "Success"]));
+                
+                        return $response;
+                }                                       
             
             } else {
                 # code...
