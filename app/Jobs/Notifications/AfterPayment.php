@@ -94,7 +94,7 @@ class AfterPayment implements ShouldQueue
 
 
         $email = new PaymentMail();
-        Mail::to('ngugigeorge697@gmail.com')->from('ngugigeorge697@gmail.com','Virat Gandhi')->send($email);
+        Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         $data = array('name'=>"Virat Gandhi");
    
