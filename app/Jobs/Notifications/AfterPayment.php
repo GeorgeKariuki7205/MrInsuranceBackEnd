@@ -74,7 +74,7 @@ class AfterPayment implements ShouldQueue
         $recipients = $editedPhoneNumber;
 
         //! Set your message
-        $message    = "This is the message From Mr Insurance.";
+        $message    = "Hello ".$names." We Highly Appreciate You Buying Insurance From Us, Kindly check your email For Futher Details, You Will also be reciveing A Call From One of our Reps. Good Day.";
 
         //! Set your shortCode or senderId
         //! $from       = "MrInsurance";            
@@ -96,7 +96,7 @@ class AfterPayment implements ShouldQueue
         $email = new PaymentMail();
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
-        $data = array('name'=>"Virat Gandhi");
+        // $data = array('name'=>"Virat Gandhi");
    
     //   Mail::send(['text'=>'mail.welcome'], $data, function($message) {
     //      $message->to('ngugigeorge697@gmail.com', 'Tutorials Point')->subject
