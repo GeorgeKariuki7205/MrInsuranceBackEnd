@@ -70,6 +70,7 @@ Route::post('/registerURLS','Mpesa\LipaNaMpesaController@registerURLS');
 Route::post('/simulateTransaction','Mpesa\LipaNaMpesaController@simulateTransaction');
 Route::post('/stkPush', 'Mpesa\LipaNaMpesaController@customerMpesaSTKPush');
 Route::post('/stkPushCallBack', 'Mpesa\LipaNaMpesaController@callBackForTheSTKPush');
+Route::post('/intentionToPay','IntentionToPayController@store');
 
 
 

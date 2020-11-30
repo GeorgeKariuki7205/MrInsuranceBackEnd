@@ -35,7 +35,19 @@ class IntentionToPayController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        //! this action is used to expres the intention to pay. 
+
+        $intentionToPay = new IntentionToPay();
+        $intentionToPay->uuid = $request->uuid;
+        $intentionToPay->MerchantRequestID = $request->MerchantRequestID;
+        $intentionToPay->CheckoutRequestID = $request->CheckoutRequestID;
+        $intentionToPay->amountPayable =$request->amountPayable;
+        $intentionToPay->visitorId =$request->visitorId;
+
+        $intentionToPay->save(); 
+
+        return response("Successfully Added Intention To Pay.",200);
+
     }
 
     /**
