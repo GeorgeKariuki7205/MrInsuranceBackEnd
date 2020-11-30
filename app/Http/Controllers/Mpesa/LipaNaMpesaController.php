@@ -184,7 +184,7 @@ class LipaNaMpesaController extends Controller
     public function validationMethod(Request $request)
     {
 
-        $result_code = "0";
+        $result_code = "1";
         $result_description = "Accepted validation request.";
         return $this->createValidationResponse($result_code, $result_description);
     }
