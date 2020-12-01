@@ -64,12 +64,12 @@ class AfterPayment implements ShouldQueue
 
         // ! creating the new details for the individual and also the InsuranceCover That He Has Purchased To Be sent Via Email.
 
-        $personalDetailsArray = array();
+        $personalDetailsArray = [];
         $personalDetailsArray['name'] = $names;
         $personalDetailsArray['phoneNumber'] = $phoneNumber;
 
 
-        $insuranceCoverDetails = array();
+        $insuranceCoverDetails =[];
 
         $insuranceCoverModel = InsuranceCover::where('id',$this->intentionId)->get();
 
