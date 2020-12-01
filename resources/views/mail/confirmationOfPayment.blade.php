@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hello, {{$personalDetailsArray['name']}},
+# Hello, {{$personalDetailsArray}},
 
 
 
