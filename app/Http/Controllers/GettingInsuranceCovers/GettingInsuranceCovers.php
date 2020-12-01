@@ -281,6 +281,7 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
                                                 $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
                                                 $coverDetails['insuranceCover'] = $insuranceCover->name;  
+                                                $coverDetails['insuranceCoverID'] = $insuranceCover->id; 
                                                 $coverDetails['coveredAmount'] = $coverAmount->amount;                                              
                                                 $coverDetails['amountPayable'] = $payableCash; 
                                                 $coverDetails['financialBreakDown'] = $payableBreakdown;                                               
@@ -378,6 +379,7 @@ class GettingInsuranceCovers extends Controller
                                                 $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
                                                 $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
                                                 $coverDetails['insuranceCover'] = $insuranceCover->name;
+                                                $coverDetails['insuranceCoverID'] = $insuranceCover->id; 
                                                 $coverDetails['amountPayable'] = $amountPayable;
                                                 $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                                 $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
@@ -424,6 +426,7 @@ class GettingInsuranceCovers extends Controller
                                             $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
                                             $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
                                             $coverDetails['insuranceCover'] = $insuranceCover->name;
+                                            $coverDetails['insuranceCoverID'] = $insuranceCover->id; 
                                             $coverDetails['amountPayable'] = $privateVehiclesCover->cost;
                                             $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                             $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
@@ -484,6 +487,7 @@ class GettingInsuranceCovers extends Controller
                                                             $coverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
                                                             $coverDetails['subCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory->name;
                                                             $coverDetails['insuranceCover'] = $insuranceCover->name;
+                                                            $coverDetails['insuranceCoverID'] = $insuranceCover->id; 
                                                             $coverDetails['amountPayable'] = ($insuranceCoverDetails['vehicleCost']*$commercialCompreheiveCost->rate)/100 ;
                                                             $coverDetails['coverBenefits'] = $insuranceCover->InsuranceCoverHasManyMotorInsuranceRelatedBenefits;
                                                             $coverDetails['additionalCovers'] = $insuranceCover->InsuranceCoverHasManyMotorIsuranceRelatedAdditionalCovers;
