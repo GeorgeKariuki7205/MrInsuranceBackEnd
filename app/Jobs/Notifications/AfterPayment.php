@@ -71,7 +71,7 @@ class AfterPayment implements ShouldQueue
 
         $insuranceCoverDetails = array();
 
-        $insuranceCoverModel = InsuranceCover::where('id',$intentionId)->get();
+        $insuranceCoverModel = InsuranceCover::where('id',$this->intentionId)->get();
 
         $numberOfInsuranceCoverModel = count($insuranceCoverModel);
 
