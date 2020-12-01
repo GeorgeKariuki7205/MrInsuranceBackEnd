@@ -30,9 +30,6 @@ class PaymentMail extends Mailable
     {
         return $this->view('mail.welcome');
 
-        $this->withSwiftMessage(function ($message) {
-            $message->getHeaders()
-                    ->addTextHeader('Custom-Header', 'HeaderValue');
-        });
+        
     }
 }
