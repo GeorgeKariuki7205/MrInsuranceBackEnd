@@ -48,12 +48,14 @@ class AfterPayment implements ShouldQueue
         $email= null;
         // ! visitor Details. 
         $visitors = Visitor::where('id',$this->visitorId)->get();
-
+        $visitorObtained = null;
         foreach ($visitors as $visitor) {
 
             $names = $visitor->fisrtName .' '. $visitor->secondName;
             $phoneNumber= $visitor->phoneNumber;
-            $email= $visitor->emailAddress;       
+            $email= $visitor->emailAddress;  
+            
+            $visitorObtained = $visitor;
             # code...
         }
 
@@ -92,6 +94,10 @@ class AfterPayment implements ShouldQueue
         }
 
         // ? SENDING THE EMAIL.
+
+
+        // ! creating the new details for the individual and also the InsuranceCover That He Has Purchased.
+
 
 
         $email = new MrInsuranceConfirmationOfPaymentEmail();
