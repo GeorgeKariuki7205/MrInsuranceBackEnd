@@ -16,9 +16,13 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      *
      * @return void
      */
-    public function __construct()
+    public $personalDetailsArray;
+    public $insuranceCoverDetails;
+    public function __construct($personalDetailsArray,$insuranceCoverDetails)
     {
         //
+        $this->personalDetailsArray->$personalDetailsArray;
+        $this->personalDetailsArray->$insuranceCoverDetails;
     }
 
     /**

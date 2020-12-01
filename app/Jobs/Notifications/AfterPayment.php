@@ -14,6 +14,8 @@ use Mail;
 use App\Mail\Notification\PaymentMail;
 use App\Mail\MrInsuranceConfirmationOfPaymentEmail;
 
+use App\GeneralModels\InsuranceCover;
+
 use App\Visitor\Visitor;
 class AfterPayment implements ShouldQueue
 {
@@ -26,13 +28,14 @@ class AfterPayment implements ShouldQueue
      */
     
     public $visitorId;
+    public $intentionId;
     
 
-    public function __construct($visitorId)
+    public function __construct($visitorId,$intentionId)
     {
         //
         $this->visitorId = $visitorId;        
-        
+        $this->intentionId = $intentionId;
         
     }
     /**
@@ -57,6 +60,32 @@ class AfterPayment implements ShouldQueue
             
             $visitorObtained = $visitor;
             # code...
+        }
+
+        // ! creating the new details for the individual and also the InsuranceCover That He Has Purchased To Be sent Via Email.
+
+        $personalDetailsArray = array();
+        $personalDetailsArray['name'] = $names;
+        $personalDetailsArray['phoneNumber'] = $phoneNumber;
+
+
+        $insuranceCoverDetails = array();
+
+        $insuranceCoverModel = InsuranceCover::where('id',$intentionId)->get();
+
+        $numberOfInsuranceCoverModel = count($insuranceCoverModel);
+
+        if ($insuranceCoverModel == 1) {
+            # code...
+            foreach ($insuranceCoverModel as $insuranceCover) {
+                # code...
+                $insuranceCoverDetails['name'] = $insuranceCover->name;
+                $insuranceCoverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
+                $insuranceCoverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
+                $insuranceCoverDetails['SubCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory;
+                
+                
+            }
         }
 
         $editedPhoneNumber = '+254'.substr($phoneNumber,1,9);
@@ -96,11 +125,9 @@ class AfterPayment implements ShouldQueue
         // ? SENDING THE EMAIL.
 
 
-        // ! creating the new details for the individual and also the InsuranceCover That He Has Purchased.
+        
 
-
-
-        $email = new MrInsuranceConfirmationOfPaymentEmail();
+        $email = new MrInsuranceConfirmationOfPaymentEmail($personalDetailsArray,$insuranceCoverDetails);
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         // $data = array('name'=>"Virat Gandhi");

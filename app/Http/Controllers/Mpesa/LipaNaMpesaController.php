@@ -89,6 +89,7 @@ class LipaNaMpesaController extends Controller
                 if ($countIntentionToPay == 1) {
                     
                     $visitorId = null;
+                    $intentionId = null;
                     # code...
                     $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
                     $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
@@ -104,6 +105,7 @@ class LipaNaMpesaController extends Controller
                         $intention->confirmed = true;
                         $intention->save();
                         $visitorId = $intention->visitorId;
+                        $intentionId = $intention->id;
                     }
                     
                     // Storage::put('attempt3.txt',"Test1.");
@@ -113,7 +115,7 @@ class LipaNaMpesaController extends Controller
                 
                         
                         // ! firing the job.
-                        $afterPaymentNotification = new AfterPayment($visitorId);
+                        $afterPaymentNotification = new AfterPayment($visitorId,$intentionId);
                         dispatch($afterPaymentNotification);
                         
                         $response = new Response();
