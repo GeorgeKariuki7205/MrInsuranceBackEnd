@@ -75,7 +75,7 @@ class AfterPayment implements ShouldQueue
 
         $numberOfInsuranceCoverModel = count($insuranceCoverModel);
 
-        if ($insuranceCoverModel == 1) {
+        if ($numberOfInsuranceCoverModel == 1) {
             # code...
             foreach ($insuranceCoverModel as $insuranceCover) {
                 # code...
