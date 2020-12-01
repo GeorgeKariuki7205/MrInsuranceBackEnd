@@ -22,7 +22,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
     {
         //
         $this->personalDetailsArray = $personalDetailsArray;
-        $this->personalDetailsArray = $insuranceCoverDetails;
+        $this->insuranceCoverDetails = $insuranceCoverDetails;
     }
 
     /**
