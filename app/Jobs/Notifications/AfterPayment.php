@@ -12,6 +12,7 @@ use Illuminate\Support\Facades\Storage;
 
 use Mail;
 use App\Mail\Notification\PaymentMail;
+use App\Mail\MrInsuranceConfirmationOfPaymentEmail;
 
 use App\Visitor\Visitor;
 class AfterPayment implements ShouldQueue
@@ -93,7 +94,7 @@ class AfterPayment implements ShouldQueue
         // ? SENDING THE EMAIL.
 
 
-        $email = new PaymentMail();
+        $email = new MrInsuranceConfirmationOfPaymentEmail();
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         // $data = array('name'=>"Virat Gandhi");
