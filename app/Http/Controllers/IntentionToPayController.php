@@ -43,6 +43,7 @@ class IntentionToPayController extends Controller
         $intentionToPay->CheckoutRequestID = $request->CheckoutRequestID;
         $intentionToPay->amountPayable =$request->amountPayable;
         $intentionToPay->visitorId =$request->visitorId;
+        $intentionToPay->InsuranceCoverId = $request->insuranceCoverID;
 
         $intentionToPay->save(); 
 

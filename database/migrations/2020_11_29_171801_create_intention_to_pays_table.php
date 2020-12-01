@@ -25,7 +25,7 @@ class CreateIntentionToPaysTable extends Migration
 
             $table->foreign('visitorId')->references('id')->on('visitors')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->unsignedBigInteger('InsuranceCoverId');
+            $table->unsignedBigInteger('InsuranceCoverId')->nullable();
 
             $table->foreign('InsuranceCoverId')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
             
