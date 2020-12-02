@@ -8,16 +8,29 @@ This email spells out the next steps to complete your transaction.
 Your Premium Details Are As Shown Below: 
 
 ***
-{{-- {{$insuranceCoverDetailsName}}
-{{$numberOfInsuranceCoverModel}}
-{{$intentionId}} --}}
 
-|         |            |
-| :-------------: |:-------------:|
-| Insurance Cover| {{$insuranceCoverDetailsName}}  |
-| Company:      | {{$insuranceCoverDetailsCompany->name}}      |
-| Cover:      | {{$insuranceCoverDetailsCover->name }}      |
-| Sub Category:      | {{$insuranceCoverDetailsSubCategory->name}}      |
+<table>
+    <tr>
+        <th></th>
+        <th></th>
+    </tr>
+    <tr>
+        <td>Insurance Cover</td>
+        <td>{{$insuranceCoverDetailsName}}</td>
+    </tr>
+    <tr>
+        <td>Company:</td>
+        <td>{{$insuranceCoverDetailsCompany->name}}</td>
+    </tr>
+    <tr>
+        <td>Cover:</td>
+        <td>{{$insuranceCoverDetailsCover->name }}</td>
+    </tr>
+    <tr>
+        <td>Sub Category:</td>
+        <td>{{$insuranceCoverDetailsSubCategory->name}}</td>
+    </tr>
+</table>
 | Cost: | are neat      |
 
 @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
