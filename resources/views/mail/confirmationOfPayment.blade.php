@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hello,{{$names}},
+# Hello,{{$names}} {{$intentionId}},
 
 We highly appreciiate you purchasing an inurance cover through our platform. 
 

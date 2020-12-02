@@ -23,6 +23,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
     public $insuranceCoverDetailsCover;
     public $insuranceCoverDetailsSubCategory;
     public $numberOfInsuranceCoverModel;
+    public $intentionId;
     public function __construct($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
     {
         //
@@ -33,6 +34,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
         $this->insuranceCoverDetailsCover=$insuranceCoverDetailsCover;
         $this->insuranceCoverDetailsSubCategory=$insuranceCoverDetailsSubCategory;
         $this->numberOfInsuranceCoverModel=$numberOfInsuranceCoverModel;
+        $this->intentionId = $intentionId;
     }
 
     /**
@@ -50,6 +52,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
             'insuranceCoverDetailsCover'=>$this->insuranceCoverDetailsCover,
             'insuranceCoverDetailsSubCategory'=>$this->insuranceCoverDetailsSubCategory,
             'numberOfInsuranceCoverModel'=>$this->numberOfInsuranceCoverModel,
+            'intentionId'=> $this->intentionId,
             
         ]);
     }
