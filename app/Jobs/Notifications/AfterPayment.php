@@ -106,7 +106,7 @@ class AfterPayment implements ShouldQueue
         $recipients = $editedPhoneNumber;
 
         //! Set your message
-        $message    = "Hello ".$names." We Highly Appreciate You Buying Insurance From Us, Kindly check your email For Futher Details, You Will also be reciveing A Call From One of our Reps. Good Day.";
+        $message    = "Hello ".$names." We Highly Appreciate You Buying Insurance From Us, Kindly check your email For Futher Details.";
 
         //! Set your shortCode or senderId
         //! $from       = "MrInsurance";            
