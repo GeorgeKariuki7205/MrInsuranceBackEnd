@@ -15,9 +15,9 @@ Your Premium Details Are As Shown Below:
 |         |            |
 | :-------------: |:-------------:|
 | Insurance Cover| {{$insuranceCoverDetailsName}}  |
-| Company:      | {{$insuranceCoverDetailsCompany}}      |
-| Cover:      | {{$insuranceCoverDetailsCover }}      |
-| Sub Category:      | {{$insuranceCoverDetailsSubCategory}}      |
+| Company:      | {{$insuranceCoverDetailsCompany->name}}      |
+| Cover:      | {{$insuranceCoverDetailsCover->name }}      |
+| Sub Category:      | {{$insuranceCoverDetailsSubCategory->name}}      |
 | Cost: | are neat      |
 
 @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
