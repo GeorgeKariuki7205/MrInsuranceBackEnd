@@ -75,6 +75,10 @@ class AfterPayment implements ShouldQueue
         $intentionId = $this->intentionId;
 
         $numberOfInsuranceCoverModel = count($insuranceCoverModel);
+        $insuranceCoverDetailsName = 1;
+		$insuranceCoverDetailsCompany = 1;
+        $insuranceCoverDetailsCover =   1;
+        $insuranceCoverDetailsSubCategory = 1;
 
         if ($numberOfInsuranceCoverModel == 1) {
             # code...
@@ -126,10 +130,7 @@ class AfterPayment implements ShouldQueue
         // ? SENDING THE EMAIL.
 
 
-        $insuranceCoverDetailsName = 1;
-		$insuranceCoverDetailsCompany = 1;
-        $insuranceCoverDetailsCover =   1;
-        $insuranceCoverDetailsSubCategory = 1;
+        
         		                
 
         $email = new MrInsuranceConfirmationOfPaymentEmail($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel);
