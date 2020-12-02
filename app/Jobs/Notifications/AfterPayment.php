@@ -130,7 +130,7 @@ class AfterPayment implements ShouldQueue
         $insuranceCoverDetailsCover =   $insuranceCoverDetails['cover'];
         $insuranceCoverDetailsSubCategory = $insuranceCoverDetails['SubCategory'];
 
-        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory);
+        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel);
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         // $data = array('name'=>"Virat Gandhi");
