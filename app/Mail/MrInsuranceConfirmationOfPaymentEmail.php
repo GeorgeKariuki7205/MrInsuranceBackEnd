@@ -24,7 +24,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
     public $insuranceCoverDetailsSubCategory;
     public $numberOfInsuranceCoverModel;
     public $intentionId;
-    public function __construct($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
+    public function __construct($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
     {
         //
         $this->names=$names;
