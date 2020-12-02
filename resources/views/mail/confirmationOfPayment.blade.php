@@ -5,9 +5,10 @@ We highly Appreciate you buying Inurance From Mr Insurance, .
 This email spells out the next steps to complete your transaction.
 
 ***
-Your Premium Details Are As Shown Belo: 
+Your Premium Details Are As Shown Below: 
 
 ***
+{{$insuranceCoverDetailsName}}
 {{$numberOfInsuranceCoverModel}}
 {{$intentionId}}
 
