@@ -16,9 +16,9 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      *
      * @return void
      */
-    public $personalDetailsArray = [];
-    public $insuranceCoverDetails = [];
-    public function __construct($personalDetailsArray,$insuranceCoverDetails)
+    public $personalDetailsArray;
+    public $insuranceCoverDetails ;
+    public function __construct($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
     {
         //
         $this->personalDetailsArray = $personalDetailsArray;
@@ -32,9 +32,6 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.confirmationOfPayment') ->with([
-            'personalDetailsArray' => $this->personalDetailsArray,
-            'insuranceCoverDetails' =>$this->insuranceCoverDetails,
-        ]);
+        return $this->markdown('mail.confirmationOfPayment');
     }
 }
