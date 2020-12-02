@@ -105,7 +105,7 @@ class LipaNaMpesaController extends Controller
                         $intention->confirmed = true;
                         $intention->save();
                         $visitorId = $intention->visitorId;
-                        $intentionId = $intention->id;
+                        $intentionId = $intention->InsuranceCoverId;
                     }
                     
                     // Storage::put('attempt3.txt',"Test1.");
