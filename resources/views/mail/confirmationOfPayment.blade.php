@@ -1,5 +1,5 @@
 @component('mail::message')
-# Hello,{{$name}} {{$numberOfInsuranceCoverModel}},
+# Hello,{{$names}} {{$numberOfInsuranceCoverModel}},
 
 We highly appreciiate you purchasing an inurance cover through our platform. 
 
