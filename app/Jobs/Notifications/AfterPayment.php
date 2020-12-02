@@ -79,10 +79,10 @@ class AfterPayment implements ShouldQueue
             # code...
             foreach ($insuranceCoverModel as $insuranceCover) {
                 # code...
-                $insuranceCoverDetails['name'] = $insuranceCover->name;
-                $insuranceCoverDetails['company'] = $insuranceCover->InsuranceProviderBelongToCompany;
-                $insuranceCoverDetails['cover'] = $insuranceCover->InsuranceProviderBelongsToCover;
-                $insuranceCoverDetails['SubCategory'] = $insuranceCover->InsuranceCoverBelongsToSubCategory;
+                $insuranceCoverDetailsName = $insuranceCover->name;
+                $insuranceCoverDetailsCompany= $insuranceCover->InsuranceProviderBelongToCompany;
+                $insuranceCoverDetailsCover = $insuranceCover->InsuranceProviderBelongsToCover;
+                $insuranceCoverDetailsSubCategory = $insuranceCover->InsuranceCoverBelongsToSubCategory;
                 
                 
             }
@@ -129,11 +129,7 @@ class AfterPayment implements ShouldQueue
 		// $insuranceCoverDetailsCompany = $insuranceCoverDetails['company'];
         // $insuranceCoverDetailsCover =   $insuranceCoverDetails['cover'];
         // $insuranceCoverDetailsSubCategory = $insuranceCoverDetails['SubCategory'];
-
-        $insuranceCoverDetailsName = 1;
-		$insuranceCoverDetailsCompany = 1;
-        $insuranceCoverDetailsCover =   1;
-        $insuranceCoverDetailsSubCategory = 1;
+        		                
 
         $email = new MrInsuranceConfirmationOfPaymentEmail($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel);
         Mail::to('ngugigeorge697@gmail.com')->send($email);
