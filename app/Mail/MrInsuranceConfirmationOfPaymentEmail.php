@@ -16,13 +16,23 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      *
      * @return void
      */
-    public $personalDetailsArray;
-    public $insuranceCoverDetails ;
+    public $names;
+    public $phoneNumber;
+    public $insuranceCoverDetailsName;
+    public $insuranceCoverDetailsCompany;
+    public $insuranceCoverDetailsCover;
+    public $insuranceCoverDetailsSubCategory;
+    public $numberOfInsuranceCoverModel;
     public function __construct($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
     {
         //
-        $this->personalDetailsArray = $personalDetailsArray;
-        $this->insuranceCoverDetails = $insuranceCoverDetails;
+        $this->names=$names;
+        $this->phoneNumber=$phoneNumber;
+        $this->insuranceCoverDetailsName=$insuranceCoverDetailsName;
+        $this->insuranceCoverDetailsCompany=$insuranceCoverDetailsCompany;
+        $this->insuranceCoverDetailsCover=$insuranceCoverDetailsCover;
+        $this->insuranceCoverDetailsSubCategory=$insuranceCoverDetailsSubCategory;
+        $this->numberOfInsuranceCoverModel=$numberOfInsuranceCoverModel;
     }
 
     /**
