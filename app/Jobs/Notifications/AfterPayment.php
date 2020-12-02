@@ -64,12 +64,12 @@ class AfterPayment implements ShouldQueue
 
         // ! creating the new details for the individual and also the InsuranceCover That He Has Purchased To Be sent Via Email.
 
-        $personalDetailsArray = [];
+        $personalDetailsArray = array();
         $personalDetailsArray['name'] = $names;
         $personalDetailsArray['phoneNumber'] = $phoneNumber;
 
 
-        $insuranceCoverDetails =[];
+        $insuranceCoverDetails =array();
 
         $insuranceCoverModel = InsuranceCover::where('id',$this->intentionId)->get();
 
@@ -125,9 +125,12 @@ class AfterPayment implements ShouldQueue
         // ? SENDING THE EMAIL.
 
 
-        
+        $insuranceCoverDetailsName = $insuranceCoverDetails['name'];
+		$insuranceCoverDetailsCompany = $insuranceCoverDetails['company'];
+        $insuranceCoverDetailsCover =   $insuranceCoverDetails['cover'];
+        $insuranceCoverDetailsSubCategory = $insuranceCoverDetails['SubCategory'];
 
-        $email = new MrInsuranceConfirmationOfPaymentEmail($personalDetailsArray,$insuranceCoverDetails);
+        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory);
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         // $data = array('name'=>"Virat Gandhi");
