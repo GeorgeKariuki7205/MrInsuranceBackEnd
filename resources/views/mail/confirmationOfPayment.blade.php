@@ -1,5 +1,5 @@
 @component('mail::message')
-Thisis the mesage.
+Thisis the mesage. {{$names}}
 @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
 Link To Btn.
 @endcomponent
