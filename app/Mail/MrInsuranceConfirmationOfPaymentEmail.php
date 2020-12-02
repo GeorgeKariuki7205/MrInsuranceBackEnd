@@ -42,6 +42,15 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.confirmationOfPayment');
+        return $this->markdown('mail.confirmationOfPayment')->with([
+            'names'=>$this->names,
+            'phoneNumber'=>$this->phoneNumber,
+            'insuranceCoverDetailsName'=>$this->insuranceCoverDetailsName,
+            'insuranceCoverDetailsCompany'=>$this->insuranceCoverDetailsCompany,
+            'insuranceCoverDetailsCover'=>$this->insuranceCoverDetailsCover,
+            'insuranceCoverDetailsSubCategory'=>$this->insuranceCoverDetailsSubCategory,
+            'numberOfInsuranceCoverModel'=>$this->numberOfInsuranceCoverModel,
+            
+        ]);
     }
 }
