@@ -252,7 +252,7 @@ class LipaNaMpesaController extends Controller
             'ShortCode' => '600754',
             'CommandID' => 'CustomerPayBillOnline',
             'Amount' => 1000,
-            'Msisdn' => '254708374149',
+            'Msisdn' =>'254708374149',
             'BillRefNumber' => '00000'
         );
 
