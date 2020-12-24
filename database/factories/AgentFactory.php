@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Payments\LipaNaMpesa;
+use App\Agent;
 use Faker\Generator as Faker;
 
-$factory->define(LipaNaMpesa::class, function (Faker $faker) {
+$factory->define(Agent::class, function (Faker $faker) {
     return [
         //
     ];

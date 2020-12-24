@@ -1,6 +1,6 @@
 <?php
 
-namespace App\Mpesa;
+namespace App\Payments;
 
 use Illuminate\Database\Eloquent\Model;
 

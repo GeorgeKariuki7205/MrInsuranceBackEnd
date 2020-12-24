@@ -1,17 +1,17 @@
 <?php
 
-namespace App\Http\Controllers\Mpesa;
+namespace App\Http\Controllers\Payments;
 
-use App\Mpesa\LipaNaMpesa;
+use App\Payments\LipaNaMpesa;
 use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 use Carbon\Carbon;
 use Illuminate\Support\Facades\Storage;
-use App\Mpesa\Payment;
+use App\Payments\Payment;
 use Illuminate\Http\Response;
 use App\Events\PaymentProcessingEvent;
 use App\Jobs\Notifications\AfterPayment;
-use App\Mpesa\IntentionToPay;
+use App\Payments\IntentionToPay;
 class LipaNaMpesaController extends Controller
 {
 

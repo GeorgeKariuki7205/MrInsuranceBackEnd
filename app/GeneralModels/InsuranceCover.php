@@ -72,4 +72,14 @@ class InsuranceCover extends Model
     // {
     //     return $this->hasMany('App\MotorInsuranceModels\CommercialVehicles\CommercialThirdPartyCost', 'insurance_cover_id', 'id');
     // }
+
+    // public function InsuranceCoverHasManyInsuranceCoversPaymentRatio()
+    // {
+    //     return $this->hasMany('App\GeneralModels\InsuranceCoversPaymentRatio', 'insurance_cover_id', 'id');
+    // }
+
+    public function InsuranceCoverHasManyPurchase()
+    {
+        return $this->hasMany('App\Purchases\Purchase', 'insurance_cover_id', 'id');
+    }
 }

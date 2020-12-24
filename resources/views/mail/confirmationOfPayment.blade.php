@@ -31,7 +31,7 @@ Your Premium Details Are As Shown Below:
         <td>{{$insuranceCoverDetailsSubCategory->name}}</td>
     </tr>
 </table>
-| Cost: | are neat      |
+
 
 @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
 Activate Your Account.
