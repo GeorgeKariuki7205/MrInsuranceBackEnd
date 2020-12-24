@@ -68,7 +68,7 @@ Route::post('/validationURL','Payments\LipaNaMpesaController@validationMethod');
 Route::post('/confirmationURL','Mpesa\LipaNaMpesaController@confirmationMethod');
 Route::post('/registerURLS','Payments\LipaNaMpesaController@registerURLS');
 Route::post('/simulateTransaction','Payments\LipaNaMpesaController@simulateTransaction');
-Route::post('/stkPush', 'Payments\LipaNaPaymentsController@customerMpesaSTKPush');
+Route::post('/stkPush', 'Payments\LipaNaMpesaController@customerMpesaSTKPush');
 Route::post('/stkPushCallBack', 'Payments\LipaNaMpesaController@callBackForTheSTKPush');
 Route::post('/intentionToPay','IntentionToPayController@store');
 
