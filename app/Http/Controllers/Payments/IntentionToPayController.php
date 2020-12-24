@@ -4,7 +4,7 @@ namespace App\Http\Controllers\Payments;
 
 use App\Payments\IntentionToPay;
 use Illuminate\Http\Request;
-
+use App\Http\Controllers\Controller;
 class IntentionToPayController extends Controller
 {
     /**
