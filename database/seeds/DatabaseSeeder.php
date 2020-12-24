@@ -41,9 +41,9 @@ class DatabaseSeeder extends Seeder
         $this->call(CommercialTypeOfThirdPartyCostSeeder::class);
         $this->call(AdditionalCoverSeeder::class);
         $this->call(BenefitSeeder::class);
-        
-        
-        
 
+        $this->call(InsuranceCoversPaymentRatioSeeder::class);
+        $this->call(DocumentsNeededSeeder::class);
+                            
     }
 }

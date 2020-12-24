@@ -2,7 +2,7 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Mpesa\IntentionToPay;
+use App\Payments\IntentionToPay;
 use Faker\Generator as Faker;
 
 $factory->define(IntentionToPay::class, function (Faker $faker) {

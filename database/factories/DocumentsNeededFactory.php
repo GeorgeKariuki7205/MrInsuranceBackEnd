@@ -2,10 +2,10 @@
 
 /** @var \Illuminate\Database\Eloquent\Factory $factory */
 
-use App\Payments\LipaNaMpesa;
+use App\GeneralModels\DocumentsNeeded;
 use Faker\Generator as Faker;
 
-$factory->define(LipaNaMpesa::class, function (Faker $faker) {
+$factory->define(DocumentsNeeded::class, function (Faker $faker) {
     return [
         //
     ];

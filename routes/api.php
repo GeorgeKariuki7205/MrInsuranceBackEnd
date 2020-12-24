@@ -63,14 +63,18 @@ Route::post('/stkPush', 'Payments\CustomerToOrganisationController@customerMpesa
 Route::post('/stkPushCallBack', 'Payments\CustomerToOrganisationController@callBackForTheSTKPush');
 
 // ? new
-Route::post('/accessToken','Mpesa\LipaNaMpesaController@generateAccessTokens');
-Route::post('/validationURL','Mpesa\LipaNaMpesaController@validationMethod');
+Route::post('/accessToken','Payments\LipaNaMpesaController@generateAccessTokens');
+Route::post('/validationURL','Payments\LipaNaMpesaController@validationMethod');
 Route::post('/confirmationURL','Mpesa\LipaNaMpesaController@confirmationMethod');
-Route::post('/registerURLS','Mpesa\LipaNaMpesaController@registerURLS');
-Route::post('/simulateTransaction','Mpesa\LipaNaMpesaController@simulateTransaction');
-Route::post('/stkPush', 'Mpesa\LipaNaMpesaController@customerMpesaSTKPush');
-Route::post('/stkPushCallBack', 'Mpesa\LipaNaMpesaController@callBackForTheSTKPush');
+Route::post('/registerURLS','Payments\LipaNaMpesaController@registerURLS');
+Route::post('/simulateTransaction','Payments\LipaNaMpesaController@simulateTransaction');
+Route::post('/stkPush', 'Payments\LipaNaPaymentsController@customerMpesaSTKPush');
+Route::post('/stkPushCallBack', 'Payments\LipaNaMpesaController@callBackForTheSTKPush');
 Route::post('/intentionToPay','IntentionToPayController@store');
+
+
+// ! creating roles for users. 
+Route::get('/addRoles','creationOfRoles@createRolesForUsers');
 
 
 

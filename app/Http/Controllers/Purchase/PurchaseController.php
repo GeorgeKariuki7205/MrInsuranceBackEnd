@@ -2,10 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use App\Mpesa\IntentionToPay;
+use App\Purchases\Purchase;
 use Illuminate\Http\Request;
 
-class IntentionToPayController extends Controller
+class PurchaseController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -35,29 +35,16 @@ class IntentionToPayController extends Controller
      */
     public function store(Request $request)
     {
-        //! this action is used to expres the intention to pay. 
-
-        $intentionToPay = new IntentionToPay();
-        $intentionToPay->uuid = $request->uuid;
-        $intentionToPay->MerchantRequestID = $request->MerchantRequestID;
-        $intentionToPay->CheckoutRequestID = $request->CheckoutRequestID;
-        $intentionToPay->amountPayable =$request->amountPayable;
-        $intentionToPay->visitorId =$request->visitorId;
-        $intentionToPay->InsuranceCoverId = $request->insuranceCoverID;
-
-        $intentionToPay->save(); 
-
-        return response("Successfully Added Intention To Pay.",200);
-
+        //
     }
 
     /**
      * Display the specified resource.
      *
-     * @param  \App\Mpesa\IntentionToPay  $intentionToPay
+     * @param  \App\Purchases\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function show(IntentionToPay $intentionToPay)
+    public function show(Purchase $purchase)
     {
         //
     }
@@ -65,10 +52,10 @@ class IntentionToPayController extends Controller
     /**
      * Show the form for editing the specified resource.
      *
-     * @param  \App\Mpesa\IntentionToPay  $intentionToPay
+     * @param  \App\Purchases\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function edit(IntentionToPay $intentionToPay)
+    public function edit(Purchase $purchase)
     {
         //
     }
@@ -77,10 +64,10 @@ class IntentionToPayController extends Controller
      * Update the specified resource in storage.
      *
      * @param  \Illuminate\Http\Request  $request
-     * @param  \App\Mpesa\IntentionToPay  $intentionToPay
+     * @param  \App\Purchases\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function update(Request $request, IntentionToPay $intentionToPay)
+    public function update(Request $request, Purchase $purchase)
     {
         //
     }
@@ -88,10 +75,10 @@ class IntentionToPayController extends Controller
     /**
      * Remove the specified resource from storage.
      *
-     * @param  \App\Mpesa\IntentionToPay  $intentionToPay
+     * @param  \App\Purchases\Purchase  $purchase
      * @return \Illuminate\Http\Response
      */
-    public function destroy(IntentionToPay $intentionToPay)
+    public function destroy(Purchase $purchase)
     {
         //
     }

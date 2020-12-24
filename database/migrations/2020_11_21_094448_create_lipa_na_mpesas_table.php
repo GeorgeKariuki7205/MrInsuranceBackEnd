@@ -13,7 +13,7 @@ class CreateLipaNaMpesasTable extends Migration
      */
     public function up()
     {
-        Schema::create('lipa_na_mpesas', function (Blueprint $table) {
+        Schema::create('stk_push_payments', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
             $table->longText('MerchantRequestID')->nullable();
