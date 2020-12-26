@@ -23,6 +23,7 @@ class CreateInsuranceCoversPaymentRatiosTable extends Migration
 
             $table->unsignedInteger('percentage');
             $table->unsignedInteger('next_payment_scheduel');
+            $table->text('period');
             $table->longText('description');
             $table->timestamps();
         });

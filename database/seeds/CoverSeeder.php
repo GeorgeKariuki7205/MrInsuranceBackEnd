@@ -17,14 +17,18 @@ class CoverSeeder extends Seeder
                 'description'=> 'Health Insurance',
                 'has_sub_categories'=> 1,                
                 'icon'=>'fa-hospital',
-                'route_name'=>'Health'
+                'route_name'=>'Health',
+                'cover_perdiod'=>1,
+                'period'=>'year'
             ],
             [
                 'name'=> 'Motor Insurance',
                 'description'=> 'Motor Insurance',
                 'has_sub_categories'=> 1,
                 'icon'=>'fa-car',
-                'route_name'=>'Motor'
+                'route_name'=>'Motor',
+                'cover_perdiod'=>1,
+                'period'=>'year'
             ]
         ];
         foreach($covers as $key => $value){
