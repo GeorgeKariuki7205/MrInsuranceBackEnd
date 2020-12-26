@@ -24,6 +24,7 @@ class CreatePaymentsProcessedsTable extends Migration
             $table->text('payment_gateway');
             $table->integer('amount_paid');
             $table->unsignedBigInteger('payment_gateway_id');
+            $table->timestamps();
         });
     }
 
