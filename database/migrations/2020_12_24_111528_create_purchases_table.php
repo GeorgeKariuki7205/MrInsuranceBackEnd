@@ -23,12 +23,13 @@ class CreatePurchasesTable extends Migration
 
             $table->date('date_of_purchase');
             $table->date('start_date_of_contract')->nullable();
-            $table->date('end_date_of_contract')->nullable();
-            $table->integer('period_of_cover');
+            $table->date('end_date_of_contract')->nullable();            
             $table->integer('percentage_of_payment');
             $table->unsignedInteger('cost');
+            $table->unsignedInteger('amount_paid');            
             $table->date('next_payment_period')->nullable();
-            $table->boolean('details_disparches')->nullable()->default(false);
+            $table->boolean('details_disparched')->nullable()->default(false);
+            $table->boolean('accompanying_documents_uploaded')->nullable()->default(false);
             $table->timestamps();
         });
     }

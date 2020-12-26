@@ -12,6 +12,12 @@ use Illuminate\Http\Response;
 use App\Events\PaymentProcessingEvent;
 use App\Jobs\Notifications\AfterPayment;
 use App\Payments\IntentionToPay;
+use App\User;
+use App\Client;
+use App\Visitor\Visitor;
+use Webpatser\Uuid\Uuid;
+use App\Purchases\Purchase;
+use App\Purchases\PaymentsProcessed;
 class LipaNaMpesaController extends Controller
 {
 
@@ -90,6 +96,8 @@ class LipaNaMpesaController extends Controller
                     
                     $visitorId = null;
                     $intentionId = null;
+                    $insuranceCoverId = null;
+                    $amountPayable = null;
                     # code...
                     $mpesa_transaction->MerchantRequestID = $content->Body->stkCallback->MerchantRequestID;
                     $mpesa_transaction->CheckoutRequestID = $content->Body->stkCallback->CheckoutRequestID;
@@ -106,8 +114,88 @@ class LipaNaMpesaController extends Controller
                         $intention->save();
                         $visitorId = $intention->visitorId;
                         $intentionId = $intention->InsuranceCoverId;
+                        $insuranceCoverId = $intention->InsuranceCoverId;
+                        $amountPayable = $intention->amountPayable;
                     }
                     
+                    // ! this section of the application is used to complete the pipeline to the payments. 
+
+                    $visitorSuccessfullPayments = Visitor::where('id',$visitorId)->get();
+
+                    $firstNameOfVisitor = null;
+                    $secondNameOfVisitor = null;
+                    $email_addressOfVisitor= null;
+                    $phoneNumberOfVisitor = null;
+
+                    foreach ($visitorSuccessfullPayments as $visitorSuccessfullPayment) {
+                        # code...
+                        $firstNameOfVisitor = $visitorSuccessfullPayment->fisrtName;
+                        $secondNameOfVisitor =$visitorSuccessfullPayment->secondName;
+                        $email_addressOfVisitor=$visitorSuccessfullPayment->emailAddress;
+                        $phoneNumberOfVisitor =$visitorSuccessfullPayment->phoneNumber;                        
+                    }
+
+
+                    $userRecordeds = User::where('email',$email_addressOfVisitor)->where('phone_number',$email_addressOfVisitor)->get();
+
+                    $numberfUsersWithDetails = count($userRecordeds);
+
+                    if ($numberfUsersWithDetails == 0) {
+                        # code...
+
+                        $user = new User();
+                        $user->first_name = $firstNameOfVisitor;
+                        $user->second_name = $secondNameOfVisitor;
+                        $user->email = $email_addressOfVisitor;
+                        $user->phone_number = $phoneNumberOfVisitor;
+                        $user->password = '$2y$10$92IXUNpkjO0rOQ5byMi.Ye4oKoEa3Ro9llC/.og/at2.uheWG/igi'; // password
+                        $user->save();
+                        $user->assignRole('client');
+                                                
+                    }
+                    else {
+                        
+                        foreach ($userRecordeds as $userRecorded) {
+                            # code...
+                            $user = $userRecorded;
+                        }
+
+                    }
+
+                    // ! checking to see if te user is registered in the Clients table. 
+
+                    $clinetDetails = Client::where('user_id',$user->id)->get();
+
+                    $numberOfClinetsDetails = count($clinetDetails);
+
+                    if ($numberOfClinetsDetails == 0) {
+                        # code...
+                        $clinetRecord = new Client; 
+                        $clinetRecord->user_id = $user->id;
+                        $clinetRecord->visitorId = $visitorId;
+                        $clinetRecord->uuidGenerated = Uuid::generate(4)->string;
+                        $clinetRecord->save();
+                    } 
+
+                    // ! storing data in the purchases table.                     
+                    $purchase = new Purchase(); 
+                    $purchase->insurance_cover_id  = $insuranceCoverId;           
+                    $purchase->date_of_purchase = Carbon::now();
+                    $purchase->percentage_of_payment = ($mpesa_transaction->Amount/$amountPayable)/100;
+                    $purchase->amount_paid = $mpesa_transaction->Amount;
+                    $purchase->cost = $amountPayable;
+                    $purchase->save();
+
+
+                    // ! storing the reocrd in the payments procesed table; 
+
+                    $paymentsProcesed = new PaymentsProcessed();                    
+                    $paymentsProcesed->purchase_id = $purchase->id;
+                    $paymentsProcesed->payment_gateway = 'STK_PUSH';
+                    $paymentsProcesed->amount_paid = $mpesa_transaction->Amount;
+                    $paymentsProcesed->payment_gateway_id = $mpesa_transaction->id;
+                    $paymentsProcesed->save();
+
                     // Storage::put('attempt3.txt',"Test1.");
                         // ! fire the broadcast events. 
                         event(new PaymentProcessingEvent($content));

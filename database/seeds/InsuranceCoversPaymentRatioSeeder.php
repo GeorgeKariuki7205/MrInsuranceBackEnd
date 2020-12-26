@@ -17,18 +17,21 @@ class InsuranceCoversPaymentRatioSeeder extends Seeder
                 'cover_id'=>2,
                 'percentage'=>40,
                 'next_payment_scheduel'=>1,
+                'period'=>'months',
                 'description'=>'First Payment',
             ],
             [
                 'cover_id'=>2,
                 'percentage'=>30,
                 'next_payment_scheduel'=>1,
+                'period'=>'months',
                 'description'=>'Second Payment',
             ],
             [
                 'cover_id'=>2,
                 'percentage'=>30,
                 'next_payment_scheduel'=>1,
+                'period'=>'months',
                 'description'=>'Third Payment',
             ],
 
