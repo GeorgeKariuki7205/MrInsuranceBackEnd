@@ -98,11 +98,11 @@ Next Steps:
 @if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
     <h4 style="color: black">1. Log In to your Account.</h4>
         <p>Use the link below to logIn.</p>
-       <a style="text-align: center;" href="http://mrinsurance.georgekprojects.tk/login">Login.</a>
+       <a style="text-align: center;" href="https://mrinsurance.georgekprojects.tk/login">Login.</a>
 @else
    <h4 style="color: black">1. Activate Your Account</h4> 
     Use the link below to activate your account.
-    <a style="text-align: center;" href="http://http://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}">Activate Account.</a>
+    <a style="text-align: center;" href="https://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}">Activate Account.</a>
     
 @endif
 
@@ -122,11 +122,11 @@ Next Steps:
 @endforeach
 
 @if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
-@component('mail::button', ['url' => 'http://mrinsurance.georgekprojects.tk/login'])
+@component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated'])
 Log In 
 @endcomponent
 @else
-@component('mail::button', ['url' => "{{'http://http://mrinsurance.georgekprojects.tk/activatingAccount/'.$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}"])
+@component('mail::button', ['url' => '{{"http://mrinsurance.geor'])
 Activate Your Account.
 @endcomponent
     
