@@ -9,7 +9,8 @@ Your Premium Details Are As Shown Below:
 
 ***
 
-<table>
+{{$purchaseObtained->PurchaseBelongsToInsuranceCover}}
+{{-- <table>
     <tr>
         <th ></th>
         <th></th>
@@ -110,10 +111,9 @@ Next Steps:
 
 <h5>2. Upload Neccessary Documents: </h5>
 <p>Upload Scanned Copies Of: </p>
-
 {{-- @foreach ($collection as $item)
     
-@endforeach--}}
+@endforeach --}}
 
 
 Thanks,<br>
