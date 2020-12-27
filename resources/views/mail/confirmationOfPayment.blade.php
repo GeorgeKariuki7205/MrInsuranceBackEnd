@@ -34,7 +34,7 @@ Your Premium Details Are As Shown Below:
 </table>
 
 ***
-Your Premium Details Are As Shown Below: 
+Your Personal Details Are As Shown Below: 
 
 ***
 
@@ -73,11 +73,11 @@ Your Purchase Details Are As Shown Below:
     </tr>
     <tr>
         <td style="margin-right:10%;">Amount Paid : </td>
-        <td style="color:black;"> <b>{{$purchaseObtained->percentage_of_payment }}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->amount_paid }}</b></td>
     </tr>
     <tr>
         <td style="margin-right:10%;">Percantage Of Payment :</td>
-        <td style="color:black;"> <b>{{$purchaseObtained->amount_paid }}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->percentage_of_payment }}</b></td>
     </tr>  
     <tr>
         <td style="margin-right:10%;">Date Of Payment :</td>
@@ -102,8 +102,8 @@ Next Steps:
         Log In 
         @endcomponent
 @else
-    <h5>Activate Your Account.</h5>
-    <p>Use the link below to activate your account.</p>
+   <h5>1. Activate Your Account</h5> 
+    Use the link below to activate your account.
     @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
     Activate Your Account.
     @endcomponent
