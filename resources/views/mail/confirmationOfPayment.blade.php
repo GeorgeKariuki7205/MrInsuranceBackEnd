@@ -1,5 +1,5 @@
 @component('mail::message')
-Hello, {{$names}}
+Hello, {{$purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->first_name}}
 
 We highly Appreciate you buying Inurance From Mr Insurance, . 
 This email spells out the next steps to complete your transaction.
@@ -16,19 +16,19 @@ Your Premium Details Are As Shown Below:
     </tr>
     <tr>
         <td style="margin-right:10%;">Insurance Cover: </td>
-        <td style="color:black;"><b>{{$insuranceCoverDetailsName}}</b></td>
+        <td style="color:black;"><b>{{$purchaseObtained->PurchaseBelongsToInsuranceCover->name}}</b></td>
     </tr>
     <tr>
         <td style="margin-right:10%;">Company:</td>
-        <td style="color:black;"> <b>{{$insuranceCoverDetailsCompany->name}}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->PurchaseBelongsToInsuranceCover->InsuranceProviderBelongToCompany->name}}</b></td>
     </tr>
     <tr>
         <td style="margin-right:10%;">Cover:</td>
-        <td style="color:black;"> <b>{{$insuranceCoverDetailsCover->name }}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->PurchaseBelongsToInsuranceCover->InsuranceProviderBelongsToCover->name }}</b></td>
     </tr>
     <tr>
         <td style="margin-right:10%;">Sub Category:</td>
-        <td style="color:black;"> <b>{{$insuranceCoverDetailsSubCategory->name}}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->PurchaseBelongsToInsuranceCover->InsuranceCoverBelongsToSubCategory->name}}</b></td>
     </tr>
 </table>
 
@@ -44,15 +44,15 @@ Your Premium Details Are As Shown Below:
     </tr>
     <tr>
         <td style="margin-right:10%;">Name : </td>
-        <td style="color:black;"><b>{{$names}}</b></td>
+        <td style="color:black;"><b>{{$purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->first_name.' '.$purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->second_name}}</b></td>
     </tr>
     <tr>
         <td style="margin-right:10%;">Phone Number :</td>
-        <td style="color:black;"> <b>{{$phoneNumber}}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->phone_number}}</b></td>
     </tr>
     <tr>
         <td style="margin-right:10%;">Email Address :</td>
-        <td style="color:black;"> <b>{{$email_address }}</b></td>
+        <td style="color:black;"> <b>{{$purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->email }}</b></td>
     </tr>   
 </table>
 
