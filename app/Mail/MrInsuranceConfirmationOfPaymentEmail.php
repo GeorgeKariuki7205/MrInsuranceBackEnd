@@ -18,13 +18,9 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      */
     
     public $purchaseObtained;    
-    public function __construct($purhase)
+    public function __construct(Purchase $purhase)
     {
-        $purchases = Purchase::where('id',$purhase)->get();
-        foreach ($purchases as $purchase) {
-            $this->purchaseObtained = $purhase;
-        }
-        
+        $this->purchaseObtained = $purhase;
     }
 
     /**
