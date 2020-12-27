@@ -17,13 +17,15 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      * @return void
      */
     
-    public $purchaseObtained;    
+    public $purchaseObtained; 
+    public $purchaserName;  
     public function __construct($purhase)
     {
         $purchases = Purchase::where('id',$purhase)->get();
         foreach ($purchases as $purchaseSingle) {
             # code...
             $this->purchaseObtained = $purchaseSingle;
+            $this->purchaserName = $purchaseSingle->PurchasebelongsToClient->ClientbelongsToUser->first_name;
         }
         
     }
@@ -37,7 +39,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
     {
         return $this->markdown('mail.confirmationOfPayment')->with([
             'purchaseObtained' => $this->purchaseObtained,
-            'purchaserName' =>$this->purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->first_name          
+            'purchaserName' =>$this->purchaserName
         ]);
     }
 }
