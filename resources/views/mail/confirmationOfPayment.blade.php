@@ -98,15 +98,12 @@ Next Steps:
 @if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
     <h5>1. Log In to your Account.</h5>
         <p>Use the link below to logIn.</p>
-        @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
-        Log In 
-        @endcomponent
+       <a style="text-align: center;" href="http://mrinsurance.georgekprojects.tk/login">Login.</a>
 @else
    <h5>1. Activate Your Account</h5> 
     Use the link below to activate your account.
-    @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
-    Activate Your Account.
-    @endcomponent
+    <a style="text-align: center;" href="http://http://mrinsurance.georgekprojects.tk/activatingAccount/">Activate Account.</a>
+    
 @endif
 
 <h5>2. Upload Neccessary Documents: </h5>
