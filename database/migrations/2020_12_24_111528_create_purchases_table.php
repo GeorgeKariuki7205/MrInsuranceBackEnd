@@ -16,15 +16,16 @@ class CreatePurchasesTable extends Migration
         Schema::create('purchases', function (Blueprint $table) {
             $table->engine = "InnoDB";
             $table->id();
-            $table->unsignedBigInteger('insurance_cover_id');
             $table->longText('purchase_invoice_id');
+            $table->unsignedBigInteger('insurance_cover_id');            
 
             // ! adding the relationship to the insurance cover table. 
             $table->foreign('insurance_cover_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
-            $table->longText('client_id');
+            
+            $table->unsignedBigInteger('client_id');
 
             // ! adding the relationship to the insurance cover table. 
-            $table->foreign('client_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');
+            $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
 
             $table->date('date_of_purchase');
             $table->date('start_date_of_contract')->nullable();
