@@ -24,8 +24,9 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
     // public $insuranceCoverDetailsSubCategory;
     // public $numberOfInsuranceCoverModel;
     // public $intentionId;
-    public $purhase;
-    public function __construct($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
+    public $purchaseObtained;
+    // public function __construct($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
+    public function __construct($purhase)
     {
         //
         // $this->names=$names;
@@ -36,7 +37,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
         // $this->insuranceCoverDetailsSubCategory=$insuranceCoverDetailsSubCategory;
         // $this->numberOfInsuranceCoverModel=$numberOfInsuranceCoverModel;
         // $this->intentionId = $intentionId;
-        $this->purhase = $purhase;
+        $this->purchaseObtained = $purhase;
     }
 
     /**
@@ -55,7 +56,7 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
             // 'insuranceCoverDetailsSubCategory'=>$this->insuranceCoverDetailsSubCategory,
             // 'numberOfInsuranceCoverModel'=>$this->numberOfInsuranceCoverModel,
             // 'intentionId'=> $this->intentionId,
-            'purhase'=> $this->purhase,
+            'purchaseObtained'=> $this->purchaseObtained,
             
         ]);
     }
