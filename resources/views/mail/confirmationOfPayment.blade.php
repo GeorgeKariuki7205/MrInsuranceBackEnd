@@ -91,23 +91,30 @@ Next Steps:
 
 ***
 
-<h5>Thank you for purchasing an insurance premium from us, the following will be the next steps to make sure we successfully 
+<h3>Thank you for purchasing an insurance premium from us, the following will be the next steps to make sure we successfully 
     get you your insurance.
-</h5>
+</h3>
 
 @if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
-    <h5>1. Log In to your Account.</h5>
+    <h4 style="color: black">1. Log In to your Account.</h4>
         <p>Use the link below to logIn.</p>
        <a style="text-align: center;" href="http://mrinsurance.georgekprojects.tk/login">Login.</a>
 @else
-   <h5>1. Activate Your Account</h5> 
+   <h4 style="color: black">1. Activate Your Account</h4> 
     Use the link below to activate your account.
-    <a style="text-align: center;" href="http://http://mrinsurance.georgekprojects.tk/activatingAccount/">Activate Account.</a>
+    <a style="text-align: center;" href="http://http://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}">Activate Account.</a>
     
 @endif
 
-<h5>2. Upload Neccessary Documents: </h5>
+<h4 style="color: black"> 2. Upload Neccessary Documents: </h4>
 <p>Upload Scanned Copies Of: </p>
+@php
+    $counter = 0;
+@endphp
+
+@foreach ($purchaseObtained->PurchaseBelongsToInsuranceCover->InsuranceProviderBelongsToCover->CoverhasManyDocumentsNeeded as $item)
+    <h4 style="color: black">{{$counter+1 .'  '.$item->name }} </h4>
+@endforeach
 
 Thanks,<br>
 {{ config('app.name') }}
