@@ -23,4 +23,8 @@ class Purchase extends Model
     {
         return $this->hasMany('App\Purchases\DocumentsUploaded', 'purchase_id', 'id');
     }
+    public function PurchasebelongsToClient()
+    {
+        return $this->belongsTo('App\Client', 'client_id', 'id');
+    }
 }
