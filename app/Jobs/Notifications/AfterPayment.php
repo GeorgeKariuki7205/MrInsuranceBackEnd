@@ -33,7 +33,7 @@ class AfterPayment implements ShouldQueue
     public $purchase;
     
 
-    public function __construct($visitorId,$intentionId,$purchase)
+    public function __construct($purchase)
     {
         //
         $this->visitorId = $visitorId;        
