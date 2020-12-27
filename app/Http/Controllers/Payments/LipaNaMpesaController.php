@@ -177,10 +177,11 @@ class LipaNaMpesaController extends Controller
                         $clinetRecord->save();
                     } 
 
-                    // ! storing data in the purchases table.                     
+                    // ! storing data in the purchases table.
+                    $uuid = Uuid::generate(4)->string;                     
                     $purchase = new Purchase(); 
                     $purchase->insurance_cover_id  = $insuranceCoverId; 
-                    $purchase->purchase_invoice_id  = Uuid::generate(4)->string;
+                    $purchase->purchase_invoice_id  = $uuid;
                     $purchase->date_of_purchase = Carbon::now();
                     $purchase->percentage_of_payment = ($mpesa_transaction->Amount/$amountPayable)/100;
                     $purchase->amount_paid = $mpesa_transaction->Amount;
@@ -201,7 +202,7 @@ class LipaNaMpesaController extends Controller
                         // ! fire the broadcast events. 
                         event(new PaymentProcessingEvent($content));
 
-                        $purchaseMades = Purchase::where('purchase_invoice_id',$purchase->purchase_invoice_id)->get();
+                        $purchaseMades = Purchase::where('purchase_invoice_id',$uuid)->get();
                         $purchasePassed = null;
                         foreach ($purchaseMades as $purchaseMade) {
                             # code...
