@@ -6,7 +6,7 @@ use Illuminate\Bus\Queueable;
 use Illuminate\Contracts\Queue\ShouldQueue;
 use Illuminate\Mail\Mailable;
 use Illuminate\Queue\SerializesModels;
-
+use App\Purchases\Purchase;
 class MrInsuranceConfirmationOfPaymentEmail extends Mailable
 {
     use Queueable, SerializesModels;
@@ -16,27 +16,10 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      *
      * @return void
      */
-    // public $names;
-    // public $phoneNumber;
-    // public $insuranceCoverDetailsName;
-    // public $insuranceCoverDetailsCompany;
-    // public $insuranceCoverDetailsCover;
-    // public $insuranceCoverDetailsSubCategory;
-    // public $numberOfInsuranceCoverModel;
-    // public $intentionId;
-    public $purchaseObtained;
-    // public function __construct($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel)
-    public function __construct($purhase)
+    
+    public $purchaseObtained;    
+    public function __construct(Purchase $purhase)
     {
-        //
-        // $this->names=$names;
-        // $this->phoneNumber=$phoneNumber;
-        // $this->insuranceCoverDetailsName=$insuranceCoverDetailsName;
-        // $this->insuranceCoverDetailsCompany=$insuranceCoverDetailsCompany;
-        // $this->insuranceCoverDetailsCover=$insuranceCoverDetailsCover;
-        // $this->insuranceCoverDetailsSubCategory=$insuranceCoverDetailsSubCategory;
-        // $this->numberOfInsuranceCoverModel=$numberOfInsuranceCoverModel;
-        // $this->intentionId = $intentionId;
         $this->purchaseObtained = $purhase;
     }
 
@@ -47,17 +30,6 @@ class MrInsuranceConfirmationOfPaymentEmail extends Mailable
      */
     public function build()
     {
-        return $this->markdown('mail.confirmationOfPayment')->with([
-            // 'names'=>$this->names,
-            // 'phoneNumber'=>$this->phoneNumber,
-            // 'insuranceCoverDetailsName'=>$this->insuranceCoverDetailsName,
-            // 'insuranceCoverDetailsCompany'=>$this->insuranceCoverDetailsCompany,
-            // 'insuranceCoverDetailsCover'=>$this->insuranceCoverDetailsCover,
-            // 'insuranceCoverDetailsSubCategory'=>$this->insuranceCoverDetailsSubCategory,
-            // 'numberOfInsuranceCoverModel'=>$this->numberOfInsuranceCoverModel,
-            // 'intentionId'=> $this->intentionId,
-            'purchaseObtained'=> $this->purchaseObtained,
-            
-        ]);
+        return $this->markdown('mail.confirmationOfPayment');
     }
 }
