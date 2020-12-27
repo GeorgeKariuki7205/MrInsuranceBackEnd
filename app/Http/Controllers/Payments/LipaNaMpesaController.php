@@ -201,10 +201,15 @@ class LipaNaMpesaController extends Controller
                         // ! fire the broadcast events. 
                         event(new PaymentProcessingEvent($content));
 
-                
+                        $purchaseMades = Purchase::where('purchase_invoice_id',$purchase->purchase_invoice_id)->get();
+                        $purchasePassed = null;
+                        foreach ($purchaseMades as $purchaseMade) {
+                            # code...
+                            $purchasePassed = $purchaseMade;
+                        }
                         
                         // ! firing the job.
-                        $afterPaymentNotification = new AfterPayment($visitorId,$intentionId,$purchase);
+                        $afterPaymentNotification = new AfterPayment($visitorId,$intentionId,$purchasePassed);
                         dispatch($afterPaymentNotification);
                         
                         $response = new Response();
