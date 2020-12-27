@@ -176,12 +176,20 @@ class LipaNaMpesaController extends Controller
                         $clinetRecord->uuidGenerated = Uuid::generate(4)->string;
                         $clinetRecord->save();
                     } 
+                    else {
+                        # code...
+                        foreach ($clinetDetails as $clinetDetail) {
+                            # code...
+                            $clinetRecord = $clinetDetail;
+                        }
+                    }
 
                     // ! storing data in the purchases table.
                     $uuid = Uuid::generate(4)->string;                     
                     $purchase = new Purchase(); 
                     $purchase->insurance_cover_id  = $insuranceCoverId; 
                     $purchase->purchase_invoice_id  = $uuid;
+                    $purchase->client_id = $clinetRecord->id;
                     $purchase->date_of_purchase = Carbon::now();
                     $purchase->percentage_of_payment = ($mpesa_transaction->Amount/$amountPayable)/100;
                     $purchase->amount_paid = $mpesa_transaction->Amount;
