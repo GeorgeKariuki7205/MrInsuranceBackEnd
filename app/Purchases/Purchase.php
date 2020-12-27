@@ -11,7 +11,7 @@ class Purchase extends Model
 
     public function PurchaseBelongsToInsuranceCover()
     {
-        return $this->belongsTo('App\GeneralModels\InsuranceCover', 'insurance_covers_id', 'id');
+        return $this->belongsTo('App\GeneralModels\InsuranceCover', 'insurance_cover_id', 'id');
     }
 
     public function PurchaseHasManyPaymentsProcessed()

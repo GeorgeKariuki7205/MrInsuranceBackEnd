@@ -129,22 +129,10 @@ class AfterPayment implements ShouldQueue
             echo "Error: ".$e->getMessage();
         }
 
-        // ? SENDING THE EMAIL.
-
-
-        // $purchases = Purchase::where('i')->get();
+        // ? SENDING THE EMAIL.        
         		                
         $purchaseObtained=$this->purchase;
         $email = new MrInsuranceConfirmationOfPaymentEmail($this->purchase->id);
         Mail::to($email_address)->send($email);
-
-        // $data = array('name'=>"Virat Gandhi");
-   
-    //   Mail::send(['text'=>'mail.welcome'], $data, function($message) {
-    //      $message->to('ngugigeorge697@gmail.com', 'Tutorials Point')->subject
-    //         ('Laravel Basic Testing Mail');
-    //      $message->from('notification@georgekprojects.tk','Notification GeorgeKProjects');
-    //   });
-
     }
 }
