@@ -108,13 +108,34 @@ Next Steps:
 
 <h4 style="color: black"> 2. Upload Neccessary Documents: </h4>
 <p>Upload Scanned Copies Of: </p>
+
 @php
-    $counter = 0;
+    $counter = 1;
 @endphp
 
 @foreach ($purchaseObtained->PurchaseBelongsToInsuranceCover->InsuranceProviderBelongsToCover->CoverhasManyDocumentsNeeded as $item)
-    <h4 style="color: black">{{$counter+1 .'  '.$item->name }} </h4>
+    {{-- <h4 style="color: black">{{$counter+1 .'  '.$item->name }} </h4>     --}}
+    {{$counter .'  '.$item->name }}
+    @php
+    $counter = $counter+1;
+@endphp
 @endforeach
+
+@if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
+@component('mail::button', ['url' => 'http://mrinsurance.georgekprojects.tk/login'])
+Log In 
+@endcomponent
+@else
+@component('mail::button', ['url' => 'http://http://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}'])
+Activate Your Account.
+@endcomponent
+    
+@endif
+
+Our Contact Information.  
+Phone Number: 0115335486
+Email: purchases@georgekprojects.tk
+
 
 Thanks,<br>
 {{ config('app.name') }}
