@@ -81,7 +81,7 @@ Your Purchase Details Are As Shown Below:
     </tr>  
     <tr>
         <td style="margin-right:10%;">Date Of Payment :</td>
-        <td style="color:black;"> <b>{{\Carbon\Carbon::createFromTimeStamp(strtotime($purchaseObtained->date_of_purchase))->toDayDateTimeString()() }}</b></td>
+        <td style="color:black;"> <b>{{\Carbon\Carbon::createFromTimeStamp(strtotime($purchaseObtained->date_of_purchase))->toDayDateTimeString() }}</b></td>
     </tr>  
     
 </table>
