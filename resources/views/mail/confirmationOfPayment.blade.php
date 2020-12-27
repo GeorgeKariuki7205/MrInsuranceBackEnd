@@ -1,5 +1,5 @@
 @component('mail::message')
-Hello, {{$purchaseObtained->PurchaseBelongsToInsuranceCover->name}}
+Hello, {{$purchaserName}}
 
 We highly Appreciate you buying Inurance From Mr Insurance, . 
 This email spells out the next steps to complete your transaction.
