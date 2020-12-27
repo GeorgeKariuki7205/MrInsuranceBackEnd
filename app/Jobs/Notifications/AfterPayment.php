@@ -17,6 +17,7 @@ use App\Mail\MrInsuranceConfirmationOfPaymentEmail;
 use App\GeneralModels\InsuranceCover;
 
 use App\Visitor\Visitor;
+use App\Purchases\Purchase;
 class AfterPayment implements ShouldQueue
 {
     use Dispatchable, InteractsWithQueue, Queueable, SerializesModels;
@@ -29,6 +30,7 @@ class AfterPayment implements ShouldQueue
     
     public $visitorId;
     public $intentionId;
+    public $purchase;
     
 
     public function __construct($visitorId,$intentionId)
@@ -36,7 +38,7 @@ class AfterPayment implements ShouldQueue
         //
         $this->visitorId = $visitorId;        
         $this->intentionId = $intentionId;
-        
+        $this->purchase = $purchase;
     }
     /**
      * Execute the job.
@@ -130,10 +132,10 @@ class AfterPayment implements ShouldQueue
         // ? SENDING THE EMAIL.
 
 
-        
+        // $purchases = Purchase::where('i')->get();
         		                
 
-        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel);
+        $email = new MrInsuranceConfirmationOfPaymentEmail($purchase,$names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel);
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         // $data = array('name'=>"Virat Gandhi");

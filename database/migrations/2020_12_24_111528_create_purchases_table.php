@@ -17,6 +17,7 @@ class CreatePurchasesTable extends Migration
             $table->engine = "InnoDB";
             $table->id();
             $table->unsignedBigInteger('insurance_cover_id');
+            $table->longText('purchase_invoice_id');
 
             // ! adding the relationship to the insurance cover table. 
             $table->foreign('insurance_cover_id')->references('id')->on('insurance_covers')->onDelete('cascade')->onUpdate('cascade');

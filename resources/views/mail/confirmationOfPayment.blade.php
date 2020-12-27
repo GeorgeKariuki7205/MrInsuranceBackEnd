@@ -33,6 +33,7 @@ Your Premium Details Are As Shown Below:
 </table>
 
 
+
 @component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/'])
 Activate Your Account.
 @endcomponent
