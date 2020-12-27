@@ -9,7 +9,7 @@ Your Premium Details Are As Shown Below:
 
 ***
 
-{{-- <table>
+<table>
     <tr>
         <th ></th>
         <th></th>
@@ -112,7 +112,7 @@ Next Steps:
 <p>Upload Scanned Copies Of: </p>
 {{-- @foreach ($collection as $item)
     
-@endforeach --}}
+@endforeach
 
 
 Thanks,<br>
