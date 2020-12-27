@@ -135,8 +135,8 @@ class AfterPayment implements ShouldQueue
         // $purchases = Purchase::where('i')->get();
         		                
         $purchaseObtained=$this->purchase;
-        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel,$purchaseObtained,$email_address);
-        Mail::to('ngugigeorge697@gmail.com')->send($email);
+        $email = new MrInsuranceConfirmationOfPaymentEmail($email_address,$names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel,$purchaseObtained);
+        Mail::to($email_address)->send($email);
 
         // $data = array('name'=>"Virat Gandhi");
    
