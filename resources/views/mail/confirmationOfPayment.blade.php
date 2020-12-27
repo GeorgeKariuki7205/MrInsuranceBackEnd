@@ -11,24 +11,24 @@ Your Premium Details Are As Shown Below:
 
 <table>
     <tr>
-        <th></th>
+        <th style="margin-right:10%;"></th>
         <th></th>
     </tr>
     <tr>
-        <td>Insurance Cover</td>
-        <td>{{$insuranceCoverDetailsName}}</td>
+        <td>Insurance Cover: </td>
+        <td style="color:black;"><b>{{$insuranceCoverDetailsName}}</b></td>
     </tr>
     <tr>
         <td>Company:</td>
-        <td>{{$insuranceCoverDetailsCompany->name}}</td>
+        <td style="color:black;"> <b>{{$insuranceCoverDetailsCompany->name}}</b></td>
     </tr>
     <tr>
         <td>Cover:</td>
-        <td>{{$insuranceCoverDetailsCover->name }}</td>
+        <td style="color:black;"> <b>{{$insuranceCoverDetailsCover->name }}</b></td>
     </tr>
     <tr>
         <td>Sub Category:</td>
-        <td>{{$insuranceCoverDetailsSubCategory->name}}</td>
+        <td style="color:black;"> <b>{{$insuranceCoverDetailsSubCategory->name}}</b></td>
     </tr>
 </table>
 
