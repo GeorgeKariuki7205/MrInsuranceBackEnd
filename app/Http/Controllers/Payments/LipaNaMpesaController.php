@@ -136,8 +136,8 @@ class LipaNaMpesaController extends Controller
                     }
 
 
-                    $userRecordeds = User::where('email',$email_addressOfVisitor)->where('phone_number',$email_addressOfVisitor)->get();
-
+                    $userRecordeds = User::where('email',$email_addressOfVisitor)->where('phone_number',$phoneNumberOfVisitor)->get();
+                    // $userRecordeds = User::where('phone_number',$email_addressOfVisitor)->get();
                     $numberfUsersWithDetails = count($userRecordeds);
 
                     if ($numberfUsersWithDetails == 0) {
