@@ -137,7 +137,7 @@ class LipaNaMpesaController extends Controller
 
 
                     $userRecordeds = User::where('email',$email_addressOfVisitor)->where('phone_number',$phoneNumberOfVisitor)->get();
-                    // $userRecordeds = User::where('phone_number',$email_addressOfVisitor)->get();
+                    // $userRecordeds = User::where('phone_number',$phoneNumberOfVisitor)->get();
                     $numberfUsersWithDetails = count($userRecordeds);
 
                     if ($numberfUsersWithDetails == 0) {
@@ -179,7 +179,8 @@ class LipaNaMpesaController extends Controller
 
                     // ! storing data in the purchases table.                     
                     $purchase = new Purchase(); 
-                    $purchase->insurance_cover_id  = $insuranceCoverId;           
+                    $purchase->insurance_cover_id  = $insuranceCoverId; 
+                    $purchase->purchase_invoice_id  = Uuid::generate(4)->string;
                     $purchase->date_of_purchase = Carbon::now();
                     $purchase->percentage_of_payment = ($mpesa_transaction->Amount/$amountPayable)/100;
                     $purchase->amount_paid = $mpesa_transaction->Amount;
@@ -203,7 +204,7 @@ class LipaNaMpesaController extends Controller
                 
                         
                         // ! firing the job.
-                        $afterPaymentNotification = new AfterPayment($visitorId,$intentionId);
+                        $afterPaymentNotification = new AfterPayment($visitorId,$intentionId,$purchase);
                         dispatch($afterPaymentNotification);
                         
                         $response = new Response();
