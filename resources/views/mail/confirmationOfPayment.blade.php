@@ -52,7 +52,7 @@ Your Premium Details Are As Shown Below:
     </tr>
     <tr>
         <td style="margin-right:10%;">Email Address :</td>
-        <td style="color:black;"> <b>{{$email }}</b></td>
+        <td style="color:black;"> <b>{{$email_address }}</b></td>
     </tr>   
 </table>
 
