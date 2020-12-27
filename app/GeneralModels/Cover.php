@@ -27,7 +27,7 @@ class Cover extends Model
         }
         public function CoverhasManyDocumentsNeeded()
         {
-            return $this->hasMany('App\DocumentsNeeded', 'cover_id', 'id');
+            return $this->hasMany('App\GeneralModels\DocumentsNeeded', 'cover_id', 'id');
         }
 
         public function CoverHasManyCoversPaymentRatio()
