@@ -126,7 +126,7 @@ Next Steps:
 Log In 
 @endcomponent
 @else
-@component('mail::button', ['url' => 'http://http://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}'])
+@component('mail::button', ['url' => '{{'http://http://mrinsurance.georgekprojects.tk/activatingAccount/'.$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}'])
 Activate Your Account.
 @endcomponent
     
