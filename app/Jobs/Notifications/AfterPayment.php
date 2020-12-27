@@ -50,7 +50,7 @@ class AfterPayment implements ShouldQueue
 
         $names = null;
         $phoneNumber= null;
-        $email= null;
+        $email_address= null;
         // ! visitor Details. 
         $visitors = Visitor::where('id',$this->visitorId)->get();
         $visitorObtained = null;
@@ -58,7 +58,7 @@ class AfterPayment implements ShouldQueue
 
             $names = $visitor->fisrtName .' '. $visitor->secondName;
             $phoneNumber= $visitor->phoneNumber;
-            $email= $visitor->emailAddress;  
+            $email_address= $visitor->emailAddress;  
             
             $visitorObtained = $visitor;
             # code...
@@ -135,7 +135,7 @@ class AfterPayment implements ShouldQueue
         // $purchases = Purchase::where('i')->get();
         		                
         $purchaseObtained=$this->purchase;
-        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel,$purchaseObtained,$email);
+        $email = new MrInsuranceConfirmationOfPaymentEmail($names,$intentionId,$phoneNumber,$insuranceCoverDetailsName,$insuranceCoverDetailsCompany,$insuranceCoverDetailsCover,$insuranceCoverDetailsSubCategory,$numberOfInsuranceCoverModel,$purchaseObtained,$email_address);
         Mail::to('ngugigeorge697@gmail.com')->send($email);
 
         // $data = array('name'=>"Virat Gandhi");
