@@ -65,7 +65,7 @@ Route::post('/stkPushCallBack', 'Payments\CustomerToOrganisationController@callB
 // ? new
 Route::post('/accessToken','Payments\LipaNaMpesaController@generateAccessTokens');
 Route::post('/validationURL','Payments\LipaNaMpesaController@validationMethod');
-Route::post('/confirmationURL','Mpesa\LipaNaMpesaController@confirmationMethod');
+Route::post('/confirmationURL','Payments\LipaNaMpesaController@confirmationMethod');
 Route::post('/registerURLS','Payments\LipaNaMpesaController@registerURLS');
 Route::post('/simulateTransaction','Payments\LipaNaMpesaController@simulateTransaction');
 Route::post('/stkPush', 'Payments\LipaNaMpesaController@customerMpesaSTKPush');
@@ -75,6 +75,22 @@ Route::post('/intentionToPay','Payments\IntentionToPayController@store');
 
 // ! creating roles for users. 
 Route::get('/addRoles','creationOfRoles@createRolesForUsers');
+
+
+
+
+Route::group([
+    
+    'prefix' => 'auth'
+
+], function () {
+
+    Route::post('login', 'AuthController@login');
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+
+});
 
 
 
