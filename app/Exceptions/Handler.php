@@ -53,21 +53,21 @@ class Handler extends ExceptionHandler
      */
     public function render($request, Throwable $exception)
     {
-        if ($exception instanceof TokenInvalidException) {
-            # code...
-            return "Invalid Token";
-        }
-        elseif ($exception instanceof TokenExpiredException)  {
-            return "expired.";
-        }
-        elseif ($exception instanceof JWTException) {
-            # code...
-            return "jwt exception.";
-        }
-        else {
-            # code...
-            return "A problem Exits with your Token.";
-        }
+        // if ($exception instanceof TokenInvalidException) {
+        //     # code...
+        //     return "Invalid Token";
+        // }
+        // elseif ($exception instanceof TokenExpiredException)  {
+        //     return "expired.";
+        // }
+        // elseif ($exception instanceof JWTException) {
+        //     # code...
+        //     return "jwt exception.";
+        // }
+        // else {
+        //     # code...
+        //     return "A problem Exits with your Token.";
+        // }
         return parent::render($request, $exception);
     }
 }
