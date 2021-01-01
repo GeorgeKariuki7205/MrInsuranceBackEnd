@@ -18,7 +18,7 @@ class GettingPersonalDetails extends Controller
             $personalData = $client->ClientbelongsToUser->all();
         }
 
-        return response()->json(['personalData' => $personalData], 200);
+        return response()->json(['personalData' => $request], 200);
 
     }
 }
