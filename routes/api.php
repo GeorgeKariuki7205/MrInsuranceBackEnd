@@ -82,10 +82,14 @@ Route::post('getPersonalData','GettingPersonalDetails@getPersonalDetailsOfUser')
 
 // ! AUTHENTCATION ROUTES. 
 
+Route::middleware(['jwt'])->group(function () {
+    Route::post('logout', 'AuthController@logout');
+    Route::post('refresh', 'AuthController@refresh');
+    Route::post('me', 'AuthController@me');
+});
+
 Route::post('login', 'AuthController@login');
-Route::post('logout', 'AuthController@logout');
-Route::post('refresh', 'AuthController@refresh');
-Route::post('me', 'AuthController@me');
+
 
 
 
