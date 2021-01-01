@@ -72,22 +72,17 @@ Route::post('/stkPush', 'Payments\LipaNaMpesaController@customerMpesaSTKPush');
 Route::post('/stkPushCallBack', 'Payments\LipaNaMpesaController@callBackForTheSTKPush');
 Route::post('/intentionToPay','Payments\IntentionToPayController@store');
 
-
 // ! creating roles for users. 
 Route::get('/addRoles','creationOfRoles@createRolesForUsers');
 
-
+ // ! getting personal Data to cativate account. 
+ Route::post('getPersonalData','GettingPersonalDetails@getPersonalDetailsOfUser');
 
 // ! AUTHENTCATION ROUTES. 
-
 Route::middleware(['jwt'])->group(function () {
     Route::post('logout', 'AuthController@logout');
     Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
-    // ! getting personal Data to cativate account. 
-    Route::post('getPersonalData','GettingPersonalDetails@getPersonalDetailsOfUser');
-
+    Route::post('me', 'AuthController@me');   
 });
 
 Route::post('login', 'AuthController@login');
