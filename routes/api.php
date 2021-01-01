@@ -76,21 +76,17 @@ Route::post('/intentionToPay','Payments\IntentionToPayController@store');
 // ! creating roles for users. 
 Route::get('/addRoles','creationOfRoles@createRolesForUsers');
 
+// ! getting personal Data to cativate account. 
 
+Route::post('getPersonalData','GettingPersonalDetails@getPersonalDetailsOfUser');
 
+// ! AUTHENTCATION ROUTES. 
 
-Route::group([
-    
-    'prefix' => 'auth'
+Route::post('login', 'AuthController@login');
+Route::post('logout', 'AuthController@logout');
+Route::post('refresh', 'AuthController@refresh');
+Route::post('me', 'AuthController@me');
 
-], function () {
-
-    Route::post('login', 'AuthController@login');
-    Route::post('logout', 'AuthController@logout');
-    Route::post('refresh', 'AuthController@refresh');
-    Route::post('me', 'AuthController@me');
-
-});
 
 
 
