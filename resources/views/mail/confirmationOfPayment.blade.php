@@ -122,11 +122,11 @@ Next Steps:
 @endforeach
 
 @if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
-@component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/login'])
+@component('mail::button', ['url' => 'http://localhost:8080/activatingAccount/login'])
 Log In 
 @endcomponent
 @else
-@component('mail::button', ['url' => 'https://mrinsurance.georgekprojects.tk/activatingAccount/'.$purchaseObtained->PurchasebelongsToClient->uuidGenerated])
+@component('mail::button', ['url' => 'http://localhost:8080/activatingAccount/'.$purchaseObtained->PurchasebelongsToClient->uuidGenerated])
 Activate Your Account.
 @endcomponent
     
