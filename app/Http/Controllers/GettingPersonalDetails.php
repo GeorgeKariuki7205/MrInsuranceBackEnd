@@ -47,6 +47,8 @@ class GettingPersonalDetails extends Controller
             // ! logging in to the application. 
     
             $credentials = [$person->email, $request->newPassword];
+
+            return $credentials;
     
             if (! $token = auth()->attempt($credentials)) {
                 return response()->json(['error' => 'Unauthorized'], 401);
