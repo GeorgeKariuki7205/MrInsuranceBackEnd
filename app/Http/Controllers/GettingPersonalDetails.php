@@ -28,6 +28,7 @@ class GettingPersonalDetails extends Controller
 
         public function activateAccount(Request $request){
 
+            return  $request;
             $uuidGenerated = $request->uuid;
             $clients = Client::where('uuidGenerated',$uuidGenerated)->get();
     
