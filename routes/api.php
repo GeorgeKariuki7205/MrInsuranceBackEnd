@@ -89,7 +89,7 @@ Route::post('login', 'AuthController@login');
 
 // ! this route is used t update the password of a user.  
 
-Route::post('/activateAccount','GettingPersonalDetails@activateAccount');
+Route::post('/activateAccount','AuthController@activateAccount');
 
 
 

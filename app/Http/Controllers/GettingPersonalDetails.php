@@ -28,35 +28,5 @@ class GettingPersonalDetails extends Controller
 
         // ! this controller is used to update the password of a user. 
 
-        public function activateAccount(Request $request){
 
-            // return  $request->uuid;
-            $uuidGenerated = $request->uuid;
-            $clients = Client::where('uuidGenerated',$uuidGenerated)->get();
-    
-            $person = null;
-            foreach ($clients as $client) {
-                # code...
-                $person = $client->ClientbelongsToUser;
-            }
-    
-            // ! saving the hashed password. 
-            $person->password = Hash::make($request->newPassword);
-            $person->account_activated = true;
-            $person->account_activated_at =  Carbon::now();
-            $person->save();
-    
-            // ! logging in to the application. 
-    
-            $credentials = [$person->email, $request->newPassword];
-
-            // return $credentials;
-    
-            if (! $token = auth()->attempt($credentials)) {
-                return response()->json(['error' => 'Unauthorized'], 401);
-            }
-    
-            return $this->respondWithToken($token);
-    
-        }
 }
