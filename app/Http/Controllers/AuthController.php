@@ -89,9 +89,11 @@ class AuthController extends Controller
         $clients = Client::where('uuidGenerated',$uuidGenerated)->get();
 
         $person = null;
+        $purchases = null;
         foreach ($clients as $client) {
             # code...
             $person = $client->ClientbelongsToUser;
+            $purchases = $client->ClienthasManyPurchase;
         }
 
         // ! saving the hashed password. 
@@ -106,13 +108,14 @@ class AuthController extends Controller
         $credentials = array();
         $credentials['email'] = $person->email;
         $credentials['password'] =  $request->newPassword;
-        // return $credentials;
-        // Auth::attempt($credentials)
+
         if (! $token = Auth::attempt($credentials)) {
             return response()->json(['error' => 'Unauthorized'], 401);
         }
 
-        return $this->respondWithToken($token);
+        $personalDetails = $person->all();
+        // $purchasesMade =         
+        return response()->json(['tokenDetails' => $this->respondWithToken($token),'personalDetails'=>$personalDetails,'purchases'=>$purchases], 200);
 
     }
 
