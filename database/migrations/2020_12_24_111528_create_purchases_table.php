@@ -27,7 +27,7 @@ class CreatePurchasesTable extends Migration
             // ! adding the relationship to the insurance cover table. 
             $table->foreign('client_id')->references('id')->on('clients')->onDelete('cascade')->onUpdate('cascade');
 
-            $table->date('date_of_purchase');
+            $table->dateTime('date_of_purchase');
             $table->date('start_date_of_contract')->nullable();
             $table->date('end_date_of_contract')->nullable();            
             $table->float('percentage_of_payment');
