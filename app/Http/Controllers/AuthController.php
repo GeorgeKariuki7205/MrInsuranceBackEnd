@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 use Illuminate\Support\Facades\Hash;
 // use Illuminate\Support\Facades\Hash;
 use Carbon\Carbon;
+use App\Client;
 // use Illuminate\Support\Facades\Auth;
 class AuthController extends Controller
 {
