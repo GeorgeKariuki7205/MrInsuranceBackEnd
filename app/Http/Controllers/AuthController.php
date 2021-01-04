@@ -102,8 +102,10 @@ class AuthController extends Controller
 
         // ! logging in to the application. 
 
-        $credentials = [$person->email, $request->newPassword];
-
+        // $credentials = [$person->email, $request->newPassword];
+        $credentials = array();
+        $credentials['email'] = $person->email;
+        $credentials['password'] =  $request->newPassword;
         // return $credentials;
         // Auth::attempt($credentials)
         if (! $token = Auth::attempt($credentials)) {
