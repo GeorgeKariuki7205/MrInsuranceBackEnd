@@ -5,7 +5,7 @@ namespace App\Http\Controllers;
 use Illuminate\Http\Request;
 use App\Client;
 use Illuminate\Support\Facades\Hash;
-use Carbon;
+use Carbon\Carbon;
 class GettingPersonalDetails extends Controller
 {
     //
