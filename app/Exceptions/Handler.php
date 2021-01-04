@@ -64,10 +64,10 @@ class Handler extends ExceptionHandler
             # code...            
             return response()->json(['error'=>'jwt exception.'], 400);
         }
-        else {
-            # code...            
-            return response()->json(['error'=>'A problem Exits with your Token.'], 400);
-        }
+        // else {
+        //     # code...            
+        //     return response()->json(['error'=>'A problem Exits with your Token.'], 400);
+        // }
         return parent::render($request, $exception);
     }
 }
