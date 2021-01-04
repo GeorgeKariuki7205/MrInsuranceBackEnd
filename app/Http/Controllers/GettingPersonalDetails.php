@@ -41,7 +41,7 @@ class GettingPersonalDetails extends Controller
             // ! saving the hashed password. 
             $person->password = Hash::make($request->newPassword);
             $person->account_activated = true;
-            $person->account_activated_at = Carbon::now;
+            $person->account_activated_at =  Carbon::now();
             $person->save();
     
             // ! logging in to the application. 
