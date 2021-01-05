@@ -45,9 +45,10 @@ class GettingPersonalDetails extends Controller
         }
 
         $paymentRecords = PaymentsProcessed::where('payment_gateway_id',$idOfLipaNaMpesa)->get();
-        
+        $responseArray = null;
         foreach ($paymentRecords as $paymentRecord) {
             # code...
+            $responseArray = null;
             $purchaseDetailsToSendToUser = array();
             $premiumDetails = array();
             $personalDetails = array();
@@ -100,7 +101,7 @@ class GettingPersonalDetails extends Controller
 
         // ! returning everything. 
 
-        return response()->json($purchaseDetailsToSendToUse, 200);
+        return response()->json($purchaseDetailsToSendToUser, 200);
     }
 
 
