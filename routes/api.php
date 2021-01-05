@@ -91,6 +91,8 @@ Route::post('login', 'AuthController@login');
 
 Route::post('/activateAccount','AuthController@activateAccount');
 
+Route::post('/getDetailsForInsurancePremiumAfterSuccessfullPayment','GettingPersonalDetails@getDetailsForInsurancePremiumAfterSuccessfullPayment');
+
 
 
 

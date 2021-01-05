@@ -98,12 +98,13 @@ Next Steps:
 @if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 1)
     <h4 style="color: black">1. Log In to your Account.</h4>
         <p>Use the link below to logIn.</p>
-       <a style="text-align: center;" href="https://mrinsurance.georgekprojects.tk/login">Login.</a>
-@else
-   <h4 style="color: black">1. Activate Your Account</h4> 
-    Use the link below to activate your account.
-    <a style="text-align: center;" href="https://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}">Activate Account.</a>
-    
+       <a style="text-align: center;" href="https://mrinsurance.georgekprojects.tk/login">Login.</a>    
+@endif
+
+@if ($purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->account_activated == 0)
+<h4 style="color: black">1. Activate Your Account</h4> 
+ Use the link below to activate your account.
+ <a style="text-align: center;" href="https://mrinsurance.georgekprojects.tk/activatingAccount/{{$purchaseObtained->PurchasebelongsToClient->uuidGenerated}}">Activate Account.</a>
 @endif
 
 <h4 style="color: black"> 2. Upload Neccessary Documents: </h4>

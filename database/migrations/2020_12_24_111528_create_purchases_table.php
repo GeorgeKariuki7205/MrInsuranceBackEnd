@@ -30,7 +30,7 @@ class CreatePurchasesTable extends Migration
             $table->dateTime('date_of_purchase');
             $table->date('start_date_of_contract')->nullable();
             $table->date('end_date_of_contract')->nullable();            
-            $table->float('percentage_of_payment');
+            $table->float('percentage_of_payment',10,9);
             $table->unsignedInteger('cost');
             $table->unsignedInteger('amount_paid');            
             $table->date('next_payment_period')->nullable();

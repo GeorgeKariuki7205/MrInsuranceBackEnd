@@ -8,7 +8,7 @@ class PaymentsProcessed extends Model
 {
     protected $guarded = ['id'];
 
-    public function PaymentsProcessedPurchase()
+    public function paymentsProcessedBelongsToPurchase()
     {
         return $this->belongsTo('App\Purchases\Purchase', 'purchase_id', 'id');
     }
