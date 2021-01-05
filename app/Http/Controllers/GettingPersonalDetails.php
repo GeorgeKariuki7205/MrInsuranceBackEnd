@@ -66,7 +66,7 @@ class GettingPersonalDetails extends Controller
             $purchaseDetailsToSendToUser['premiumDetails'] = $premiumDetails;
 
             // ! Personal Details. 
-            $personalDetails['name'] = $paymentRecordPurchase->PurchasebelongsToClient->ClientbelongsToUser->first_name.' '.$purchaseObtained->PurchasebelongsToClient->ClientbelongsToUser->second_name;
+            $personalDetails['name'] = $paymentRecordPurchase->PurchasebelongsToClient->ClientbelongsToUser->first_name.' '.$paymentRecordPurchase->PurchasebelongsToClient->ClientbelongsToUser->second_name;
             $personalDetails['phone_number'] = $paymentRecordPurchase->PurchasebelongsToClient->ClientbelongsToUser->phone_number;
             $personalDetails['email'] = $paymentRecordPurchase->PurchasebelongsToClient->ClientbelongsToUser->email;
 
@@ -76,7 +76,7 @@ class GettingPersonalDetails extends Controller
             $purchaseDetails['purchase_invoice_id'] = $paymentRecordPurchase->purchase_invoice_id;
             $purchaseDetails['amount_paid'] = $paymentRecordPurchase->amount_paid;
             $purchaseDetails['percentage_of_payment'] = $paymentRecordPurchase->percentage_of_payment;
-            $purchaseDetails['date_of_payment'] = \Carbon\Carbon::createFromTimeStamp(strtotime($purchaseObtained->date_of_purchase))->toDayDateTimeString();
+            $purchaseDetails['date_of_payment'] = \Carbon\Carbon::createFromTimeStamp(strtotime($paymentRecordPurchase->date_of_purchase))->toDayDateTimeString();
 
             $purchaseDetailsToSendToUser['purchaseDetails'] = $purchaseDetails;
 
